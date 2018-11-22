@@ -19,9 +19,6 @@
 genderRecode <-
   function(input, genderColName = "gender", method = "broad",
            outputColName = "gender_recode", saveUnrecognisedResponses = F) {
-    library(tidyverse)
-    library(readr)
-
     ## Need to check that the column name input is a character
     genderFreeText <- input[genderColName]
 
