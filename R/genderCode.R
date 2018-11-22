@@ -4,7 +4,8 @@
 #'
 #' @param input A dataframe with a column with the name specified in gender column name
 #' @param genderColName Gender information column text name
-#' @param outputColName Output column name
+#' @param outputColName Provide object name for function to write unknown responses and
+#' their locations to. If NA, the unrecognised responses will be printed but not saved.
 #' @param method "broad" or "narrow". Broad returns responses classified into "female", "male",
 #' "androgynous", "non-binary", "nonbinary", "transgender", "transgender male", "transgender female",
 #'  "intersex", "agender". Narrow returns "female", "male", "other".
