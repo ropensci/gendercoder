@@ -2,40 +2,55 @@
 #'
 #' Recodes gender column to
 #'
-#' @param input vector of gender responses
-#' @param outputCol expansion for the text
+#' @param input A dataframe with a column with the name specified in gender column name
+#' @param genderColName Gender information column text name
+#' @param outputColName Output column name
 #' @param optionalReplacements margin parameters; vector of length 4 (see \code{\link[graphics]{par}})
-#' @param
+#' @param method explanation
 #'
 #'
 #'
-#' @return None
+#' @return Returns the original dataframe
 #'
 #' @examples
-#' plot_crayons()
+#'
 #'
 #' @export
 genderRecode <-
-  function(input, nCol = 5, optionalReplacements = F, keepOriginal = TRUE) {
+  function(input, genderColName = "Gender", method = "broad", outputColName = "GenderRecode") {
 
     library(tidyverse)
     library(readr)
 
-#
- input <- read_csv("data/gender-free-text.csv") # this would normally be specified in the function
+## Need to check that the column name input is a character
 
-## Need to check that the input is just a vector
-if(ncol(input) != 1) {stop("input must be a single column")}
+    genderFreeText <- input[genderColName]
 
 # load dictionary
 dictionary <- read_csv("data/GenderDictionary.csv") # (some way of loading this in the package)
 
+if(method == "narrow") {
+  dictionary <- dictionary[c("Typos", "ThreeOptions")]
+} else {
+  dictionary <- dictionary[c("Typos", "BroadOptions")]
+}
 # Relabelling input column here and changing to tibble
-genderFreeText <- data_frame(gender = str_to_lower(input[[1]]))
+genderFreeText <- data_frame(gender = str_to_lower(genderFreeText[[1]]))
 
-# joining keeping all originals
-result <- left_join(genderFreeText, option, by = c("gender" = "Typos"))
+# joining keeping all original
+result <- left_join(genderFreeText, dictionary, by = c("gender" = "Typos"))
 
-result
+# Finding and printing unrecognised bits
+unrec <- result$gender[which(is.na(result$BroadOptions))]
+unrecNum <- which(is.na(result$BroadOptions))
+if(length(unrec) > 0) {
+unrecognised <- data.frame(responses = unrec, "row numbers" = unrecNum)
+print(unrecognised)
+}
 
+responses <- ifelse(is.na(result[[2]]),  result[[1]], result[[2]])
+
+response <- cbind(input, responses)
+names(response)[ length(response)] <- outputColName
+return(response)
 }
