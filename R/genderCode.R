@@ -20,8 +20,6 @@
 genderRecode <-
   function(input, genderColName = "gender", method = "broad",
            outputColName = "gender_recode", saveUnrecognisedResponses = F) {
-    library(tidyverse)
-    library(readr)
 
     # Coercing to data frame if necessary
     if(is.data.frame(input) == FALSE) {
