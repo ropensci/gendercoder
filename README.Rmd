@@ -29,11 +29,9 @@ This package uses dictionaries of common mispellings to recode these freetext re
 This package is not on CRAN. To use this package please un the following code:
 
 
-You can install the released version of gendercodeR from [CRAN](https://CRAN.R-project.org) with:
-
 ``` r
 devtools::install_github("ropenscilabs/gendercoder")
-library(rmdrive)
+library(gendercoder)
 ```
 
 ## Example
