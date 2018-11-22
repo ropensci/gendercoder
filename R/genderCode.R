@@ -35,10 +35,17 @@ if(method == "narrow") {
   dictionary <- dictionary[c("Typos", "BroadOptions")]
 }
 # Relabelling input column here and changing to tibble
-genderFreeText <- data_frame(gender = str_to_lower(genderFreeText[[1]]))
+genderFreeText <- data_frame(Typos = str_to_lower(genderFreeText[[1]]))
 
-# joining keeping all original
-result <- left_join(genderFreeText, dictionary, by = c("gender" = "Typos"))
+length(unique(dictionary$Typos))
+
+# joining keeping all originals
+result <- left_join(genderFreeText,dictionary,  by = c("Typos"))
+
+result
+genderFreeText
+
+merge(genderFreeText, dictionary, by = "Typos", all.x = T, all.y = F)
 
 # Finding and printing unrecognised bits
 unrec <- result$gender[which(is.na(result$BroadOptions))]
@@ -52,5 +59,6 @@ responses <- ifelse(is.na(result[[2]]),  result[[1]], result[[2]])
 
 response <- cbind(input, responses)
 names(response)[ length(response)] <- outputColName
+
 return(response)
 }
