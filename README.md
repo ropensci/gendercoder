@@ -25,17 +25,18 @@ freetext responses into a consistent set of responses.
 
 ## Installation
 
-This package is not on CRAN. To use this package please un the following
-code:
+This package is not on CRAN. To use this package please run the
+following code:
 
 ``` r
-devtools::install_github("ropenscilabs/gendercoder")
-library(gendercoder)
+devtools::install_github("ropenscilabs/gendercodeR")
+library(gendercodeR)
 ```
 
 ## Example
 
-You have a dataframe with the following format
+You have a dataframe with the following format where individuals have
+provided gender in a range of inconsistent formats.
 
 ``` r
 
@@ -56,8 +57,6 @@ df
 #> 6    female  67
 #> 7      enby  83
 ```
-
-Individuals have provided gender in a range of inconsistent formats.
 
 Running the `genderRecode()` function will take the inputed dataset,
 match freetext gender responses to the dictionary, create a new column
