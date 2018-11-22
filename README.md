@@ -25,11 +25,15 @@ freetext responses into a consistent set of responses.
 
 ## Installation
 
+This package is not on CRAN. To use this package please un the following
+code:
+
 You can install the released version of gendercodeR from
 [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
-install.packages("gendercodeR")
+devtools::install_github("ropenscilabs/gendercoder")
+library(rmdrive)
 ```
 
 ## Example
