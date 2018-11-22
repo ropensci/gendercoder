@@ -50,7 +50,7 @@ genderRecode <-
                                         row.numbers = unrecNum)
     cat("\nThe following responses were not auto-recoded. The raw responses
         have been carried over to the recoded colum \n \n")
-    print(summary(unrecognisedResponses))
+    print(group_by(unrecognisedResponses, responses) %>% count())
     # if "saveUnrecognisedResponses" = True, save as saveUnrecognisedResponses
     if(saveUnrecognisedResponses == T) {
       unrecognisedResponses <<- unrecognisedResponses}
