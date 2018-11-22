@@ -2,9 +2,9 @@
 #'
 #' Recodes gender column to
 #'
-#' @param input vector of gender
-#' @param character expansion for the text
-#' @param mar margin parameters; vector of length 4 (see \code{\link[graphics]{par}})
+#' @param input vector of gender responses
+#' @param outputCol expansion for the text
+#' @param optionalReplacements margin parameters; vector of length 4 (see \code{\link[graphics]{par}})
 #' @param
 #'
 #'
@@ -16,26 +16,26 @@
 #'
 #' @export
 genderRecode <-
-  function()
-  { ... }
+  function(input, nCol = 5, optionalReplacements = F, keepOriginal = TRUE) {
 
+    library(tidyverse)
+    library(readr)
 
-option <- read_csv("data/GenderDictionary.csv")
+#
+ input <- read_csv("data/gender-free-text.csv") # this would normally be specified in the function
 
-library(dplyr)
-library(readr)
+## Need to check that the input is just a vector
+if(ncol(input) != 1) {stop("input must be a single column")}
 
-## Can't require that the columns are actually called the same thing
+# load dictionary
+dictionary <- read_csv("data/GenderDictionary.csv") # (some way of loading this in the package)
 
-option$Gender <- option$text
-gender_free_text$Gender <- tolower(gender_free_text$Gender)
-result <- left_join(gender_free_text, option, by = "Gender")
+# Relabelling input column here and changing to tibble
+genderFreeText <- data_frame(gender = str_to_lower(input[[1]]))
 
-result <- result %>%
-  mutate(`broad (n of cats)` = case_when(
-    `broad (n of cats)` = is.na(`broad (n of cats)`) ~ Gender,
-    TRUE ~ `broad (n of cats)`
-  ))
+# joining keeping all originals
+result <- left_join(genderFreeText, option, by = c("gender" = "Typos"))
 
-table(result$`broad (n of cats)`)
+result
 
+}
