@@ -17,7 +17,7 @@
 #'
 #' @export
 genderRecode <-
-  function(input, genderColName = "Gender", method = "broad", outputColName = "GenderRecode") {
+  function(input, genderColName = "Gender", method = "broad", outputColName = "GenderRecode", saveUnrecognisedResponses = F) {
 
     library(tidyverse)
     library(readr)
@@ -48,13 +48,15 @@ result <- left_join(genderFreeText,dictionary,  by = c("Typos"))
 unrec <- result$Typos[which(is.na(result$BroadOptions))]
 unrecNum <- which(is.na(result$BroadOptions))
 if(length(unrec) > 0) {
-unrecognised <- data.frame(responses = unrec, "row numbers" = unrecNum)
-print(unrecognised)
+unrecognisedResponses <- data.frame(responses = unrec, "row numbers" = unrecNum)
+print(unrecognisedResponses)
+# if "saveUnrecognisedResponses" = True, save as saveUnrecognisedResponses
+if(saveUnrecognisedResponses == T) {unrecognisedResponses <<- unrecognisedResponses}
 }
 
 responses <- ifelse(is.na(result[[2]]),  result[[1]], result[[2]])
 
-response <- cbind(input, responses)
+response <- cbind(input, responses, stringsAsFactors = FALSE)
 names(response)[ length(response)] <- outputColName
 
 return(response)
