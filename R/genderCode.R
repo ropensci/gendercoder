@@ -4,13 +4,14 @@
 #'
 #' @param input A dataframe with a column with the name specified in gender column name
 #' @param genderColName Gender information column text name
-#' @param outputColName Output column name
-#' @param optionalReplacements margin parameters; vector of length 4 (see \code{\link[graphics]{par}})
-#' @param method explanation
+#' @param outputColName Provide object name for function to write unknown responses and
+#' their locations to. If NA, the unrecognised responses will be printed but not saved.
+#' @param method "broad" or "narrow". Broad returns responses classified into "female", "male",
+#' "androgynous", "non-binary", "nonbinary", "transgender", "transgender male", "transgender female",
+#'  "intersex", "agender". Narrow returns "female", "male", "other".
+#'  @param optionalReplacements margin parameters; vector of length 4 (see \code{\link[graphics]{par}})
 #'
-#'
-#'
-#' @return Returns the original dataframe
+#' @return Returns the original dataframe with the
 #'
 #' @examples
 #'
@@ -19,6 +20,23 @@
 genderRecode <-
   function(input, genderColName = "gender", method = "broad",
            outputColName = "gender_recode", saveUnrecognisedResponses = F) {
+
+    # Coercing to data frame if necessary
+    if(is.data.frame(input) == FALSE) {
+      input <- data.frame(input)
+    }
+
+    if(length(input) == 1) {
+      if(is.na(genderColName)) {
+        names(genderColName) <- "gender"
+          }
+      names(input) <- genderColName
+    }
+    # Checking that the input has the gender col name
+    if(all(names(input) != genderColName)) {
+    stop("Your gender column name does not exist in the supplied input")
+    }
+
     ## Need to check that the column name input is a character
     genderFreeText <- input[genderColName]
 
