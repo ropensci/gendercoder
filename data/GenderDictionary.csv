@@ -1,4 +1,5 @@
 Input,Typos,BroadOptions,ThreeOptions
+female,female,female,female
 female,emale,female,female
 female,fmale,female,female
 female,feale,female,female
@@ -48,6 +49,7 @@ female,femmale,female,female
 female,femaale,female,female
 female,femalle,female,female
 female,femalee,female,female
+male,male,male,male
 male,ale,male,male
 male,mle,male,male
 male,mae,male,male
@@ -78,6 +80,7 @@ male,mmale,male,male
 male,maale,male,male
 male,malle,male,male
 male,malee,male,male
+androgynous,androgynous,androgynous,other
 androgynous,ndrogynous,androgynous,other
 androgynous,adrogynous,androgynous,other
 androgynous,anrogynous,androgynous,other
@@ -174,6 +177,7 @@ androgynous,androgynnous,androgynous,other
 androgynous,androgynoous,androgynous,other
 androgynous,androgynouus,androgynous,other
 androgynous,androgynouss,androgynous,other
+non-binary,non-binary,non-binary,other
 non-binary,on-binary,non-binary,other
 non-binary,nn-binary,non-binary,other
 non-binary,no-binary,non-binary,other
@@ -253,6 +257,7 @@ non-binary,non-binnary,non-binary,other
 non-binary,non-binaary,non-binary,other
 non-binary,non-binarry,non-binary,other
 non-binary,non-binaryy,non-binary,other
+nonbinary,nonbinary,non-binary,other
 nonbinary,onbinary,nonbinary,other
 nonbinary,nnbinary,nonbinary,other
 nonbinary,nobinary,nonbinary,other
@@ -327,6 +332,7 @@ nonbinary,nonbinnary,nonbinary,other
 nonbinary,nonbinaary,nonbinary,other
 nonbinary,nonbinarry,nonbinary,other
 nonbinary,nonbinaryy,nonbinary,other
+trans,trans,transgender,other
 trans,rans,transgender,other
 trans,tans,transgender,other
 trans,trns,transgender,other
@@ -370,6 +376,7 @@ trans,trrans,transgender,other
 trans,traans,transgender,other
 trans,tranns,transgender,other
 trans,transs,transgender,other
+trans man,trans man,transgender male,male
 trans man,rans man,transgender male,male
 trans man,tans man,transgender male,male
 trans man,trns man,transgender male,male
@@ -437,6 +444,7 @@ trans man,trans  man,transgender male,male
 trans man,trans mman,transgender male,male
 trans man,trans maan,transgender male,male
 trans man,trans mann,transgender male,male
+trans woman,trans woman,transgender female,female
 trans woman,rans woman,transgender female,female
 trans woman,tans woman,transgender female,female
 trans woman,trns woman,transgender female,female
@@ -523,6 +531,7 @@ trans woman,trans wooman,transgender female,female
 trans woman,trans womman,transgender female,female
 trans woman,trans womaan,transgender female,female
 trans woman,trans womann,transgender female,female
+transman,transman,transgender male,male
 transman,ransman,transgender male,male
 transman,tansman,transgender male,male
 transman,trnsman,transgender male,male
@@ -587,6 +596,7 @@ transman,transsman,transgender male,male
 transman,transmman,transgender male,male
 transman,transmaan,transgender male,male
 transman,transmann,transgender male,male
+transwoman,transwoman,transgender female,female
 transwoman,ranswoman,transgender female,female
 transwoman,tanswoman,transgender female,female
 transwoman,trnswoman,transgender female,female
@@ -670,6 +680,7 @@ transwoman,transwooman,transgender female,female
 transwoman,transwomman,transgender female,female
 transwoman,transwomaan,transgender female,female
 transwoman,transwomann,transgender female,female
+transgender man,transgender man,transgender male,male
 transgender man,ransgender man,transgender male,male
 transgender man,tansgender man,transgender male,male
 transgender man,trnsgender man,transgender male,male
@@ -793,6 +804,7 @@ transgender man,transgender mman,transgender male,male
 transgender man,transgender maan,transgender male,male
 transgender man,transgender mann,transgender male,male
 transgenderman,ransgenderman,transgender male,male
+transgenderman,ransgenderman,transgender male,male
 transgenderman,tansgenderman,transgender male,male
 transgenderman,trnsgenderman,transgender male,male
 transgenderman,trasgenderman,transgender male,male
@@ -911,6 +923,7 @@ transgenderman,transgenderrman,transgender male,male
 transgenderman,transgendermman,transgender male,male
 transgenderman,transgendermaan,transgender male,male
 transgenderman,transgendermann,transgender male,male
+transgender male,transgender male,transgender male,male
 transgender male,ransgender male,transgender male,male
 transgender male,tansgender male,transgender male,male
 transgender male,trnsgender male,transgender male,male
@@ -1043,6 +1056,7 @@ transgender male,transgender mmale,transgender male,male
 transgender male,transgender maale,transgender male,male
 transgender male,transgender malle,transgender male,male
 transgender male,transgender malee,transgender male,male
+transgendermale,transgendermale,transgender male,male
 transgendermale,ransgendermale,transgender male,male
 transgendermale,tansgendermale,transgender male,male
 transgendermale,trnsgendermale,transgender male,male
@@ -1172,6 +1186,7 @@ transgendermale,transgendermmale,transgender male,male
 transgendermale,transgendermaale,transgender male,male
 transgendermale,transgendermalle,transgender male,male
 transgendermale,transgendermalee,transgender male,male
+transgender woman,transgender woman,transgender female,female
 transgender woman,ransgender woman,transgender female,female
 transgender woman,tansgender woman,transgender female,female
 transgender woman,trnsgender woman,transgender female,female
@@ -1313,6 +1328,7 @@ transgender woman,transgender wooman,transgender female,female
 transgender woman,transgender womman,transgender female,female
 transgender woman,transgender womaan,transgender female,female
 transgender woman,transgender womann,transgender female,female
+transgender female,transgender female,transgender female,female
 transgender female,ransgender female,transgender female,female
 transgender female,tansgender female,transgender female,female
 transgender female,trnsgender female,transgender female,female
@@ -1464,6 +1480,7 @@ transgender female,transgender femmale,transgender female,female
 transgender female,transgender femaale,transgender female,female
 transgender female,transgender femalle,transgender female,female
 transgender female,transgender femalee,transgender female,female
+transgenderwoman,transgenderwoman,transgender female,female
 transgenderwoman,ransgenderwoman,transgender female,female
 transgenderwoman,tansgenderwoman,transgender female,female
 transgenderwoman,trnsgenderwoman,transgender female,female
@@ -1602,6 +1619,7 @@ transgenderwoman,transgenderwooman,transgender female,female
 transgenderwoman,transgenderwomman,transgender female,female
 transgenderwoman,transgenderwomaan,transgender female,female
 transgenderwoman,transgenderwomann,transgender female,female
+transgenderfemale,transgenderfemale,transgender female,female
 transgenderfemale,ransgenderfemale,transgender female,female
 transgenderfemale,tansgenderfemale,transgender female,female
 transgenderfemale,trnsgenderfemale,transgender female,female
@@ -1750,6 +1768,7 @@ transgenderfemale,transgenderfemmale,transgender female,female
 transgenderfemale,transgenderfemaale,transgender female,female
 transgenderfemale,transgenderfemalle,transgender female,female
 transgenderfemale,transgenderfemalee,transgender female,female
+cis woman,cis woman,female,female
 cis woman,is woman,female,female
 cis woman,cs woman,female,female
 cis woman,ci woman,female,female
@@ -1818,6 +1837,7 @@ cis woman,cis wooman,female,female
 cis woman,cis womman,female,female
 cis woman,cis womaan,female,female
 cis woman,cis womann,female,female
+cis man,cis man,male,male
 cis man,is man,male,male
 cis man,cs man,male,male
 cis man,ci man,male,male
@@ -1867,6 +1887,7 @@ cis man,cis  man,male,male
 cis man,cis mman,male,male
 cis man,cis maan,male,male
 cis man,cis mann,male,male
+ciswoman,ciswoman,female,female
 ciswoman,iswoman,female,female
 ciswoman,cswoman,female,female
 ciswoman,ciwoman,female,female
@@ -1932,6 +1953,7 @@ ciswoman,ciswooman,female,female
 ciswoman,ciswomman,female,female
 ciswoman,ciswomaan,female,female
 ciswoman,ciswomann,female,female
+cisman,cisman,male,male
 cisman,isman,male,male
 cisman,csman,male,male
 cisman,ciman,male,male
@@ -1978,6 +2000,7 @@ cisman,cissman,male,male
 cisman,cismman,male,male
 cisman,cismaan,male,male
 cisman,cismann,male,male
+cisfemale,cisfemale,female,female
 cisfemale,isfemale,female,female
 cisfemale,csfemale,female,female
 cisfemale,cifemale,female,female
@@ -2053,6 +2076,7 @@ cisfemale,cisfemmale,female,female
 cisfemale,cisfemaale,female,female
 cisfemale,cisfemalle,female,female
 cisfemale,cisfemalee,female,female
+cismale,cismale,male,male
 cismale,ismale,male,male
 cismale,csmale,male,male
 cismale,cimale,male,male
@@ -2109,6 +2133,7 @@ cismale,cismmale,male,male
 cismale,cismaale,male,male
 cismale,cismalle,male,male
 cismale,cismalee,male,male
+girl,girl,female,female
 girl,irl,female,female
 girl,grl,female,female
 girl,gil,female,female
@@ -2144,6 +2169,7 @@ girl,ggirl,female,female
 girl,giirl,female,female
 girl,girrl,female,female
 girl,girll,female,female
+boy,boy,male,male
 boy,oy,male,male
 boy,by,male,male
 boy,bo,male,male
@@ -2169,6 +2195,7 @@ boy,byo,male,male
 boy,bboy,male,male
 boy,booy,male,male
 boy,boyy,male,male
+intersex,intersex,intersex,other
 intersex,ntersex,intersex,other
 intersex,itersex,intersex,other
 intersex,inersex,intersex,other
@@ -2241,6 +2268,7 @@ intersex,interrsex,intersex,other
 intersex,interssex,intersex,other
 intersex,interseex,intersex,other
 intersex,intersexx,intersex,other
+m2f,m2f,transgender female,female
 m2f,2f,transgender female,female
 m2f,mf,transgender female,female
 m2f,m2,transgender female,female
@@ -2262,6 +2290,7 @@ m2f,mf2,transgender female,female
 m2f,mm2f,transgender female,female
 m2f,m22f,transgender female,female
 m2f,m2ff,transgender female,female
+f2m,f2m,transgender male,male
 f2m,2m,transgender male,male
 f2m,fm,transgender male,male
 f2m,f2,transgender male,male
@@ -2283,6 +2312,7 @@ f2m,fm2,transgender male,male
 f2m,ff2m,transgender male,male
 f2m,f22m,transgender male,male
 f2m,f2mm,transgender male,male
+mtf,mtf,transgender female,female
 mtf,tf,transgender female,female
 mtf,mf,transgender female,female
 mtf,mt,transgender female,female
@@ -2307,6 +2337,7 @@ mtf,mft,transgender female,female
 mtf,mmtf,transgender female,female
 mtf,mttf,transgender female,female
 mtf,mtff,transgender female,female
+ftm,ftm,transgender male,male
 ftm,tm,transgender male,male
 ftm,fm,transgender male,male
 ftm,ft,transgender male,male
@@ -2334,6 +2365,7 @@ ftm,ftmm,transgender male,male
 m ,m ,male,male
 f ,f,female,female
 w,w ,female,female
+man,man,male,male
 man,an,male,male
 man,mn,male,male
 man,ma,male,male
@@ -2354,6 +2386,7 @@ man,mna,male,male
 man,mman,male,male
 man,maan,male,male
 man,mann,male,male
+woman,woman,female,female
 woman,oman,female,female
 woman,wman,female,female
 woman,woan,female,female
@@ -2393,7 +2426,7 @@ woman,wooman,female,female
 woman,womman,female,female
 woman,womaan,female,female
 woman,womann,female,female
-cis female,is female,female,female
+cis female,cis female,female,female
 cis female,cs female,female,female
 cis female,ci female,female,female
 cis female,cisfemale,female,female
@@ -2472,6 +2505,7 @@ cis female,cis femaale,female,female
 cis female,cis femalle,female,female
 cis female,cis femalee,female,female
 female,famela,female,female
+cis male,cis male,male,male
 cis male,is male,male,male
 cis male,cs male,male,male
 cis male,ci male,male,male
@@ -2543,3 +2577,7 @@ maill,maill,male,male
 malae,malae,male,male
 nb,nb,non-binary,non-binary
 enby,enby,non-binary,non-binary
+femail ,femail ,female,female
+mail ,mail ,male,male
+mslr,mslr,male,male
+agender,agender,agender,other
