@@ -26,34 +26,43 @@ This package uses dictionaries of common mispellings to recode these freetext re
 
 ## Installation
 
-This package is not on CRAN. To use this package please un the following code:
+This package is not on CRAN. To use this package please run the following code:
 
 
 ``` r
-devtools::install_github("ropenscilabs/gendercoder")
-library(gendercoder)
+devtools::install_github("ropenscilabs/gendercodeR")
+library(gendercodeR)
 ```
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+You have a dataframe with the following format where individuals have provided 
+gender in a range of inconsistent formats. 
 
 ```{r example}
-## basic example code
+
+library(gendercodeR)
+
+df <- data.frame(stringsAsFactors=FALSE,
+      gender = c("male", "MALE", "mle", "I am male", "femail", "female", "enby"),
+         age = c(34L, 37L, 77L, 52L, 68L, 67L, 83L)
+)
+
+df
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
+Running the `genderRecode()` function will take the inputed dataset, match 
+freetext gender responses to the dictionary, create a new column in the 
+dataframe with the recoded gender response. For freetext gender responses that
+are not in the dictionary the original freetext will be copied to the recoded 
+gender column.
 
-```{r cars}
-summary(cars)
+```{r} 
+genderRecoded <- genderRecode(df)
+
+genderRecoded
 ```
 
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date.
+Parameters include
 
-You can also embed plots, for example:
-
-```{r pressure, echo = FALSE}
-plot(pressure)
-```
-
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub!
+...
