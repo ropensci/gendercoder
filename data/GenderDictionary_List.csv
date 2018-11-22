@@ -4,6 +4,7 @@ male,male,male
 androgynous,androgynous,other
 non-binary,non-binary,other
 nonbinary,non-binary,other
+non binary,non-binary,other
 trans,transgender,other
 trans man,transgender male,male
 trans woman,transgender female,female
@@ -52,3 +53,5 @@ nb,non-binary,other
 enby,non-binary,other
 Male (cisgender),male,male
 agender,agender,other
+genderqueer,non-binary,other
+gender queer,non-binary,other
