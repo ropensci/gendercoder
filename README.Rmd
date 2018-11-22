@@ -14,7 +14,15 @@ knitr::opts_chunk$set(
 ```
 # gendercodeR
 
-The goal of gendercodeR is to ...
+The goal of gendercodeR is to allow simple recoding of freetext gender responses.
+
+## Why would we do this?
+
+Researchers who collect self-reported demographic data from respondents occasionally collect gender using a free-text response option. This has the advantage of respecting the gender diversity of respondents. However, this presents a challenge to researchers in that some inconsistencies in typography and spelling create a larger set of responses than would be required to fully capture the demographic characteristics of the sample. 
+
+For example, male participants may provide freetext responses as "male", "man", "mail", "mael". Non-binary participants may provide responses as "nonbinary", "enby", "non-binary", "non binary"
+
+This package uses dictionaries of common mispellings to recode these freetext responses into a consistent set of responses.
 
 ## Installation
 
