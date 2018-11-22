@@ -17,7 +17,7 @@
 #'
 #' @export
 genderRecode <-
-  function(input, genderColName = "Gender", method = "broad", outputColName = "GenderRecode", saveUnrecognisedResponses = F) {
+  function(input, genderColName = "gender", method = "broad", outputColName = "gender_recode", saveUnrecognisedResponses = F) {
 
     library(tidyverse)
     library(readr)
