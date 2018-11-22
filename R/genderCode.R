@@ -45,8 +45,8 @@ result <- left_join(genderFreeText,dictionary,  by = c("Typos"))
 
 
 # Finding and printing unrecognised bits
-unrec <- result$Typos[which(is.na(result$BroadOptions))]
-unrecNum <- which(is.na(result$BroadOptions))
+unrec <- result$Typos[which(is.na(result[2]))]
+unrecNum <- which(is.na(result[2]))
 if(length(unrec) > 0) {
 unrecognisedResponses <- data.frame(responses = unrec, "row numbers" = unrecNum)
 print(unrecognisedResponses)
