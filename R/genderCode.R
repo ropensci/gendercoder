@@ -27,7 +27,7 @@ genderRecode <-
     genderFreeText <- input[genderColName]
 
 # load dictionary
-dictionary <- read_csv("data/GenderDictionary.csv") # (some way of loading this in the package)
+suppressMessages( dictionary <- read_csv("data/GenderDictionary.csv") )# (some way of loading this in the package)
 
 if(method == "narrow") {
   dictionary <- dictionary[c("Typos", "ThreeOptions")]
