@@ -1,10 +1,10 @@
 Package: gendercodeR
 Title: Recodes Sex/Gender Descriptions Into A Standard Set
 Version: 0.0.0.9000
-Authors@R: person("Rhydwyn", "McGuire", email = "rhydwyn@rhydwyn.net", role = "aut")
-Description: Cleans Sex/Gender related data to remove typos and bad data while preserving gender 
-diverse responces 
+Authors@R: person("Rhydwyn", "McGuire", email = "rhydwyn@rhydwyn.net", role = "cre")
+Description: Cleans Sex/Gender related data to remove typos and bad data while preserving gender diverse responses 
 Depends: R (>= 3.5.1)
+Maintainer: Rhydwyn McGuire <rhydwyn@rhydwyn.net>
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
