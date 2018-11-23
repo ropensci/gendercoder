@@ -63,7 +63,6 @@ library(gendercodeR)
 #>           Transgender-inclusive measures of sex/gender for population surveys:
 #>           Mixed-methods evaluation and recommendations.
 #>           PLoS ONE. 12.
-#> 
 
 df <- data.frame(stringsAsFactors=FALSE,
       gender = c("male", "MALE", "mle", "I am male", "femail", "female", "enby"),
@@ -92,7 +91,7 @@ genderRecoded <- genderRecode(input=df,
            customDictionary = NA)
 #> 
 #> The following responses were not auto-recoded. The raw responses
-#>         have been carried over to the recoded colum 
+#>         have been carried over to the recoded column 
 #>  
 #> # A tibble: 1 x 2
 #> # Groups:   responses [1]
@@ -130,7 +129,7 @@ genderRecoded <- genderRecode(input=df,
            customDictionary = NA)
 #> 
 #> The following responses were not auto-recoded. The raw responses
-#>         have been carried over to the recoded colum 
+#>         have been carried over to the recoded column 
 #>  
 #> # A tibble: 1 x 2
 #> # Groups:   responses [1]

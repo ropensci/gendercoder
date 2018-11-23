@@ -74,6 +74,7 @@ The package provides the option to either correct spelling and standardise terms
 By default the unmatched responses and the number of times it exists in the input dataframe.
 Setting 'missingValuesObjectName' saves the list of unmatched free text gender responses. We recommend assessing these as they may be human code-able (e.g. "I am male") or otherwise meaningful and not caputured by our base dictionary. 
 
+
 ## Example using narrow coding 
 ```{r} 
 genderRecoded <- genderRecode(input=df,

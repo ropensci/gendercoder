@@ -5,7 +5,8 @@
 \title{Gender column recoder}
 \usage{
 genderRecode(input, genderColName = "gender", method = "broad",
-  outputColName = "gender_recode", missingValuesObjectName = NA)
+  outputColName = "gender_recode", missingValuesObjectName = NA,
+  customDictionary = NA)
 }
 \arguments{
 \item{input}{A dataframe with a column with the name specified in gender column name}
@@ -14,9 +15,10 @@ genderRecode(input, genderColName = "gender", method = "broad",
 
 \item{method}{"broad" or "narrow". Broad returns responses classified into "female", "male",
 "androgynous", "non-binary", "nonbinary", "transgender", "transgender male", "transgender female",
- "intersex", "agender", "". Narrow returns "female", "male", "other".
- @param customDictionary enter custom dictionary set up as a data frame with two columns called
- "Entered" "Classification"}
+ "intersex", "agender", "gender-queer". Narrow returns "female", "male", "cis female", "cis male", "other".
+ @param customDictionary enter custom dictionary set up as a data frame with two columns, the first
+ of which will be treated as the values to be replaced and the second which will be treated as the
+ replacement values (i.e., data.frame(c("cis  gender-male","trans-person" ), c("cis male", "transgender")))}
 
 \item{outputColName}{Output column name}
 

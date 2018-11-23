@@ -47,7 +47,9 @@ genderRecode <-
 
     # load dictionary
     # ideally we'd have some way of loading this in the package
-    suppressMessages(dictionary <- readr::read_csv("data/GenderDictionary.csv") )
+    #suppressMessages(dictionary <- readr::read_csv(system.file("data/GenderDictionary.csv", package="gendercodeR") ))
+    #moved data in line with recommendations http://r-pkgs.had.co.nz/data.html
+    suppressMessages(dictionary <- readr::read_csv(system.file("extdata", "GenderDictionary.csv", package = "gendercodeR")))
     # Filter the dictionary to only use unique items
     dictionary <- dplyr::distinct(dictionary)
 
@@ -77,7 +79,7 @@ genderRecode <-
     unrecognisedResponses <- data.frame(responses = unrec,
                                         row.numbers = unrecNum)
     cat("\nThe following responses were not auto-recoded. The raw responses
-        have been carried over to the recoded colum \n \n")
+        have been carried over to the recoded column \n \n")
     print(dplyr::group_by(unrecognisedResponses, responses) %>% dplyr::count())
     # if is.na(missingValuesObjectName) == FALSE, save as missingValuesObjectName
     if(!is.na(missingValuesObjectName)) {
@@ -90,4 +92,9 @@ response <- cbind(input, responses, stringsAsFactors = FALSE)
 names(response)[ length(response)] <- outputColName
 
 return(response)
+  }
+
+getCustomDictionary <- function(customDictionary = NA){
+
+
 }

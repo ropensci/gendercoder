@@ -14,7 +14,7 @@ Authors@R: c(
   person("Rhydwyn", "McGuire", role = "aut",
     email = "rhydwyn@rhydwyn.net"))
 Description: gendercodeR allows for simple recoding of freetext gender responses.
-Depends: R (>= 3.5.1)
+Depends: R (>= 3.0.0)
 Maintainer: Emily Kothe <emily.kothe@deakin.edu.au>
 License: MIT + file LICENSE
 Encoding: UTF-8
@@ -25,3 +25,5 @@ Imports:
     stringr,
     readr,
     magrittr
+Suggests: 
+    testthat
