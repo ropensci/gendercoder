@@ -60,7 +60,7 @@ genderRecode <-
     genderFreeText <- dplyr::data_frame(Typos = stringr::str_to_lower(genderFreeText[[1]]))
 
 
-    if(!is.na(customDictionary[[1]])[1] ) {
+    if(!is.na(customDictionary[[1]])) {
       customDictionary <- dplyr::transmute_all(customDictionary, as.character)
       names(customDictionary) <- names(dictionary)
       suppressWarnings(  dictionary <- rbind(customDictionary, dictionary, stringsAsFactors = FALSE))
