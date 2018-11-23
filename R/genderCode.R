@@ -38,7 +38,7 @@ genderRecode <-
       names(input) <- genderColName
     }
     # Checking that the input has the gender col name
-    if(all(names(input) != genderColName)) {
+    if(all(names(input) != genderColName & !is.na(genderColName))) {
     stop("Your gender column name does not exist in the supplied input")
     }
 
@@ -59,9 +59,9 @@ genderRecode <-
     # Relabelling input column here and changing to tibble
     genderFreeText <- dplyr::data_frame(Typos = stringr::str_to_lower(genderFreeText[[1]]))
 
-    customDictionary <- dplyr::transmute_all(customDictionary, as.character)
 
     if(!is.na(customDictionary[[1]])[1] ) {
+      customDictionary <- dplyr::transmute_all(customDictionary, as.character)
       names(customDictionary) <- names(dictionary)
       suppressWarnings(  dictionary <- rbind(customDictionary, dictionary, stringsAsFactors = FALSE))
       dictionary <- dplyr::distinct(dictionary, "Typos", .keep_all= TRUE)
