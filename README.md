@@ -203,3 +203,9 @@ test
 This package is a reflection of cultural context of the package
 contributors we welcome issues and pull requests to make the package
 more inclusive and/or suitable for a broader range of cultural contexts.
+
+# Acknowledgement of Country
+
+We acknowledge the Wurundjeri people of the Kulin Nation as the
+custodians of the land on which this package was developed and pay
+respects to elders past, present and future.
