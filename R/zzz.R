@@ -28,6 +28,5 @@ potentially problematic.
           (2017).
           Transgender-inclusive measures of sex/gender for population surveys:
           Mixed-methods evaluation and recommendations.
-          PLoS ONE. 12.
-                        ")
+          PLoS ONE. 12.")
 }
