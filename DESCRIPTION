@@ -13,7 +13,7 @@ Authors@R: c(
     comment = c(ORCID = "https://orcid.org/0000-0002-0237-6146"))
   person("Rhydwyn", "McGuire", role = "aut",
     email = "rhydwyn@rhydwyn.net")
-Description: Cleans Sex/Gender related data to remove typos and bad data while preserving gender diverse responses 
+Description: gendercodeR allows for simple recoding of freetext gender responses.
 Depends: R (>= 3.5.1)
 Maintainer: Emily Kothe <emily.kothe@deakin.edu.au>
 License: MIT + file LICENSE
