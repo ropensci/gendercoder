@@ -64,7 +64,7 @@ genderRecode <-
       customDictionary <- dplyr::transmute_all(customDictionary, as.character)
       names(customDictionary) <- names(dictionary)
       suppressWarnings(  dictionary <- rbind(customDictionary, dictionary, stringsAsFactors = FALSE))
-      dictionary <- dplyr::distinct(dictionary, "Typos", .keep_all= TRUE)
+      dictionary <- dplyr::distinct(dictionary, Typos, .keep_all= TRUE)
       }
 
     # joining keeping all originals
