@@ -26,4 +26,8 @@ Imports:
     readr,
     magrittr
 Suggests: 
-    testthat
+    testthat,
+    knitr,
+    rmarkdown
+VingetteBuilder:
+    knitr
