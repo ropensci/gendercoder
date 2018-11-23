@@ -18,12 +18,16 @@ transgender woman,transgender female,female
 transgender female,transgender female,female
 transgenderwoman,transgender female,female
 transgenderfemale,transgender female,female
-cis woman,female,female
-cis man,male,male
-ciswoman,female,female
-cisman,male,male
-cisfemale,female,female
-cismale,male,male
+cis woman,cis female,female
+ciswoman,cis female,female
+cisfemale,cis female,female
+cis female,cis female,female
+female (cisgender),cis female,female
+cis man,cis male,male
+cisman,cis male,male
+cismale,cis male,male
+cis male,cis male,male
+male (cisgender),cis male,male
 girl,female,female
 boy,male,male
 intersex,intersex,other
@@ -36,13 +40,10 @@ f,female,female
 w,female,female
 man,male,male
 woman,female,female
-cis female,female,female
 famela,female,female
-cis male,male,male
 fem,female,female
 femaiil,female,female
 femaile,female,female
-female (cisgender),female,female
 femalep,female,female
 feminine,female,female
 g,female,female
@@ -51,7 +52,6 @@ malae,male,male
 man,male,male
 nb,non-binary,other
 enby,non-binary,other
-Male (cisgender),male,male
 agender,agender,other
 genderqueer,genderqueer,other
 gender queer,genderqueer,other
