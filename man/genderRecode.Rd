@@ -5,21 +5,27 @@
 \title{Gender column recoder}
 \usage{
 genderRecode(input, genderColName = "gender", method = "broad",
-  outputColName = "gender_recode", saveUnrecognisedResponses = F)
+  outputColName = "gender_recode", missingValuesObjectName = NA)
 }
 \arguments{
 \item{input}{A dataframe with a column with the name specified in gender column name}
 
 \item{genderColName}{Gender information column text name}
 
-\item{method}{explanation}
+\item{method}{"broad" or "narrow". Broad returns responses classified into "female", "male",
+"androgynous", "non-binary", "nonbinary", "transgender", "transgender male", "transgender female",
+ "intersex", "agender", "". Narrow returns "female", "male", "other".
+ @param customDictionary enter custom dictionary set up as a data frame with two columns called
+ "Entered" "Classification"}
 
 \item{outputColName}{Output column name}
 
-\item{optionalReplacements}{margin parameters; vector of length 4 (see \code{\link[graphics]{par}})}
+\item{missingValuesObjectName}{Provide object name for function to write unknown
+responses and their locations to. If NA, the unrecognised responses will be
+printed but not saved.}
 }
 \value{
-Returns the original dataframe
+Returns the original dataframe with
 }
 \description{
 Recodes gender column to
