@@ -95,11 +95,4 @@ names(response)[ length(response)] <- outputColName
 
 return(response)
   }
-#'  of which will be treated as the values to be replaced and the second which will be treated as the
-#'  replacement values (i.e., data.frame(c("cis  gender-male","trans-person" ), c("cis male", "transgender")))
-#'
-#' @return Returns the original dataframe with
-getCustomDictionary <- function(customDictionary = NA){
 
-
-}

@@ -10,6 +10,6 @@ test_that("gendercodeR prints text", {
                                              method = "broad",
                                              outputColName = "gender_recode",
                                              missingValuesObjectName = NA,
-                                             customDictionary = NA),
+                                             customDictionary = NULL),
               prints_text("\\nThe following responses were not auto-recoded\\. The raw responses\\n        have been carried over to the recoded column \\n \\n# A tibble: 1 x 2\\n# Groups:   responses \\[1\\]\\n  responses     n\\n  <fct>     <int>\\n1 i am male     1"))
 })
