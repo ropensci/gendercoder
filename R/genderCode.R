@@ -10,9 +10,10 @@
 #'  printed but not saved.
 #' @param method "broad" or "narrow". Broad returns responses classified into "female", "male",
 #' "androgynous", "non-binary", "nonbinary", "transgender", "transgender male", "transgender female",
-#'  "intersex", "agender", "gender-queer". Narrow returns "female", "male", "other".
-#'  @param customDictionary enter custom dictionary set up as a data frame with two columns called
-#'  "Entered" "Classification"
+#'  "intersex", "agender", "gender-queer". Narrow returns "female", "male", "cis female", "cis male", "other".
+#'  @param customDictionary enter custom dictionary set up as a data frame with two columns, the first
+#'  of which will be treated as the values to be replaced and the second which will be treated as the
+#'  replacement values (i.e., data.frame(c("cis  gender-male","trans-person" ), c("cis male", "transgender")))
 #'
 #' @return Returns the original dataframe with
 #'
@@ -22,7 +23,8 @@
 #' @export
 genderRecode <-
   function(input, genderColName = "gender", method = "broad",
-           outputColName = "gender_recode", missingValuesObjectName = NA) {
+           outputColName = "gender_recode", missingValuesObjectName = NA,
+           customDictionary = NA) {
 
     # Coercing to data frame if necessary
     if(is.data.frame(input) == FALSE) {
@@ -56,6 +58,14 @@ genderRecode <-
     }
     # Relabelling input column here and changing to tibble
     genderFreeText <- dplyr::data_frame(Typos = stringr::str_to_lower(genderFreeText[[1]]))
+
+    customDictionary <- dplyr::transmute_all(customDictionary, as.character)
+
+    if(!is.na(customDictionary[[1]])[1] ) {
+      names(customDictionary) <- names(dictionary)
+      suppressWarnings(  dictionary <- rbind(customDictionary, dictionary, stringsAsFactors = FALSE))
+      dictionary <- dplyr::distinct(dictionary, "Typos", .keep_all= TRUE)
+      }
 
     # joining keeping all originals
     result <- dplyr::left_join(genderFreeText,dictionary,  by = c("Typos"))
