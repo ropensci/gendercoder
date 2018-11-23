@@ -16,11 +16,18 @@ knitr::opts_chunk$set(
 )
 ```
 
-This gendercodeR package allows rapid recoding of freetext gender responses using an in-built dictionary. Individuals using the package may wish to extend or overwrite elements of the dictionary where they disagree with the coding decisions made by the package authors and/or wish to include recoding options that are not included in the in-built dictionary. A custom dictionary can be created by the user and provided to the `genderRecode()` function for this purpose. 
+This gendercodeR package allows rapid recoding of freetext gender responses 
+using an in-built dictionary. Individuals using the package may wish to extend 
+or overwrite elements of the dictionary where they disagree with the coding 
+decisions made by the package authors and/or wish to include recoding options 
+that are not included in the in-built dictionary. A custom dictionary can be 
+created by the user and provided to the `genderRecode()` function for this purpose. 
 
 ## Adding new items to the dictionary
 
-For example, when collecting data from Spanish speaking participants a participant who enters their gender as "masculino" will not be recoded using the in-built dictionary.
+For example, when collecting data from Spanish speaking participants a 
+participant who enters their gender as "masculino" will not be recoded using 
+the in-built dictionary.
 
 ```{r}
 
@@ -33,10 +40,13 @@ df
 
 library(gendercodeR)
 
-genderRecoded <- genderRecode(df)
+genderRecode(df)
 ```
 
-The custom dictionary should be a data frame with two columns. Column 1 should include the input text (i.e. the response provided by the participant) and Column 2 should include the desired output text (i.e. the gender category the input should be converted to).
+The custom dictionary should be a data frame with two columns. Column 1 should 
+include the input text (i.e. the response provided by the participant) and 
+Column 2 should include the desired output text (i.e. the gender category the 
+input should be converted to).
 
 ```{r}
 
@@ -48,50 +58,43 @@ custom_dictionary <- data.frame(stringsAsFactors=FALSE,
 custom_dictionary
 ```
 
-The custom dictionary is appended to the in-built dictionary and participants are recoded as desired.
+The custom dictionary is appended to the in-built dictionary and participants 
+are recoded as desired.
 
 ```{r}
 genderRecode(df, customDictionary = custom_dictionary)
 ```
 
-## Vignette Info
+## Overwriting existing entries in the dictionary
 
-Note the various macros within the `vignette` section of the metadata block above. These are required in order to instruct R how to build the vignette. Note that you should change the `title` field and the `\VignetteIndexEntry` to match the title of your vignette.
+The narrow recoding method recodes participants who indicate that they are 
+intersex are recoded to "Other". In some contexts researchers may wish to 
+use narrow recoding but overwrite this particular behaviour so that individuals 
+who report they are coded as intersex but the other entries in the dictionary are 
+preserved.^[The package authors wish to acknowledge that the narrow categories 
+make opionated assumptions and that the broad recoding will generally 
+be more appropriate.]
 
-## Styles
+```{r}
 
-The `html_vignette` template includes a basic CSS theme. To override this theme you can specify your own CSS in the document metadata as follows:
+df <- data.frame(stringsAsFactors=FALSE,
+      gender = c("male", "MALE", "mle", "mail", "intersex", "female", "enby"),
+         age = c(34L, 37L, 77L, 52L, 68L, 67L, 83L)
+)
 
-    output: 
-      rmarkdown::html_vignette:
-        css: mystyles.css
+df
 
-## Figures
-
-The figure sizes have been customised so that you can easily put two images side-by-side. 
-
-```{r, fig.show='hold'}
-plot(1:10)
-plot(10:1)
+genderRecode(df, method = "narrow")
 ```
 
-You can enable figure captions by `fig_caption: yes` in YAML:
+A custom defintion can be provided and then be applied.
 
-    output:
-      rmarkdown::html_vignette:
-        fig_caption: yes
+```{r}
 
-Then you can use the chunk option `fig.cap = "Your figure caption."` in **knitr**.
+custom_dictionary <- data.frame(stringsAsFactors=FALSE,
+       Input = c("intersex"),
+      Output = c("intersex")
+)
 
-## More Examples
-
-You can write math expressions, e.g. $Y = X\beta + \epsilon$, footnotes^[A footnote here.], and tables, e.g. using `knitr::kable()`.
-
-```{r, echo=FALSE, results='asis'}
-knitr::kable(head(mtcars, 10))
+genderRecode(df, method = "narrow", customDictionary = custom_dictionary)
 ```
-
-Also a quote using `>`:
-
-> "He who gives up [code] safety for [code] speed deserves neither."
-([via](https://twitter.com/hadleywickham/status/504368538874703872))
