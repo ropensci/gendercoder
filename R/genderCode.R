@@ -59,9 +59,9 @@ genderRecode <-
     # Relabelling input column here and changing to tibble
     genderFreeText <- dplyr::data_frame(Typos = stringr::str_to_lower(genderFreeText[[1]]))
 
-    customDictionary <- dplyr::transmute_all(customDictionary, as.character)
 
     if(!is.na(customDictionary[[1]])[1] ) {
+      customDictionary <- dplyr::transmute_all(customDictionary, as.character)
       names(customDictionary) <- names(dictionary)
       suppressWarnings(  dictionary <- rbind(customDictionary, dictionary, stringsAsFactors = FALSE))
       dictionary <- dplyr::distinct(dictionary, "Typos", .keep_all= TRUE)
