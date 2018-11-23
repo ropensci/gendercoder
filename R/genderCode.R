@@ -10,7 +10,7 @@
 #'  printed but not saved.
 #' @param method "broad" or "narrow". Broad returns responses classified into "female", "male",
 #' "androgynous", "non-binary", "nonbinary", "transgender", "transgender male", "transgender female",
-#'  "intersex", "agender", "". Narrow returns "female", "male", "other".
+#'  "intersex", "agender", "gender-queer". Narrow returns "female", "male", "other".
 #'  @param customDictionary enter custom dictionary set up as a data frame with two columns called
 #'  "Entered" "Classification"
 #'
