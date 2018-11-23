@@ -1,3 +1,8 @@
+#' Returns the inbuilt dictionary
+#'
+#' @export
 getDictionary <- function() {
-  GenderDictionary <- readr::read_csv(system.file("extdata", "GenderDictionary.csv", package = "gendercodeR"))
+ readr::read_csv(system.file("extdata",
+                            "GenderDictionary_List.csv",
+                            package = "gendercodeR"))
 }
