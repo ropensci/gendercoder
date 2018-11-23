@@ -18,7 +18,7 @@ The goal of gendercodeR is to allow simple recoding of freetext gender responses
 
 ## Why would we do this?
 
-Researchers who collect self-reported demographic data from respondents occasionally collect gender using a free-text response option. This has the advantage of respecting the gender diversity of respondents. However, this presents a challenge to researchers in that some inconsistencies in typography and spelling create a larger set of responses than would be required to fully capture the demographic characteristics of the sample. 
+Researchers who collect self-reported demographic data from respondents occasionally collect gender using a free-text response option. This has the advantage of respecting the gender diversity of respondents without prompting users and potentially including misleading responses. However, this presents a challenge to researchers in that some inconsistencies in typography and spelling create a larger set of responses than would be required to fully capture the demographic characteristics of the sample. 
 
 For example, male participants may provide freetext responses as "male", "man", "mail", "mael". Non-binary participants may provide responses as "nonbinary", "enby", "non-binary", "non binary"
 
@@ -58,11 +58,31 @@ are not in the dictionary the original freetext will be copied to the recoded
 gender column.
 
 ```{r} 
-genderRecoded <- genderRecode(df)
+genderRecoded <- genderRecode(input=df,
+                              genderColName = "gender", 
+                              method = "broad",
+                              outputColName = "gender_recode", 
+                              missingValuesObjectName = NA,
+           customDictionary = NA)
 
 genderRecoded
 ```
+## Options within the function
+The package provides the option to either correct spelling and standardise terms while mantaining the diversity of responces. This is selected by setting `Method =  "broad"` or to compress all responses down to male/female/other using
+`Method =  "narrow"`.
 
-Parameters include
+By default the unmatched responses and the number of times it exists in the input dataframe.
+Setting 'missingValuesObjectName' saves the list of unmatched free text gender responses. We recommend assessing these as they may be human code-able (e.g. "I am male") or otherwise meaningful and not caputured by our base dictionary. 
 
+## Example using narrow coding 
+```{r} 
+genderRecoded <- genderRecode(input=df,
+                              genderColName = "gender", 
+                              method = "narrow",
+                              outputColName = "gender2", 
+                              missingValuesObjectName = NA,
+           customDictionary = NA)
+
+genderRecoded
+```
 ...
