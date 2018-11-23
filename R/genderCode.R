@@ -24,7 +24,7 @@
 genderRecode <-
   function(input, genderColName = "gender", method = "broad",
            outputColName = "gender_recode", missingValuesObjectName = NA,
-           customDictionary = NA) {
+           customDictionary = NULL) {
 
     # Coercing to data frame if necessary
     if(is.data.frame(input) == FALSE) {
@@ -49,7 +49,9 @@ genderRecode <-
     # ideally we'd have some way of loading this in the package
     #suppressMessages(dictionary <- readr::read_csv(system.file("data/GenderDictionary.csv", package="gendercodeR") ))
     #moved data in line with recommendations http://r-pkgs.had.co.nz/data.html
-    suppressMessages(dictionary <- readr::read_csv(system.file("extdata", "GenderDictionary.csv", package = "gendercodeR")))
+    suppressMessages(dictionary <- readr::read_csv(system.file("extdata",
+                                                               "GenderDictionary.csv",
+                                                               package = "gendercodeR")))
     # Filter the dictionary to only use unique items
     dictionary <- dplyr::distinct(dictionary)
 
@@ -62,7 +64,7 @@ genderRecode <-
     genderFreeText <- dplyr::data_frame(Typos = stringr::str_to_lower(genderFreeText[[1]]))
 
 
-    if(!is.na(customDictionary[[1]])) {
+    if(!is.null(customDictionary)) {
       customDictionary <- dplyr::transmute_all(customDictionary, as.character)
       names(customDictionary) <- names(dictionary)
       suppressWarnings(  dictionary <- rbind(customDictionary, dictionary, stringsAsFactors = FALSE))
@@ -93,7 +95,10 @@ names(response)[ length(response)] <- outputColName
 
 return(response)
   }
-
+#'  of which will be treated as the values to be replaced and the second which will be treated as the
+#'  replacement values (i.e., data.frame(c("cis  gender-male","trans-person" ), c("cis male", "transgender")))
+#'
+#' @return Returns the original dataframe with
 getCustomDictionary <- function(customDictionary = NA){
 
 

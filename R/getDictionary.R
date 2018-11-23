@@ -1,3 +1,3 @@
 getDictionary <- function() {
-  GenderDictionary <- readr::read_csv("data/GenderDictionary_List.csv")
+  GenderDictionary <- readr::read_csv(system.file("extdata", "GenderDictionary.csv", package = "gendercodeR"))
 }

@@ -63,7 +63,7 @@ genderRecoded <- genderRecode(input=df,
                               method = "broad",
                               outputColName = "gender_recode", 
                               missingValuesObjectName = NA,
-           customDictionary = NA)
+           customDictionary = NULL)
 
 genderRecoded
 ```
@@ -82,7 +82,7 @@ genderRecoded <- genderRecode(input=df,
                               method = "narrow",
                               outputColName = "gender2", 
                               missingValuesObjectName = NA,
-           customDictionary = NA)
+           customDictionary = NULL)
 
 genderRecoded
 ```
