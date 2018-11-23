@@ -43,9 +43,6 @@ genderRecode <-
     ## Need to check that the column name input is a character
     genderFreeText <- input[genderColName]
 
-    # Triming whitespace
-    # genderFreeText <-  suppressWarnings( stringr::str_trim(genderFreeText) )
-
     # load dictionary
     # ideally we'd have some way of loading this in the package
     suppressMessages(dictionary <- readr::read_csv("data/GenderDictionary.csv") )
