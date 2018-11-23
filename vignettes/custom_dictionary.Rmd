@@ -68,12 +68,12 @@ genderRecode(df, customDictionary = custom_dictionary)
 ## Overwriting existing entries in the dictionary
 
 The narrow recoding method recodes participants who indicate that they are 
-intersex are recoded to "Other". In some contexts researchers may wish to 
-use narrow recoding but overwrite this particular behaviour so that individuals 
-who report they are coded as intersex but the other entries in the dictionary are 
-preserved.^[The package authors wish to acknowledge that the narrow categories 
-make opionated assumptions and that the broad recoding will generally 
-be more appropriate.]
+intersex are recoded to "Sex and Gender Diverse". In some contexts researchers 
+may wish to use narrow recoding but overwrite this particular behaviour so that 
+individuals who report they are coded as intersex but the other entries in the 
+dictionary are preserved.^[The package authors wish to acknowledge that the 
+narrow categories make opionated assumptions and that the broad recoding will 
+generally be more appropriate.]
 
 ```{r}
 
