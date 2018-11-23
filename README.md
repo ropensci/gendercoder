@@ -51,8 +51,9 @@ library(gendercodeR)
 #> setting makes opinionated choices about some responses that we want to
 #> acknowledge are potentially problematic.
 #>       In particular,
-#>         *    In 'narrow' coding intersex responses are recoded as 'Other'
-#>         *    In 'narrow' responses where people indicate they are trans and
+#>         * In 'narrow' coding intersex responses are recoded as 'sex and gender
+#>           diverse'
+#>         * In 'narrow' responses where people indicate they are trans and
 #>           indicate their identified gender are recoded as the identified gender
 #>           (e.g. 'Male to Female' is recoded as Female). We wish to acknowledge
 #>           that this may not reflect how some individuals would classify
@@ -125,20 +126,14 @@ genderRecoded
 
 ## Options within the function
 
+### method
+
 The package provides the option to either correct spelling and
 standardise terms while mantaining the diversity of responces. This is
 selected by setting `method = "broad"` or to compress all responses down
 to male/female/‘sex and gender diverse’ using `method = "narrow"`.
 
-By default the unmatched responses and the number of times it exists in
-the input dataframe. Setting `missingValuesObjectName` saves the list of
-unmatched free text gender responses. We recommend assessing these as
-they may be human code-able (e.g. “I am male”) or otherwise meaningful
-and not caputured by our base dictionary. We expect that researchers may
-wish to manually recode such responses or add frequently occuring
-responses to their custom dictionary.
-
-## Example using narrow coding
+##### Example using narrow coding
 
 ``` r
 genderRecoded <- genderRecode(input=df,
@@ -167,6 +162,18 @@ genderRecoded
 #> 6    female  67    female
 #> 7      enby  83     other
 ```
+
+### missingValuesObjectName
+
+By default the unmatched responses and the number of times it exists in
+the input dataframe. Setting `missingValuesObjectName` saves the list of
+unmatched free text gender responses. We recommend assessing these as
+they may be human code-able (e.g. “I am male”) or otherwise meaningful
+and not caputured by our base dictionary. We expect that researchers may
+wish to manually recode such responses or add frequently occuring
+responses to their custom dictionary.
+
+### customDictionary
 
 ## Viewing the inbuilt dictionary
 
