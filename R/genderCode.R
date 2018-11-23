@@ -5,14 +5,16 @@
 #' @param input A dataframe with a column with the name specified in gender column name
 #' @param genderColName Gender information column text name
 #' @param outputColName Output column name
-#' @param missingValuesObjectName Provide object name for function to write unknown responses and
-#' their locations to. If NA, the unrecognised responses will be printed but not saved.
+#' @param missingValuesObjectName Provide object name for function to write unknown
+#'  responses and their locations to. If NA, the unrecognised responses will be
+#'  printed but not saved.
 #' @param method "broad" or "narrow". Broad returns responses classified into "female", "male",
 #' "androgynous", "non-binary", "nonbinary", "transgender", "transgender male", "transgender female",
 #'  "intersex", "agender", "". Narrow returns "female", "male", "other".
-#'  @param optionalReplacements margin parameters; vector of length 4 (see \code{\link[graphics]{par}})
+#'  @param customDictionary enter custom dictionary set up as a data frame with two columns called
+#'  "Entered" "Classification"
 #'
-#' @return Returns the original dataframe with the
+#' @return Returns the original dataframe with
 #'
 #' @examples
 #'
@@ -41,11 +43,14 @@ genderRecode <-
     ## Need to check that the column name input is a character
     genderFreeText <- input[genderColName]
 
+    # Triming whitespace
+    # genderFreeText <-  suppressWarnings( stringr::str_trim(genderFreeText) )
+
     # load dictionary
     # ideally we'd have some way of loading this in the package
-    suppressMessages(dictionary <- read_csv("data/GenderDictionary.csv") )
+    suppressMessages(dictionary <- readr::read_csv("data/GenderDictionary.csv") )
     # Filter the dictionary to only use unique items
-    dictionary <- distinct(dictionary)
+    dictionary <- dplyr::distinct(dictionary)
 
     if(method == "narrow") {
       dictionary <- dictionary[c("Typos", "ThreeOptions")]
@@ -53,10 +58,10 @@ genderRecode <-
       dictionary <- dictionary[c("Typos", "BroadOptions")]
     }
     # Relabelling input column here and changing to tibble
-    genderFreeText <- data_frame(Typos = str_to_lower(genderFreeText[[1]]))
+    genderFreeText <- dplyr::data_frame(Typos = stringr::str_to_lower(genderFreeText[[1]]))
 
     # joining keeping all originals
-    result <- left_join(genderFreeText,dictionary,  by = c("Typos"))
+    result <- dplyr::left_join(genderFreeText,dictionary,  by = c("Typos"))
 
     # Finding and printing unrecognised bits
     unrec <- result$Typos[which(is.na(result[2]))]
@@ -66,7 +71,7 @@ genderRecode <-
                                         row.numbers = unrecNum)
     cat("\nThe following responses were not auto-recoded. The raw responses
         have been carried over to the recoded colum \n \n")
-    print(group_by(unrecognisedResponses, responses) %>% count())
+    print(dplyr::group_by(unrecognisedResponses, responses) %>% dplyr::count())
     # if is.na(missingValuesObjectName) == FALSE, save as missingValuesObjectName
     if(!is.na(missingValuesObjectName)) {
       assign( missingValuesObjectName, unrecognisedResponses, envir = .GlobalEnv)}
