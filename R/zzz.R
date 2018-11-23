@@ -8,8 +8,8 @@ specific they may not be suitiable for your data. In particularly the narrow
 setting makes opinionated choices about some responses that we want to
 acknowledge are potentially problematic.
       In particular,
-        *	In 'narrow' coding intersex responses are recoded as 'Other'
-        *	In 'narrow' responses where people indicate they are trans and
+        * In 'narrow' coding intersex responses are recoded as 'Other'
+        * In 'narrow' responses where people indicate they are trans and
           indicate their identified gender are recoded as the identified gender
           (e.g. 'Male to Female' is recoded as Female). We wish to acknowledge
           that this may not reflect how some individuals would classify

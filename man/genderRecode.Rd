@@ -6,7 +6,7 @@
 \usage{
 genderRecode(input, genderColName = "gender", method = "broad",
   outputColName = "gender_recode", missingValuesObjectName = NA,
-  customDictionary = NA)
+  customDictionary = NULL)
 }
 \arguments{
 \item{input}{A dataframe with a column with the name specified in gender column name}
