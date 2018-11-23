@@ -4,11 +4,12 @@
 #'
 #' @param input A dataframe with a column with the name specified in gender column name
 #' @param genderColName Gender information column text name
-#' @param outputColName Provide object name for function to write unknown responses and
+#' @param outputColName Output column name
+#' @param missingValuesObjectName Provide object name for function to write unknown responses and
 #' their locations to. If NA, the unrecognised responses will be printed but not saved.
 #' @param method "broad" or "narrow". Broad returns responses classified into "female", "male",
 #' "androgynous", "non-binary", "nonbinary", "transgender", "transgender male", "transgender female",
-#'  "intersex", "agender". Narrow returns "female", "male", "other".
+#'  "intersex", "agender", "". Narrow returns "female", "male", "other".
 #'  @param optionalReplacements margin parameters; vector of length 4 (see \code{\link[graphics]{par}})
 #'
 #' @return Returns the original dataframe with the
@@ -19,7 +20,7 @@
 #' @export
 genderRecode <-
   function(input, genderColName = "gender", method = "broad",
-           outputColName = "gender_recode", saveUnrecognisedResponses = F) {
+           outputColName = "gender_recode", missingValuesObjectName = NA) {
 
     # Coercing to data frame if necessary
     if(is.data.frame(input) == FALSE) {
@@ -66,9 +67,9 @@ genderRecode <-
     cat("\nThe following responses were not auto-recoded. The raw responses
         have been carried over to the recoded colum \n \n")
     print(group_by(unrecognisedResponses, responses) %>% count())
-    # if "saveUnrecognisedResponses" = True, save as saveUnrecognisedResponses
-    if(saveUnrecognisedResponses == T) {
-      unrecognisedResponses <<- unrecognisedResponses}
+    # if is.na(missingValuesObjectName) == FALSE, save as missingValuesObjectName
+    if(!is.na(missingValuesObjectName)) {
+      assign( missingValuesObjectName, unrecognisedResponses, envir = .GlobalEnv)}
     }
 
 responses <- ifelse(is.na(result[[2]]),  result[[1]], result[[2]])
