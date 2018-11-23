@@ -8,8 +8,8 @@ specific they may not be suitiable for your data. In particularly the narrow
 setting makes opinionated choices about some responses that we want to
 acknowledge are potentially problematic.
       In particular,
-        •	In 'narrow' coding Intersex responses is recoded as 'Other'
-        •	In 'narrow' responses where people indicate they are trans and
+        *	In 'narrow' coding intersex responses are recoded as 'Other'
+        *	In 'narrow' responses where people indicate they are trans and
           indicate their identified gender are recoded as the identified gender
           (e.g. 'Male to Female' is recoded as Female). We wish to acknowledge
           that this may not reflect how some individuals would classify
@@ -19,7 +19,7 @@ acknowledge are potentially problematic.
           dictionary to add to or overwrite our coding decisions if they feel
           this is more appropriate. We welcome people to update the inbuilt
           dictionary where desired responses are missing.
-        •	The 'broad' coding seperates out those who identify as trans
+        * The 'broad' coding seperates out those who identify as trans
           female/male or cis female/male into seperate categories it should not
           be assumed that all people who discribe as male/female are cis, if you
           are assessing trans status we recommend a two part question see:
