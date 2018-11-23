@@ -23,4 +23,5 @@ RoxygenNote: 6.1.1
 Imports: 
     dplyr,
     stringr,
-    readr
+    readr,
+    magrittr
