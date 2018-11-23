@@ -38,7 +38,7 @@ genderRecode <-
       names(input) <- genderColName
     }
     # Checking that the input has the gender col name
-    if(all(names(input) != genderColName)) {
+    if(all(names(input) != genderColName & !is.na(genderColName))) {
     stop("Your gender column name does not exist in the supplied input")
     }
 
