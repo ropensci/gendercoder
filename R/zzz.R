@@ -4,13 +4,13 @@ This package attempts to remove typos from free text gender data
 The defaults that we used are specific to our context and your data may be
 different.We offer two categorisations, board and narrow both are opinionated
 about how gender descriptors collapse into categories as these are cultrally
-specific they may not be suitiable for your data. In particularly we makes
-opinionated choices about some responses that we want to acknowledge are
-potentially problematic.
+specific they may not be suitiable for your data. In particularly the narrow
+setting makes opinionated choices about some responses that we want to
+acknowledge are potentially problematic.
       In particular,
-        * Intersex is recoded as 'Other'
-        * Responses where people indicate they are trans and indicate their
-          identified gender are recoded as the identified gender
+        *	In 'narrow' coding intersex responses are recoded as 'Other'
+        *	In 'narrow' responses where people indicate they are trans and
+          indicate their identified gender are recoded as the identified gender
           (e.g. 'Male to Female' is recoded as Female). We wish to acknowledge
           that this may not reflect how some individuals would classify
           themselves when given these categories and in some contexts may make
