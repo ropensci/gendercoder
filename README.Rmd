@@ -22,7 +22,7 @@ Researchers who collect self-reported demographic data from respondents occasion
 
 For example, male participants may provide freetext responses as "male", "man", "mail", "mael". Non-binary participants may provide responses as "nonbinary", "enby", "non-binary", "non binary"
 
-This package uses dictionaries of common mispellings to recode these freetext responses into a consistent set of responses.
+This package uses dictionaries of common misspellings to recode these freetext responses into a consistent set of responses.
 
 ## Installation
 
@@ -51,7 +51,7 @@ df <- data.frame(stringsAsFactors=FALSE,
 df
 ```
 
-Running the `genderRecode()` function will take the inputed dataset, match 
+Running the `genderRecode()` function will take the inputted dataset, match 
 freetext gender responses to the dictionary, create a new column in the 
 dataframe with the recoded gender response. For freetext gender responses that
 are not in the dictionary the original freetext will be copied to the recoded 
@@ -72,7 +72,7 @@ genderRecoded
 ### method
 
 The package provides the option to either correct spelling and standardise terms 
-while mantaining the diversity of responces. This is selected by setting 
+while maintaining the diversity of responses. This is selected by setting 
 `method =  "broad"` or to compress all responses down to male/female/'sex and 
 gender diverse' using `method =  "narrow"`.
 
@@ -93,9 +93,9 @@ genderRecoded
 By default the unmatched responses and the number of times it exists in the 
 input dataframe. Setting `missingValuesObjectName` saves the list of unmatched 
 free text gender responses. We recommend assessing these as they may be 
-human code-able (e.g. "I am male") or otherwise meaningful and not caputured by 
+human code-able (e.g. "I am male") or otherwise meaningful and not captured by 
 our base dictionary. We expect that researchers may wish to manually recode 
-such responses or add frequently occuring responses to their custom dictionary.
+such responses or add frequently occurring responses to their custom dictionary.
 
 ### customDictionary
 
