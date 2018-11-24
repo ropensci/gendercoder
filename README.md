@@ -1,42 +1,33 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+gendercodeR
+===========
 
-# gendercodeR
+The goal of gendercodeR is to allow simple recoding of freetext gender responses.
 
-The goal of gendercodeR is to allow simple recoding of freetext gender
-responses.
+Why would we do this?
+---------------------
 
-## Why would we do this?
+Researchers who collect self-reported demographic data from respondents occasionally collect gender using a free-text response option. This has the advantage of respecting the gender diversity of respondents without prompting users and potentially including misleading responses. However, this presents a challenge to researchers in that some inconsistencies in typography and spelling create a larger set of responses than would be required to fully capture the demographic characteristics of the sample.
 
-Researchers who collect self-reported demographic data from respondents
-occasionally collect gender using a free-text response option. This has
-the advantage of respecting the gender diversity of respondents without
-prompting users and potentially including misleading responses. However,
-this presents a challenge to researchers in that some inconsistencies in
-typography and spelling create a larger set of responses than would be
-required to fully capture the demographic characteristics of the sample.
+For example, male participants may provide freetext responses as "male", "man", "mail", "mael". Non-binary participants may provide responses as "nonbinary", "enby", "non-binary", "non binary"
 
-For example, male participants may provide freetext responses as “male”,
-“man”, “mail”, “mael”. Non-binary participants may provide responses as
-“nonbinary”, “enby”, “non-binary”, “non binary”
+This package uses dictionaries of common misspellings to recode these freetext responses into a consistent set of responses.
 
-This package uses dictionaries of common mispellings to recode these
-freetext responses into a consistent set of responses.
+Installation
+------------
 
-## Installation
-
-This package is not on CRAN. To use this package please run the
-following code:
+This package is not on CRAN. To use this package please run the following code:
 
 ``` r
 devtools::install_github("ropenscilabs/gendercodeR")
 library(gendercodeR)
 ```
 
-## Example
+Example
+-------
 
-You have a dataframe with the following format where individuals have
-provided gender in a range of inconsistent formats.
+You have a dataframe with the following format where individuals have provided gender in a range of inconsistent formats.
 
 ``` r
 
@@ -90,11 +81,7 @@ df
 #> 7      enby  83
 ```
 
-Running the `genderRecode()` function will take the inputed dataset,
-match freetext gender responses to the dictionary, create a new column
-in the dataframe with the recoded gender response. For freetext gender
-responses that are not in the dictionary the original freetext will be
-copied to the recoded gender column.
+Running the `genderRecode()` function will take the inputted dataset, match freetext gender responses to the dictionary, create a new column in the dataframe with the recoded gender response. For freetext gender responses that are not in the dictionary the original freetext will be copied to the recoded gender column.
 
 ``` r
 genderRecoded <- genderRecode(input=df,
@@ -124,14 +111,12 @@ genderRecoded
 #> 7      enby  83    non-binary
 ```
 
-## Options within the function
+Options within the function
+---------------------------
 
 ### method
 
-The package provides the option to either correct spelling and
-standardise terms while mantaining the diversity of responces. This is
-selected by setting `method = "broad"` or to compress all responses down
-to male/female/‘sex and gender diverse’ using `method = "narrow"`.
+The package provides the option to either correct spelling and standardise terms while maintaining the diversity of responses. This is selected by setting `method =  "broad"` or to compress all responses down to male/female/'sex and gender diverse' using `method =  "narrow"`.
 
 ##### Example using narrow coding
 
@@ -153,32 +138,30 @@ genderRecoded <- genderRecode(input=df,
 #> 1 i am male     1
 
 genderRecoded
-#>      gender age   gender2
-#> 1      male  34      male
-#> 2      MALE  37      male
-#> 3       mle  77      male
-#> 4 I am male  52 i am male
-#> 5    femail  68    female
-#> 6    female  67    female
-#> 7      enby  83     other
+#>      gender age                gender2
+#> 1      male  34                   male
+#> 2      MALE  37                   male
+#> 3       mle  77                   male
+#> 4 I am male  52              i am male
+#> 5    femail  68                 female
+#> 6    female  67                 female
+#> 7      enby  83 sex and gender diverse
 ```
 
 ### missingValuesObjectName
 
-By default the unmatched responses and the number of times it exists in
-the input dataframe. Setting `missingValuesObjectName` saves the list of
-unmatched free text gender responses. We recommend assessing these as
-they may be human code-able (e.g. “I am male”) or otherwise meaningful
-and not caputured by our base dictionary. We expect that researchers may
-wish to manually recode such responses or add frequently occuring
-responses to their custom dictionary.
+By default the unmatched responses and the number of times it exists in the input dataframe. Setting `missingValuesObjectName` saves the list of unmatched free text gender responses. We recommend assessing these as they may be human code-able (e.g. "I am male") or otherwise meaningful and not captured by our base dictionary. We expect that researchers may wish to manually recode such responses or add frequently occurring responses to their custom dictionary.
 
 ### customDictionary
 
-## Viewing the inbuilt dictionary
+Users can specify a custom dictionary that supplements or overwrites entries to the in-built dictionary.
 
-The inbuilt dictionary can be assigned to an object using the
-`getDictionary()` function. This function does not take any arguments.
+There is a vignette for this function
+
+Viewing the inbuilt dictionary
+------------------------------
+
+The inbuilt dictionary can be assigned to an object using the `getDictionary()` function. This function does not take any arguments.
 
 ``` r
 test <- getDictionary()
@@ -205,14 +188,12 @@ test
 #> # ... with 46 more rows
 ```
 
-# Contributing to this package
+Contributing to this package
+============================
 
-This package is a reflection of cultural context of the package
-contributors we welcome issues and pull requests to make the package
-more inclusive and/or suitable for a broader range of cultural contexts.
+This package is a reflection of cultural context of the package contributors we welcome issues and pull requests to make the package more inclusive and/or suitable for a broader range of cultural contexts.
 
-# Acknowledgement of Country
+Acknowledgement of Country
+==========================
 
-We acknowledge the Wurundjeri people of the Kulin Nation as the
-custodians of the land on which this package was developed and pay
-respects to elders past, present and future.
+We acknowledge the Wurundjeri people of the Kulin Nation as the custodians of the land on which this package was developed and pay respects to elders past, present and future.
