@@ -36,9 +36,9 @@ library(gendercodeR)
 #> 
 #> This package attempts to remove typos from free text gender data
 #> The defaults that we used are specific to our context and your data may be
-#> different.We offer two categorisations, board and narrow both are opinionated
-#> about how gender descriptors collapse into categories as these are cultrally
-#> specific they may not be suitiable for your data. In particularly the narrow
+#> different. We offer two categorisations, board and narrow both are opinionated
+#> about how gender descriptors collapse into categories as these are culturally
+#> specific they may not be suitable for your data. In particularly the narrow
 #> setting makes opinionated choices about some responses that we want to
 #> acknowledge are potentially problematic.
 #>       In particular,
@@ -54,9 +54,9 @@ library(gendercodeR)
 #>           dictionary to add to or overwrite our coding decisions if they feel
 #>           this is more appropriate. We welcome people to update the inbuilt
 #>           dictionary where desired responses are missing.
-#>         * The 'broad' coding seperates out those who identify as trans
-#>           female/male or cis female/male into seperate categories it should not
-#>           be assumed that all people who discribe as male/female are cis, if you
+#>         * The 'broad' coding separates out those who identify as trans
+#>           female/male or cis female/male into separate categories it should not
+#>           be assumed that all people who describe as male/female are cis, if you
 #>           are assessing trans status we recommend a two part question see:
 #> 
 #>           Bauer, Greta & Braimoh, Jessica & Scheim, Ayden & Dharma, Christoffer.
