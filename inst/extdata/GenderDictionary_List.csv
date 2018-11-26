@@ -1,11 +1,11 @@
 entries,broad,narrow
 female,female,female
 male,male,male
-androgynous,androgynous,other
-non-binary,non-binary,other
-nonbinary,non-binary,other
-non binary,non-binary,other
-trans,transgender,other
+androgynous,androgynous,sex and gender diverse
+non-binary,non-binary,sex and gender diverse
+nonbinary,non-binary,sex and gender diverse
+non binary,non-binary,sex and gender diverse
+trans,transgender,sex and gender diverse
 trans man,transgender male,male
 trans woman,transgender female,female
 transman,transgender male,male
@@ -30,7 +30,7 @@ cis male,cis male,male
 male (cisgender),cis male,male
 girl,female,female
 boy,male,male
-intersex,intersex,other
+intersex,intersex,sex and gender diverse
 m2f,transgender female,female
 f2m,transgender male,male
 mtf,transgender female,female
@@ -50,8 +50,8 @@ g,female,female
 maill,male,male
 malae,male,male
 man,male,male
-nb,non-binary,other
-enby,non-binary,other
-agender,agender,other
-genderqueer,genderqueer,other
-gender queer,genderqueer,other
+nb,non-binary,sex and gender diverse
+enby,non-binary,sex and gender diverse
+agender,agender,sex and gender diverse
+genderqueer,genderqueer,sex and gender diverse
+gender queer,genderqueer,sex and gender diverse
