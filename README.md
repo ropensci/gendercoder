@@ -173,18 +173,18 @@ test <- getDictionary()
 #> )
 test
 #> # A tibble: 56 x 3
-#>    entries     broad              narrow
-#>    <chr>       <chr>              <chr> 
-#>  1 female      female             female
-#>  2 male        male               male  
-#>  3 androgynous androgynous        other 
-#>  4 non-binary  non-binary         other 
-#>  5 nonbinary   non-binary         other 
-#>  6 non binary  non-binary         other 
-#>  7 trans       transgender        other 
-#>  8 trans man   transgender male   male  
-#>  9 trans woman transgender female female
-#> 10 transman    transgender male   male  
+#>    entries     broad              narrow                
+#>    <chr>       <chr>              <chr>                 
+#>  1 female      female             female                
+#>  2 male        male               male                  
+#>  3 androgynous androgynous        sex and gender diverse
+#>  4 non-binary  non-binary         sex and gender diverse
+#>  5 nonbinary   non-binary         sex and gender diverse
+#>  6 non binary  non-binary         sex and gender diverse
+#>  7 trans       transgender        sex and gender diverse
+#>  8 trans man   transgender male   male                  
+#>  9 trans woman transgender female female                
+#> 10 transman    transgender male   male                  
 #> # ... with 46 more rows
 ```
 
