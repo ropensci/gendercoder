@@ -2,15 +2,15 @@
   packageStartupMessage("Welcome to the genderCodeR package\n
 This package attempts to remove typos from free text gender data
 The defaults that we used are specific to our context and your data may be
-different. We offer two categorisations, board and narrow both are opinionated
+different. We offer two categorisations -- 'broad' and 'narrow.' Both are opinionated
 about how gender descriptors collapse into categories as these are culturally
-specific they may not be suitable for your data. In particularly the narrow
+specific they may not be suitable for your data. In particular, the 'narrow'
 setting makes opinionated choices about some responses that we want to
-acknowledge are potentially problematic.
+acknowledge as potentially problematic.
       In particular,
-        * In 'narrow' coding intersex responses are recoded as 'sex and gender
+        * In 'narrow' coding, intersex responses are recoded as 'sex and gender
           diverse'
-        * In 'narrow' responses where people indicate they are trans and
+        * In 'narrow' responses, where people indicate they are trans and
           indicate their identified gender are recoded as the identified gender
           (e.g. 'Male to Female' is recoded as Female). We wish to acknowledge
           that this may not reflect how some individuals would classify
