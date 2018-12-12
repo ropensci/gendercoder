@@ -30,3 +30,5 @@ Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
+URL: https://github.com/ropenscilabs/gendercoder
+BugReports: https://github.com/ropenscilabs/gendercoder/issues
