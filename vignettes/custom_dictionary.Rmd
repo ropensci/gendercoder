@@ -1,5 +1,5 @@
 ---
-title: Using a custom dictionary"
+title: Using a custom dictionary
 author: "Emily Kothe"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
