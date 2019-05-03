@@ -10,7 +10,7 @@
 #'  printed but not saved.
 #' @param method "broad" or "narrow". Broad returns responses classified into "female", "male",
 #' "androgynous", "non-binary", "nonbinary", "transgender", "transgender male", "transgender female",
-#'  "intersex", "agender", "gender-queer". Narrow returns "female", "male", "cis female", "cis male", "other".
+#'  "intersex", "agender", "gender-queer". Narrow returns "female", "male", "cis female", "cis male", "sex and gender diverse".
 #'  @param customDictionary enter custom dictionary set up as a data frame with two columns, the first
 #'  of which will be treated as the values to be replaced and the second which will be treated as the
 #'  replacement values (i.e., data.frame(c("cis  gender-male","trans-person" ), c("cis male", "transgender")))
