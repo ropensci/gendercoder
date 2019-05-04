@@ -39,7 +39,7 @@ which_is_na <- function(x) {
 #'
 #' df %>% mutate(recoded_gender = recode_gender(gender,
 #'                                              dictionary = combined,
-#'                                              fill = TRUE)
+#'                                              fill = TRUE))
 #' }
 #'
 #' @export recode_gender
