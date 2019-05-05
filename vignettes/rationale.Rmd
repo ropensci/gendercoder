@@ -1,17 +1,13 @@
 ---
-output: github_document
+title: "rationale"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{rationale}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
 
-```{r setup, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  fig.path = "man/figures/README-",
-  out.width = "100%"
-)
-```
 # gendercodeR
 
 The goal of gendercodeR is to allow simple re-coding of free-text gender responses.
@@ -240,6 +236,7 @@ dictionary where desired responses are missing.
 are not relevant to re-coding of the gender response (e.g. we assume that
 "genderqueer" and "gender queer" are equivalent). This is unlikely to be 
 true for all contexts. 
+
 
 The 'broad' coding separates out those who identify as trans
 female/male or cis female/male into separate categories it should not

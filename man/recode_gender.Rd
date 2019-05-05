@@ -4,14 +4,14 @@
 \alias{recode_gender}
 \title{recode_gender}
 \usage{
-recode_gender(gender = gender, dictionary = example_dictionary,
-  fill = TRUE)
+recode_gender(gender = gender, dictionary = gendercodeR::broad,
+  fill = FALSE)
 }
 \arguments{
 \item{gender}{a character vector of gender responses for recoding}
 
 \item{dictionary}{a list that the contains gender responses and their
-replacement values. A built-in dictionary example_dictionary is used by
+replacement values. A built-in dictionary \code{example_dictionary} is used by
 default if an alternative dictionary is not supplied.}
 
 \item{fill}{logical indicating if gender responses that are not found in
@@ -21,20 +21,23 @@ dictionary should be filled with the uncleaned values during recoding}
 
 }
 \description{
-recode_gender matches uncleaned gender responses to cleaned list using an
-inbuilt or custom dictionary.
+\code{recode_gender} matches uncleaned gender responses to cleaned list using
+an inbuilt or custom dictionary.
 }
 \examples{
 
 \dontrun{
 
-df <- data.frame(stringsAsFactors = FALSE,
-      gender = c("male", "MALE", "mle", "I am male", "femail", "female", "enby"),
-      age = c(34L, 37L, 77L, 52L, 68L, 67L, 83L))
+df <- data.frame(
+  stringsAsFactors = FALSE,
+  gender = c("male", "MALE", "mle", "I am male", "femail", "female", "enby"),
+  age = c(34L, 37L, 77L, 52L, 68L, 67L, 83L)
+)
 
 df \%>\% mutate(recoded_gender = recode_gender(gender,
-                                             dictionary = combined,
-                                             fill = TRUE)
+  dictionary = combined,
+  fill = TRUE
+))
 }
 
 }

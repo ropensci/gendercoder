@@ -15,6 +15,9 @@ as the list reference.}
 
 }
 \description{
-internal function to identify responses that are not
-matched in the dictionary
+Internal function to identify responses that are not
+matched in the dictionary.
+}
+\examples{
+
 }
