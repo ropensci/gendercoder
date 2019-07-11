@@ -1,5 +1,4 @@
 library(testthat)
 library(gendercodeR)
-#note run using devtools::check()
-test_check("gendercodeR")
 
+test_check("gendercodeR")
