@@ -51,11 +51,10 @@ recode_gender <- function(gender = gender,
                           dictionary = gendercodeR::broad,
                           fill = FALSE) {
   x.name <- substitute(gender)
-  dictionary.name <- substitute(dictionary)
   env <- parent.frame()
 
   if (class(dictionary) != "list") {
-    stop(paste(!!dictionary.name, "is not a list"))
+    stop(paste({{ dictionary }}, "is not a list"))
   }
 
   dictionary <- purrr::map(dictionary, tolower)
