@@ -10,7 +10,7 @@
 #' @return
 #'
 #' @examples
-#' 
+#'
 which_is_na <- function(x) {
   which(is.na(names(x)))
 }
@@ -30,32 +30,32 @@ which_is_na <- function(x) {
 #' @return
 #'
 #' @examples
-#' 
+#'
 #' \dontrun{
-#' 
+#'
 #' df <- data.frame(
 #'   stringsAsFactors = FALSE,
 #'   gender = c("male", "MALE", "mle", "I am male", "femail", "female", "enby"),
 #'   age = c(34L, 37L, 77L, 52L, 68L, 67L, 83L)
 #' )
-#' 
+#'
 #' df %>% mutate(recoded_gender = recode_gender(gender,
 #'   dictionary = combined,
 #'   fill = TRUE
 #' ))
 #' }
-#' 
+#'
 #' @export recode_gender
 
 recode_gender <- function(gender = gender,
                           dictionary = gendercodeR::broad,
                           fill = FALSE) {
-  x.name <- deparse(substitute(gender))
-  dictionary.name <- deparse(substitute(dictionary))
+  x.name <- substitute(gender)
+  dictionary.name <- substitute(dictionary)
   env <- parent.frame()
 
   if (class(dictionary) != "list") {
-    stop(paste(dictionary.name, "is not a list"))
+    stop(paste(!!dictionary.name, "is not a list"))
   }
 
   dictionary <- purrr::map(dictionary, tolower)
