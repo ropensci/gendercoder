@@ -40,7 +40,7 @@ which_is_na <- function(x) {
 #' )
 #'
 #' df %>% mutate(recoded_gender = recode_gender(gender,
-#'   dictionary = combined,
+#'   dictionary = broad,
 #'   fill = TRUE
 #' ))
 #' }
@@ -50,8 +50,6 @@ which_is_na <- function(x) {
 recode_gender <- function(gender = gender,
                           dictionary = gendercodeR::broad,
                           fill = FALSE) {
-  x.name <- substitute(gender)
-  env <- parent.frame()
 
   if (class(dictionary) != "list") {
     stop(paste({{ dictionary }}, "is not a list"))
