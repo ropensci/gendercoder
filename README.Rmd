@@ -13,6 +13,13 @@ knitr::opts_chunk$set(
 )
 ```
 # gendercodeR
+<!-- badges: start -->
+
+[![CRAN status](https://www.r-pkg.org/badges/version/gendercodeR)](https://CRAN.R-project.org/package=gendercodeR)
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+<!-- badges: end -->
+
 
 The goal of gendercodeR is to allow simple re-coding of free-text gender responses.
 
@@ -257,6 +264,12 @@ welcome issues and pull requests to make the package more inclusive and/or
 suitable for a broader range of cultural contexts. We particularly welcome 
 addition of non-English dictionaries or of other genderdiverse responses to the 
 broad and narrow dictionaries.
+
+# Citation Information
+
+Please cite this package as:
+
+Kothe, E., Beaudry, J., Singleton Thorn, F., & McGuire, R. (2018). GendercodeR (0.0.0.9000) [Computer software]. rOpenSci. https://docs.ropensci.org/gendercodeR/
 
 # Acknowledgement of Country
 
