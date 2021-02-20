@@ -24,3 +24,6 @@ test_that("Warns regarding replacement", {
                  regexp = "1 results not matched from the dictionary have been filled with the user inputted values")
 })
 
+test_that("Input matches output length", {
+  expect_equal(length(1:3), length(recode_gender(1:3)))
+})
