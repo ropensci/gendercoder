@@ -7,10 +7,12 @@
 #' matches #' responses without a match are stored with the NA or NULL
 #' as the list reference.
 #'
-#' @return
+#' @return a vector of positions in input list where name is missing
 #'
 #' @examples
-#'
+#' x <- list("a"=1,"b" =2, "c" =3)
+#' names(x)[c(1,3)] <-  NA
+#' gendercodeR:::which_is_na(x)
 which_is_na <- function(x) {
   which(is.na(names(x)))
 }
@@ -22,12 +24,12 @@ which_is_na <- function(x) {
 #'
 #' @param gender a character vector of gender responses for recoding
 #' @param dictionary a list that the contains gender responses and their
-#'   replacement values. A built-in dictionary \code{example_dictionary} is used by
+#'   replacement values. A built-in dictionary \code{broad} is used by
 #'   default if an alternative dictionary is not supplied.
 #' @param fill logical indicating if gender responses that are not found in
 #'   dictionary should be filled with the uncleaned values during recoding
 #'
-#' @return
+#' @return a character vector of recoded genders
 #'
 #' @examples
 #'
