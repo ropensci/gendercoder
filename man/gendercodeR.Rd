@@ -3,11 +3,9 @@
 \docType{package}
 \name{gendercodeR}
 \alias{gendercodeR}
-\alias{gendercodeR-package}
-\title{gendercodeR: A package for recoding freetext gender data.}
+\title{gendercodeR: A Package for Recoding Freetext Gender Data}
 \description{
-The gendercodeR package provides built-in dictionaries and
-a function \code{gender_recode} to allow for easy automatic coding
-of common variations in free text responses to the question \bold{"What is your
-gender?"}
+Provides built-in dictionaries and  a function \code{gender_recode}
+to allow for easy automatic coding of common variations in free text
+responses to the question \bold{"What is your gender?"}
 }

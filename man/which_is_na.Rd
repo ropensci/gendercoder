@@ -12,12 +12,14 @@ matches #' responses without a match are stored with the NA or NULL
 as the list reference.}
 }
 \value{
-
+a vector of positions in input list where name is missing
 }
 \description{
 Internal function to identify responses that are not
 matched in the dictionary.
 }
 \examples{
-
+x <- list("a"=1,"b" =2, "c" =3)
+names(x)[c(1,3)] <-  NA
+gendercodeR:::which_is_na(x)
 }
