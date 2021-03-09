@@ -8,17 +8,17 @@ vignette: >
 ---
 
 
-# gendercodeR
+# gendercoder
 
-The goal of gendercodeR is to allow simple re-coding of free-text gender responses.
+The goal of gendercoder is to allow simple re-coding of free-text gender responses.
 
 ## Installation
 
 This package is not on CRAN. To use this package please run the following code:
 
 ``` r
-devtools::install_github("ropenscilabs/gendercodeR")
-library(gendercodeR)
+devtools::install_github("ropenscilabs/gendercoder")
+library(gendercoder)
 ```
 
 ## Why would we do this?
@@ -36,21 +36,21 @@ For example, male participants may provide free-text responses as "male", "man",
 "enby", "non-binary", "non binary"
 
 Manually coding of such free-text responses this is often not feasible with 
-larger datasets. `gendercodeR()` uses dictionaries of common 
+larger datasets. `gendercoder()` uses dictionaries of common 
 misspellings to re-code free-text responses into a consistent set of 
 responses. The small number of responses not automatically re-coded by 
-gendercodeR() can then be feasibly manually recoded. 
+gendercoder() can then be feasibly manually recoded. 
 
 ## Motivating example
 
-`gendercodeR()` includes a sample dataset with actual free-text 
+`gendercoder()` includes a sample dataset with actual free-text 
 responses to the question "What is your gender?" from a number of studies of 
 English-speaking participants. The sample dataset includes responses from 7756
 participants. Naive coding identifies 103 unique responses to this item. 
 
 
 ```{r message = FALSE, warning= FALSE}
-library(gendercodeR)
+library(gendercoder)
 library(dplyr)
 
 sample %>% 
@@ -100,7 +100,7 @@ sample %>%
 The package provides two inbuilt dictionaries. The use of these is controlled 
 using the `dictionary` argument. The first `dictionary = broad` provides 
 corrects spelling and standardises terms while maintaining the diversity of responses. 
-This is the default dictionary for gendercodeR() as it preserves as much gender
+This is the default dictionary for gendercoder() as it preserves as much gender
 diversity as possible. 
 
 However in some cases you may wish to collapse gender into a smaller set of 
@@ -213,7 +213,7 @@ This package attempts to remove typographical errors from free text gender data.
 The defaults that we used are specific to our context and your data may be
 different. 
 
-We offer two builtin dictionaries, board and narrow. Both are opinionated
+We offer two built-in dictionaries, board and narrow. Both are opinionated
 about how gender descriptors collapse into categories. 
 
 However, as these are culturally specific they may not be suitable for your data. 

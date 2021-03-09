@@ -12,7 +12,7 @@
 #' @examples
 #' x <- list("a"=1,"b" =2, "c" =3)
 #' names(x)[c(1,3)] <-  NA
-#' gendercodeR:::which_is_na(x)
+#' gendercoder:::which_is_na(x)
 which_is_na <- function(x) {
   which(is.na(names(x)))
 }
@@ -50,7 +50,7 @@ which_is_na <- function(x) {
 #' @export recode_gender
 
 recode_gender <- function(gender = gender,
-                          dictionary = gendercodeR::broad,
+                          dictionary = gendercoder::broad,
                           fill = FALSE) {
 
   if (class(dictionary) != "list") {

@@ -1,5 +1,5 @@
 context("gender_recode")
-library(gendercodeR)
+library(gendercoder)
 
 test_that("Recodes common typos",{
           expect_match(recode_gender("enby", dictionary = broad, fill = TRUE), "non-binary")

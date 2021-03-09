@@ -1,4 +1,4 @@
-#' gendercodeR: A Package for Recoding Freetext Gender Data
+#' gendercoder: A Package for Recoding Freetext Gender Data
 #'
 #' Provides built-in dictionaries and  a function \code{gender_recode}
 #' to allow for easy automatic coding of common variations in free text
@@ -6,7 +6,7 @@
 #'
 #'
 #' @docType package
-#' @name gendercodeR
+#' @name gendercoder
 NULL
 
 #' sample

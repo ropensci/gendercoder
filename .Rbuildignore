@@ -1,7 +1,7 @@
 ^docs$
 ^_pkgdown\.yml$
 ^README\.Rmd$
-^gendercodeR\.Rproj$
+^gendercoder\.Rproj$
 ^\.Rproj\.user$
 ^LICENSE.md$
 ^\.travis\.yml$

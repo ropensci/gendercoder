@@ -4,7 +4,7 @@
 \alias{recode_gender}
 \title{recode_gender}
 \usage{
-recode_gender(gender = gender, dictionary = gendercodeR::broad, fill = FALSE)
+recode_gender(gender = gender, dictionary = gendercoder::broad, fill = FALSE)
 }
 \arguments{
 \item{gender}{a character vector of gender responses for recoding}

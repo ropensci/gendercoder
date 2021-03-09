@@ -21,5 +21,5 @@ matched in the dictionary.
 \examples{
 x <- list("a"=1,"b" =2, "c" =3)
 names(x)[c(1,3)] <-  NA
-gendercodeR:::which_is_na(x)
+gendercoder:::which_is_na(x)
 }

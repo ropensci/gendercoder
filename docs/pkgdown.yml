@@ -1,6 +1,7 @@
-pandoc: 2.1.3
-pkgdown: 1.3.0
+pandoc: 2.11.2
+pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
-  custom_dictionary: custom_dictionary.html
+  rationale: rationale.html
+last_built: 2021-03-09T05:52Z
 

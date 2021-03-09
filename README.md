@@ -1,12 +1,12 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# gendercodeR
+# gendercoder
 
 <!-- badges: start -->
 
 [![CRAN
-status](https://www.r-pkg.org/badges/version/gendercodeR)](https://CRAN.R-project.org/package=gendercodeR)
+status](https://www.r-pkg.org/badges/version/gendercoder)](https://CRAN.R-project.org/package=gendercoder)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![Project Status: Active – The project has reached a stable, usable
@@ -14,7 +14,7 @@ state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 <!-- badges: end -->
 
-The goal of gendercodeR is to allow simple re-coding of free-text gender
+The goal of gendercoder is to allow simple re-coding of free-text gender
 responses. This is intended to permit representation of gender
 diversity, while managing troll-responses and the workload implications
 of manual coding.
@@ -25,8 +25,8 @@ This package is not on CRAN. To use this package please run the
 following code:
 
 ``` r
-devtools::install_github("ropenscilabs/gendercodeR")
-library(gendercodeR)
+devtools::install_github("ropenscilabs/gendercoder")
+library(gendercoder)
 ```
 
 ## Basic use
@@ -40,17 +40,17 @@ categories, “male”, “female”, and “sex and gender diverse”.
 
 The core function, `gender_recode()`, takes 3 arguments,
 
-  - `gender` the vector of free-text gender,
+-   `gender` the vector of free-text gender,
 
-  - `dictionary` the preferred dictionary, and
+-   `dictionary` the preferred dictionary, and
 
-  - `fill` a logical indicating whether original values should be
+-   `fill` a logical indicating whether original values should be
     carried over if there is no match.
 
 Basic usage is demonstrated below.
 
 ``` r
-library(gendercodeR)
+library(gendercoder)
 
 tibble(gender = c("male", "MALE", "mle", "I am male", "femail", "female", "enby")) %>% 
   mutate(broad_gender  = recode_gender(gender, dictionary = broad, fill = TRUE),
@@ -82,8 +82,8 @@ genderdiverse responses to the broad and narrow dictionaries.
 Please cite this package as:
 
 Kothe, E., Beaudry, J., Singleton Thorn, F., & McGuire, R. (2018).
-gendercodeR (0.0.0.9000) \[Computer software\]. rOpenSci.
-<https://docs.ropensci.org/gendercodeR/>
+gendercoder (0.0.0.9000) \[Computer software\]. rOpenSci.
+<https://docs.ropensci.org/gendercoder/>
 
 ## Acknowledgement of Country
 

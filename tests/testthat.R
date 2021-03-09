@@ -1,4 +1,4 @@
 library(testthat)
-library(gendercodeR)
+library(gendercoder)
 
-test_check("gendercodeR")
+test_check("gendercoder")

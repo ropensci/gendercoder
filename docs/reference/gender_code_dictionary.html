@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • gendercoder</title>
+<title>Gender code dictionary — gender_code_dictionary • gendercoder</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,9 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Gender code dictionary — gender_code_dictionary" />
+<meta property="og:description" content="Inbuilt dictionary of potential freetext gender responses and ways to recode
+them using genderRecode." />
 
 
 
@@ -58,7 +60,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -117,78 +119,32 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Gender code dictionary</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ropenscilabs/gendercoder/blob/master/R/data.R'><code>R/data.R</code></a></small>
+    <div class="hidden name"><code>gender_code_dictionary.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>Inbuilt dictionary of potential freetext gender responses and ways to recode
+them using <code>genderRecode</code>.</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='va'>gender_code_dictionary</span></pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="broad.html">broad</a></code> </p>
-        </td>
-        <td><p>broad</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="gendercoder.html">gendercoder</a></code> </p>
-        </td>
-        <td><p>gendercoder: A Package for Recoding Freetext Gender Data</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="gender_code_dictionary.html">gender_code_dictionary</a></code> </p>
-        </td>
-        <td><p>Gender code dictionary</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="narrow.html">narrow</a></code> </p>
-        </td>
-        <td><p>narrow</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="recode_gender.html">recode_gender()</a></code> </p>
-        </td>
-        <td><p>recode_gender</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="sample.html">sample</a></code> </p>
-        </td>
-        <td><p>sample</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="which_is_na.html">which_is_na()</a></code> </p>
-        </td>
-        <td><p>finds terms without a dictionary match</p></td>
-      </tr>
-    </tbody>
-    </table>
+
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+
+    <p>A data frame with three variables:</p><dl>
+<dt><code>entries</code></dt><dd><p>users' freetext responses</p></dd>
+<dt><code>broad</code></dt><dd><p>recoding returned by <code>genderRecode(method = "broad")</code></p></dd>
+<dt><code>narrow</code></dt><dd><p>recoding returned by <code>genderRecode(method = "narrow")</code></p></dd>
+
+</dl>
+
+
   </div>
-
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>

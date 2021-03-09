@@ -4,12 +4,14 @@
 \name{gender_code_dictionary}
 \alias{gender_code_dictionary}
 \title{Gender code dictionary}
-\format{A data frame with three variables:
+\format{
+A data frame with three variables:
 \describe{
 \item{\code{entries}}{users' freetext responses}
 \item{\code{broad}}{recoding returned by \code{genderRecode(method = "broad")}}
 \item{\code{narrow}}{recoding returned by \code{genderRecode(method = "narrow")}}
-}}
+}
+}
 \usage{
 gender_code_dictionary
 }
