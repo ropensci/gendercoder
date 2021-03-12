@@ -12,6 +12,8 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![test-coverage](https://github.com/ropenscilabs/gendercoder/workflows/test-coverage/badge.svg)](https://github.com/ropenscilabs/gendercoder/actions)
+[![R-CMD-check](https://github.com/ropenscilabs/gendercoder/workflows/R-CMD-check/badge.svg)](https://github.com/ropenscilabs/gendercoder/actions)
 <!-- badges: end -->
 
 The goal of gendercoder is to allow simple re-coding of free-text gender
