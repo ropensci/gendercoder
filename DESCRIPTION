@@ -12,7 +12,16 @@ Authors@R: c(
     email = "fsingletonthorn@gmail.com", 
     comment = c(ORCID = "https://orcid.org/0000-0002-0237-6146")),
   person("Rhydwyn", "McGuire", role = "aut",
-    email = "rhydwyn@rhydwyn.net"))
+    email = "rhydwyn@rhydwyn.net"),
+  person("Nicholas", "Tierney", 
+         role = c("aut"),
+         email = "nicholas.tierney@gmail.com", 
+         comment = c(ORCID = "https://orcid.org/0000-0003-1460-8722")),
+  person("Mathew", "Ling", 
+         role = c("aut"),
+         email = "mathewtyling@gmail.com", 
+         comment = c(ORCID = "https://orcid.org/0000-0002-0940-2538"))       
+         )
 Description: Provides functions and dictionaries for recoding of freetext gender responses into more consistent categories.
 Depends: R (>= 3.0.0)
 Maintainer: Emily Kothe <emily.kothe@deakin.edu.au>
@@ -27,7 +36,8 @@ Suggests:
     testthat (>= 2.1.0),
     knitr,
     rmarkdown,
-    dplyr
+    dplyr,
+    covr
 VignetteBuilder: knitr
 URL: https://github.com/ropenscilabs/gendercoder
 BugReports: https://github.com/ropenscilabs/gendercoder/issues
