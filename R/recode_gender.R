@@ -58,6 +58,7 @@ recode_gender <- function(gender = gender,
   }
 
   dictionary <- purrr::map(dictionary, tolower)
+  names(dictionary) <- tolower(names(dictionary))
 
   # remove duplicates (if any) from dictionary
   dictionary <- (dictionary[!duplicated(names(dictionary), fromLast = TRUE)])
