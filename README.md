@@ -43,11 +43,11 @@ categories, “male”, “female”, and “sex and gender diverse”.
 
 The core function, `gender_recode()`, takes 3 arguments,
 
--   `gender` the vector of free-text gender,
+  - `gender` the vector of free-text gender,
 
--   `dictionary` the preferred dictionary, and
+  - `dictionary` the preferred dictionary, and
 
--   `fill` a logical indicating whether original values should be
+  - `fill` a logical indicating whether original values should be
     carried over if there is no match.
 
 Basic usage is demonstrated below.
@@ -71,6 +71,18 @@ tibble(gender = c("male", "MALE", "mle", "I am male", "femail", "female", "enby"
 #> 6 female    female       female                
 #> 7 enby      non-binary   sex and gender diverse
 ```
+
+The package now also contains a shiny app for use of the
+`gender_recode()` function by GUI. The app takes data in `.dta`, `.csv`,
+and `.sav` formats.
+
+To use the app, call the `gendercoder_app()` function.
+
+``` r
+gendercoder::gendercoder_app()
+```
+
+<img src="man/figures/UI.png">
 
 ## Contributing to this package
 
