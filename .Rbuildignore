@@ -6,3 +6,6 @@
 ^LICENSE.md$
 ^\.travis\.yml$
 ^\.github$
+CODE_OF_CONDUCT.md
+paper
+cran-comments.md
