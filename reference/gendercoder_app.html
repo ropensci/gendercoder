@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>gendercoder: A Package for Recoding Freetext Gender Data — gendercoder • gendercoder</title>
+<title>Launch Shiny App — gendercoder_app • gendercoder</title>
 
 
 <!-- jquery -->
@@ -39,10 +39,8 @@
 
 
 
-<meta property="og:title" content="gendercoder: A Package for Recoding Freetext Gender Data — gendercoder" />
-<meta property="og:description" content="Provides built-in dictionaries and  a function recode_gender
-to allow for easy automatic coding of common variations in free text
-responses to the question &quot;What is your gender?&quot;" />
+<meta property="og:title" content="Launch Shiny App — gendercoder_app" />
+<meta property="og:description" content="Code your data interactively in a shiny app that runs locally in RStudio or your web browser (recommended). It does not connect to the web at all, so your data are completely private." />
 
 
 
@@ -122,20 +120,31 @@ responses to the question &quot;What is your gender?&quot;" />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>gendercoder: A Package for Recoding Freetext Gender Data</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ropenscilabs/gendercoder/blob/master/R/gendercoder.R'><code>R/gendercoder.R</code></a></small>
-    <div class="hidden name"><code>gendercoder.Rd</code></div>
+    <h1>Launch Shiny App</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ropenscilabs/gendercoder/blob/master/R/gendercoder_app.R'><code>R/gendercoder_app.R</code></a></small>
+    <div class="hidden name"><code>gendercoder_app.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Provides built-in dictionaries and  a function <code>recode_gender</code>
-to allow for easy automatic coding of common variations in free text
-responses to the question <b>"What is your gender?"</b></p>
+    <p>Code your data interactively in a shiny app that runs locally in RStudio or your web browser (recommended). It does not connect to the web at all, so your data are completely private.</p>
     </div>
 
+    <pre class="usage"><span class='fu'>gendercoder_app</span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span></pre>
+
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>...</th>
+      <td><p>arguments to pass to shiny::runApp</p></td>
+    </tr>
+    </table>
 
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span>  <span class='fu'>scivrs_app</span><span class='op'>(</span><span class='op'>)</span> 
 
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
