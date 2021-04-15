@@ -36,7 +36,13 @@ Suggests:
     knitr,
     rmarkdown,
     dplyr,
-    covr
+    covr,
+    shiny,
+    shinydashboard,
+    readr,
+    rlang,
+    DT,
+    haven
 VignetteBuilder: knitr
 URL: https://github.com/ropenscilabs/gendercoder
 BugReports: https://github.com/ropenscilabs/gendercoder/issues
