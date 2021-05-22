@@ -9,7 +9,7 @@ recode_gender(gender = gender, dictionary = gendercoder::broad, fill = FALSE)
 \arguments{
 \item{gender}{a character vector of gender responses for recoding}
 
-\item{dictionary}{a list that the contains gender responses and their
+\item{dictionary}{a list that contains gender responses and their
 replacement values. A built-in dictionary \code{broad} is used by
 default if an alternative dictionary is not supplied.}
 

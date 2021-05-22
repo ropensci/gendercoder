@@ -43,11 +43,11 @@ categories, “male”, “female”, and “sex and gender diverse”.
 
 The core function, `gender_recode()`, takes 3 arguments,
 
-  - `gender` the vector of free-text gender,
+-   `gender` the vector of free-text gender,
 
-  - `dictionary` the preferred dictionary, and
+-   `dictionary` the preferred dictionary, and
 
-  - `fill` a logical indicating whether original values should be
+-   `fill` a logical indicating whether original values should be
     carried over if there is no match.
 
 Basic usage is demonstrated below.
@@ -87,10 +87,10 @@ gendercoder::gendercoder_app()
 ## Contributing to this package
 
 This package is a reflection of cultural context of the package
-contributors we welcome issues and pull requests to make the package
+contributors; we welcome issues and pull requests to make the package
 more inclusive and/or suitable for a broader range of cultural contexts.
 We particularly welcome addition of non-English dictionaries or of other
-genderdiverse responses to the broad and narrow dictionaries.
+gender-diverse responses to the broad and narrow dictionaries.
 
 ## Citation Information
 
