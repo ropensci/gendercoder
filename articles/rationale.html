@@ -92,7 +92,7 @@
 <div id="gendercoder" class="section level1">
 <h1 class="hasAnchor">
 <a href="#gendercoder" class="anchor"></a>gendercoder</h1>
-<p>The goal of gendercoder is to allow simple re-coding of free-text gender responses.</p>
+<p>The goal of gendercoder is to allow simple recoding of free-text gender responses.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
@@ -907,7 +907,7 @@
 ##  $ hombre   : chr "male"
 ##  $ mujer    : chr "female"
 ##  $ femenina : chr "female"</code></pre>
-<p>Custom dictionaries can be used in place of an inbuilt dictionary or can supplement the inbuilt dictionary by providing a vector of lists to the dictionary argument. Where the lists contain duplicated elements the last version of the duplicated value will be used for re-coding. This allows you to use the inbuilt dictionary but change the coding of one or more responses from that dictionary. Here the addition of Spanish terms allows for recoding of 11 previously uncoded responses.</p>
+<p>Custom dictionaries can be used in place of an inbuilt dictionary or can supplement the inbuilt dictionary by providing a vector of lists to the dictionary argument. Where the lists contain duplicated elements, the last version of the duplicated value will be used for recoding. This allows you to use the inbuilt dictionary but change the coding of one or more responses from that dictionary. Here the addition of Spanish terms allows for recoding of 11 previously uncoded responses.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sample</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>recoded_gender <span class="op">=</span> <span class="fu"><a href="../reference/recode_gender.html">recode_gender</a></span><span class="op">(</span>gender <span class="op">=</span> <span class="va">Gender</span>, 
@@ -1026,7 +1026,7 @@
 <div id="fill" class="section level3">
 <h3 class="hasAnchor">
 <a href="#fill" class="anchor"></a>fill</h3>
-<p>The <code>fill</code> argument is used to determine the handling the re-coding of values not contained in the dictionary. By default, unmatched values are coded as NA. <code>fill = TRUE</code> will fill unmatched responses with the participant provided response.</p>
+<p>The <code>fill</code> argument is used to determine the handling for recoding of values not contained in the dictionary. By default, unmatched values are coded as NA. <code>fill = TRUE</code> will fill unmatched responses with the participant provided response.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sample</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>recoded_gender <span class="op">=</span> <span class="fu"><a href="../reference/recode_gender.html">recode_gender</a></span><span class="op">(</span>gender <span class="op">=</span> <span class="va">Gender</span>, 
@@ -1123,16 +1123,16 @@
 </div>
 </div>
 </div>
-<div id="a-disclaimer-on-gender" class="section level1">
+<div id="a-disclaimer-on-handling-gender-responses" class="section level1">
 <h1 class="hasAnchor">
-<a href="#a-disclaimer-on-gender" class="anchor"></a>A disclaimer on gender</h1>
-<p>This package attempts to remove typographical errors from free text gender data. The defaults that we used are specific to our context and your data may be different.</p>
-<p>We offer two built-in dictionaries, board and narrow. Both are opinionated about how gender descriptors collapse into categories.</p>
-<p>However, as these are culturally specific they may not be suitable for your data. In particularly the narrow setting makes opinionated choices about some responses that we want to acknowledge are potentially problematic. In particular,</p>
+<a href="#a-disclaimer-on-handling-gender-responses" class="anchor"></a>A disclaimer on handling gender responses</h1>
+<p>This package attempts to remove typographical errors from free text gender data. The defaults that we used are specific to our context and your data or context may be different.</p>
+<p>We offer two built-in dictionaries, broad and narrow. Both are necessarily opinionated about how gender descriptors collapse into categories.</p>
+<p>However, as these are culturally specific, they may not be suitable for your data. In particular the narrow option makes opinionated choices about some responses that we want to acknowledge are potentially problematic. In particular,</p>
 <ul>
-<li>In ‘narrow’ coding intersex responses are recoded as ‘sex and gender diverse’</li>
-<li>In ‘narrow’ responses where people indicate they are trans and indicate their identified gender are recoded as the identified gender (e.g. ‘Male to Female’ is recoded as Female). We wish to acknowledge that this may not reflect how some individuals would classify themselves when given these categories and in some contexts may make systematic errors. The broad coding dictionary attempts to avoid these issues as much as possible - however users can provide a custom dictionary to add to or overwrite our coding decisions if they feel this is more appropriate. We welcome people to update the inbuilt dictionary where desired responses are missing.</li>
-<li>In both dictionaries we assume that typographical features such as spacing are not relevant to re-coding of the gender response (e.g. we assume that “genderqueer” and “gender queer” are equivalent). This is unlikely to be true for all contexts.</li>
+<li>With narrow coding, intersex responses are recoded as ‘sex and gender diverse’</li>
+<li>With narrow coding, responses of people who indicate they are trans plus their gender are recoded as the identified gender (e.g. ‘Male to Female’ is recoded as Female). We wish to acknowledge that this may not reflect how some individuals would classify themselves when given these categories; in some contexts this recoding may make systematic errors. The broad coding dictionary attempts to avoid these issues as much as possible; however users can provide a custom dictionary to add to or overwrite our coding decisions if they feel this is more appropriate. We welcome contributions to update the inbuilt dictionary where desired responses are missing.</li>
+<li>In both dictionaries, we assume that typographical features such as spacing are not relevant to recoding the gender response (e.g. we assume that “genderqueer” and “gender queer” are equivalent). This is unlikely to be true for all contexts.</li>
 </ul>
 <p>The ‘broad’ coding separates out those who identify as trans female/male or cis female/male into separate categories it should not be assumed that all people who describe as male/female are cis, if you are assessing trans status we recommend a two part question see:</p>
 <p>Bauer, Greta &amp; Braimoh, Jessica &amp; Scheim, Ayden &amp; Dharma, Christoffer. (2017). Transgender-inclusive measures of sex/gender for population surveys: Mixed-methods evaluation and recommendations. PLoS ONE. 12.</p>
@@ -1140,7 +1140,7 @@
 <div id="contributing-to-this-package" class="section level1">
 <h1 class="hasAnchor">
 <a href="#contributing-to-this-package" class="anchor"></a>Contributing to this package</h1>
-<p>This package is a reflection of cultural context of the package contributors we welcome issues and pull requests to make the package more inclusive and/or suitable for a broader range of cultural contexts. We particularly welcome addition of non-English dictionaries or of other genderdiverse responses to the broad and narrow dictionaries.</p>
+<p>This package is a reflection of cultural context of the package contributors; we welcome issues and pull requests to make the package more inclusive and/or suitable for a broader range of cultural contexts. We particularly welcome addition of non-English dictionaries or of other gender-diverse responses to the broad and narrow dictionaries.</p>
 </div>
 <div id="acknowledgement-of-country" class="section level1">
 <h1 class="hasAnchor">
