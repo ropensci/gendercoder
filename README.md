@@ -12,9 +12,9 @@ stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![test-coverage](https://github.com/ropenscilabs/gendercoder/workflows/test-coverage/badge.svg)](https://github.com/ropenscilabs/gendercoder/actions)
 [![R-CMD-check](https://github.com/ropenscilabs/gendercoder/workflows/R-CMD-check/badge.svg)](https://github.com/ropenscilabs/gendercoder/actions)
-
+[![Codecov test
+coverage](https://codecov.io/gh/ropenscilabs/gendercoder/branch/master/graph/badge.svg)](https://codecov.io/gh/ropenscilabs/gendercoder?branch=master)
 <!-- badges: end -->
 
 The goal of gendercoder is to allow simple re-coding of free-text gender
@@ -98,7 +98,7 @@ Please cite this package as:
 
 Jennifer Beaudry, Emily Kothe, Felix Singleton Thorn, Rhydwyn McGuire,
 Nicholas Tierney and Mathew Ling (2020). gendercoder: Recodes Sex/Gender
-Descriptions Into A Standard Set. R package version 0.0.0.9000.
+Descriptions into a Standard Set. R package version 0.0.0.9000.
 <https://github.com/ropenscilabs/gendercoder>
 
 ## Acknowledgement of Country

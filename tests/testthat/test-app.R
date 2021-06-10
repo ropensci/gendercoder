@@ -1,6 +1,5 @@
 context("app")
 # This file is for testing the applications in the inst/ directory.
-
 library(shinytest)
 
 test_that("app works", {
