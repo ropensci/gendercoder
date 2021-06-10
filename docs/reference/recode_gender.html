@@ -131,7 +131,7 @@ an inbuilt or custom dictionary." />
 an inbuilt or custom dictionary.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>recode_gender</span><span class='op'>(</span>gender <span class='op'>=</span> <span class='va'>gender</span>, dictionary <span class='op'>=</span> <span class='fu'>gendercoder</span><span class='fu'>::</span><span class='va'><a href='broad.html'>broad</a></span>, fill <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>recode_gender</span><span class='op'>(</span>gender <span class='op'>=</span> <span class='va'>gender</span>, dictionary <span class='op'>=</span> <span class='fu'>gendercoder</span><span class='fu'>::</span><span class='va'><a href='broad_en.html'>broad_en</a></span>, fill <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -143,7 +143,7 @@ an inbuilt or custom dictionary.</p>
     <tr>
       <th>dictionary</th>
       <td><p>a list that the contains gender responses and their
-replacement values. A built-in dictionary <code>broad</code> is used by
+replacement values. A built-in dictionary <code>broad_en</code> is used by
 default if an alternative dictionary is not supplied.</p></td>
     </tr>
     <tr>
@@ -168,7 +168,7 @@ dictionary should be filled with the uncleaned values during recoding</p></td>
 <span class='op'>)</span>
 
 <span class='va'>df</span> <span class='op'>%&gt;%</span> <span class='fu'>mutate</span><span class='op'>(</span>recoded_gender <span class='op'>=</span> <span class='fu'>recode_gender</span><span class='op'>(</span><span class='va'>gender</span>,
-  dictionary <span class='op'>=</span> <span class='va'>broad</span>,
+  dictionary <span class='op'>=</span> <span class='va'>broad_en</span>,
   fill <span class='op'>=</span> <span class='cn'>TRUE</span>
 <span class='op'>)</span><span class='op'>)</span>
 <span class='op'>}</span>

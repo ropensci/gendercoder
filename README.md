@@ -36,10 +36,10 @@ library(gendercoder)
 
 The gendercoder package permits the efficient re-coding of free-text
 gender responses within a tidyverse pipeline. It contains two in-built
-output dictionaries, a default `broad` dictionary which corrects
-spelling and standardises terms while maintaining the diversity of
-responses and a `narrow` dictionary which contains only three gender
-categories, “male”, “female”, and “sex and gender diverse”.
+English output dictionaries, a default `broad_en` dictionary which
+corrects spelling and standardises terms while maintaining the diversity
+of responses and a `narrow_en` dictionary which contains fewer gender
+categories, “man”, “woman”, “boy”, “girl”, and “sex and gender diverse”.
 
 The core function, `gender_recode()`, takes 3 arguments,
 
@@ -56,19 +56,19 @@ Basic usage is demonstrated below.
 library(gendercoder)
 
 tibble(gender = c("male", "MALE", "mle", "I am male", "femail", "female", "enby")) %>% 
-  mutate(broad_gender  = recode_gender(gender, dictionary = broad, fill = TRUE),
-         narrow_gender = recode_gender(gender, dictionary = narrow, fill = FALSE)
+  mutate(broad_gender  = recode_gender(gender, dictionary = broad_en, fill = TRUE),
+         narrow_gender = recode_gender(gender, dictionary = narrow_en, fill = FALSE)
   )
 #> 1 results not matched from the dictionary have been filled with the user inputted values
 #> # A tibble: 7 x 3
 #>   gender    broad_gender narrow_gender         
 #>   <chr>     <chr>        <chr>                 
-#> 1 male      male         male                  
-#> 2 MALE      male         male                  
-#> 3 mle       male         male                  
+#> 1 male      man          man                   
+#> 2 MALE      man          man                   
+#> 3 mle       man          man                   
 #> 4 I am male I am male    <NA>                  
-#> 5 femail    female       female                
-#> 6 female    female       female                
+#> 5 femail    woman        woman                 
+#> 6 female    woman        woman                 
 #> 7 enby      non-binary   sex and gender diverse
 ```
 
@@ -90,7 +90,7 @@ This package is a reflection of cultural context of the package
 contributors we welcome issues and pull requests to make the package
 more inclusive and/or suitable for a broader range of cultural contexts.
 We particularly welcome addition of non-English dictionaries or of other
-genderdiverse responses to the broad and narrow dictionaries.
+genderdiverse responses to the broad\_en and narrow\_en dictionaries.
 
 ## Citation Information
 

@@ -2,7 +2,7 @@
 % Please edit documentation in R/recode_gender.R
 \name{which_is_na}
 \alias{which_is_na}
-\title{finds terms without a dictionary match}
+\title{which_is_na}
 \usage{
 which_is_na(x)
 }
@@ -15,6 +15,9 @@ as the list reference.}
 a vector of positions in input list where name is missing
 }
 \description{
+finds terms without a dictionary match
+}
+\details{
 Internal function to identify responses that are not
 matched in the dictionary.
 }

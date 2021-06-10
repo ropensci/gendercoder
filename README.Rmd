@@ -40,11 +40,11 @@ library(gendercoder)
 ## Basic use
 
 The gendercoder package permits the efficient re-coding of free-text gender 
-responses within a tidyverse pipeline. It contains two in-built output 
-dictionaries, a default `broad` dictionary which corrects spelling and 
-standardises terms while maintaining the diversity of responses and a  `narrow` 
-dictionary which contains only three gender categories, "male", "female", and 
-"sex and gender diverse". 
+responses within a tidyverse pipeline. It contains two in-built English output 
+dictionaries, a default `broad_en` dictionary which corrects spelling and 
+standardises terms while maintaining the diversity of responses and a 
+`narrow_en` dictionary which contains fewer gender categories, "man", "woman", 
+"boy", "girl", and "sex and gender diverse". 
 
 The core function, `gender_recode()`, takes 3 arguments, 
 
@@ -61,8 +61,8 @@ Basic usage is demonstrated below.
 library(gendercoder)
 
 tibble(gender = c("male", "MALE", "mle", "I am male", "femail", "female", "enby")) %>% 
-  mutate(broad_gender  = recode_gender(gender, dictionary = broad, fill = TRUE),
-         narrow_gender = recode_gender(gender, dictionary = narrow, fill = FALSE)
+  mutate(broad_gender  = recode_gender(gender, dictionary = broad_en, fill = TRUE),
+         narrow_gender = recode_gender(gender, dictionary = narrow_en, fill = FALSE)
   )
   
 ```
@@ -84,7 +84,7 @@ This package is a reflection of cultural context of the package contributors we
 welcome issues and pull requests to make the package more inclusive and/or 
 suitable for a broader range of cultural contexts. We particularly welcome 
 addition of non-English dictionaries or of other genderdiverse responses to the 
-broad and narrow dictionaries.
+broad_en and narrow_en dictionaries.
 
 ## Citation Information
 

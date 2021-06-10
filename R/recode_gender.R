@@ -1,3 +1,5 @@
+#' which_is_na
+#'
 #' finds terms without a dictionary match
 #'
 #' Internal function to identify responses that are not
@@ -24,7 +26,7 @@ which_is_na <- function(x) {
 #'
 #' @param gender a character vector of gender responses for recoding
 #' @param dictionary a list that the contains gender responses and their
-#'   replacement values. A built-in dictionary \code{broad} is used by
+#'   replacement values. A built-in dictionary \code{broad_en} is used by
 #'   default if an alternative dictionary is not supplied.
 #' @param fill logical indicating if gender responses that are not found in
 #'   dictionary should be filled with the uncleaned values during recoding
@@ -42,7 +44,7 @@ which_is_na <- function(x) {
 #' )
 #'
 #' df %>% mutate(recoded_gender = recode_gender(gender,
-#'   dictionary = broad,
+#'   dictionary = broad_en,
 #'   fill = TRUE
 #' ))
 #' }
@@ -50,7 +52,7 @@ which_is_na <- function(x) {
 #' @export recode_gender
 
 recode_gender <- function(gender = gender,
-                          dictionary = gendercoder::broad,
+                          dictionary = gendercoder::broad_en,
                           fill = FALSE) {
 
   if (class(dictionary) != "list") {

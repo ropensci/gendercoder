@@ -2,21 +2,21 @@ context("gender_recode")
 library(gendercoder)
 
 test_that("Recodes common typos",{
-          expect_match(recode_gender("enby", dictionary = broad, fill = TRUE), "non-binary")
-          expect_match(recode_gender("mlae", dictionary = broad, fill = TRUE), "male")
-          expect_match(recode_gender("famela", dictionary = broad, fill = TRUE), "female")
-          expect_match(recode_gender("enby", dictionary = narrow, fill = TRUE), "sex and gender diverse")
-          expect_match(recode_gender("enby", dictionary = narrow, fill = FALSE), "sex and gender diverse")
+          expect_match(recode_gender("enby", dictionary = broad_en, fill = TRUE), "non-binary")
+          expect_match(recode_gender("mlae", dictionary = broad_en, fill = TRUE), "male")
+          expect_match(recode_gender("famela", dictionary = broad_en, fill = TRUE), "female")
+          expect_match(recode_gender("enby", dictionary = narrow_en, fill = TRUE), "sex and gender diverse")
+          expect_match(recode_gender("enby", dictionary = narrow_en, fill = FALSE), "sex and gender diverse")
 
 })
 
 test_that("Dictionaries generate different outcomes", {
-  expect_true(recode_gender("enby", dictionary = broad, fill = TRUE) !=
-                recode_gender("enby", dictionary = narrow, fill = TRUE))
+  expect_true(recode_gender("enby", dictionary = broad_en, fill = TRUE) !=
+                recode_gender("enby", dictionary = narrow_en, fill = TRUE))
 })
 
 test_that("Leaves blanks if fill = FALSE", {
-  expect_true(is.na(recode_gender("apache", dictionary = narrow, fill = FALSE)))
+  expect_true(is.na(recode_gender("apache", dictionary = narrow_en, fill = FALSE)))
 })
 
 test_that("Warns regarding replacement", {

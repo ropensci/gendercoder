@@ -546,10 +546,10 @@
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sample</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>recoded_gender <span class="op">=</span> <span class="fu"><a href="../reference/recode_gender.html">recode_gender</a></span><span class="op">(</span>gender <span class="op">=</span> <span class="va">Gender</span>, dictionary <span class="op">=</span> <span class="va">broad</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span>caption <span class="op">=</span> <span class="st">"The broad dictionary applied to `head(sample)`"</span><span class="op">)</span></code></pre></div>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>recoded_gender <span class="op">=</span> <span class="fu"><a href="../reference/recode_gender.html">recode_gender</a></span><span class="op">(</span>gender <span class="op">=</span> <span class="va">Gender</span>, dictionary <span class="op">=</span> <span class="va">broad_en</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span>caption <span class="op">=</span> <span class="st">"The broad_en dictionary applied to `head(sample)`"</span><span class="op">)</span></code></pre></div>
 <table class="table">
-<caption>The broad dictionary applied to <code><a href="https://rdrr.io/r/utils/head.html">head(sample)</a></code>
+<caption>The broad_en dictionary applied to <code><a href="https://rdrr.io/r/utils/head.html">head(sample)</a></code>
 </caption>
 <thead><tr class="header">
 <th align="left">Gender</th>
@@ -600,14 +600,14 @@
 </table>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sample</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>recoded_gender <span class="op">=</span> <span class="fu"><a href="../reference/recode_gender.html">recode_gender</a></span><span class="op">(</span>gender <span class="op">=</span> <span class="va">Gender</span>, dictionary <span class="op">=</span> <span class="va">broad</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>recoded_gender <span class="op">=</span> <span class="fu"><a href="../reference/recode_gender.html">recode_gender</a></span><span class="op">(</span>gender <span class="op">=</span> <span class="va">Gender</span>, dictionary <span class="op">=</span> <span class="va">broad_en</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">recoded_gender</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">recoded_gender</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>count <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="op">-</span><span class="va">count</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span>caption <span class="op">=</span> <span class="st">"Summary of gender categories after use of the *broad* dictionary"</span><span class="op">)</span></code></pre></div>
+  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span>caption <span class="op">=</span> <span class="st">"Summary of gender categories after use of the *broad_en* dictionary"</span><span class="op">)</span></code></pre></div>
 <table class="table">
-<caption>Summary of gender categories after use of the <em>broad</em> dictionary</caption>
+<caption>Summary of gender categories after use of the <em>broad_en</em> dictionary</caption>
 <thead><tr class="header">
 <th align="left">recoded_gender</th>
 <th align="right">count</th>
@@ -654,7 +654,7 @@
 <p>In this dataset unclassified responses are a mix of unusual responses and apparent response errors (e.g. numbers and symbols). While some of these are genuinely missing (i.e. Gender = 40), other could be manually recoded, or added to a custom dictionary.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sample</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>recoded_gender <span class="op">=</span> <span class="fu"><a href="../reference/recode_gender.html">recode_gender</a></span><span class="op">(</span>gender <span class="op">=</span> <span class="va">Gender</span>, dictionary <span class="op">=</span> <span class="va">broad</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>recoded_gender <span class="op">=</span> <span class="fu"><a href="../reference/recode_gender.html">recode_gender</a></span><span class="op">(</span>gender <span class="op">=</span> <span class="va">Gender</span>, dictionary <span class="op">=</span> <span class="va">broad_en</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">recoded_gender</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span>caption <span class="op">=</span> <span class="st">"All responses not classified by the inbuilt dictionary"</span><span class="op">)</span></code></pre></div>
 <table class="table">
@@ -781,7 +781,7 @@
 <div id="dictionary" class="section level3">
 <h3 class="hasAnchor">
 <a href="#dictionary" class="anchor"></a>dictionary</h3>
-<p>The package provides two inbuilt dictionaries. The use of these is controlled using the <code>dictionary</code> argument. The first <code>dictionary = broad</code> provides corrects spelling and standardises terms while maintaining the diversity of responses. This is the default dictionary for gendercoder() as it preserves as much gender diversity as possible.</p>
+<p>The package provides two inbuilt dictionaries. The use of these is controlled using the <code>dictionary</code> argument. The first <code>dictionary = broad_en</code> provides corrects spelling and standardises terms while maintaining the diversity of responses. This is the default dictionary for gendercoder() as it preserves as much gender diversity as possible.</p>
 <p>However in some cases you may wish to collapse gender into a smaller set of categories by using the <code>narrow</code> dictionary (<code>dictionary = narrow</code>). This dictionary contains only three gender categories, “male”, “female”, and “sex and gender diverse”.</p>
 <p>The “male” category includes all participants who indicate that they are</p>
 <ul>
@@ -1131,16 +1131,16 @@
 <p>However, as these are culturally specific they may not be suitable for your data. In particularly the narrow setting makes opinionated choices about some responses that we want to acknowledge are potentially problematic. In particular,</p>
 <ul>
 <li>In ‘narrow’ coding intersex responses are recoded as ‘sex and gender diverse’</li>
-<li>In ‘narrow’ responses where people indicate they are trans and indicate their identified gender are recoded as the identified gender (e.g. ‘Male to Female’ is recoded as Female). We wish to acknowledge that this may not reflect how some individuals would classify themselves when given these categories and in some contexts may make systematic errors. The broad coding dictionary attempts to avoid these issues as much as possible - however users can provide a custom dictionary to add to or overwrite our coding decisions if they feel this is more appropriate. We welcome people to update the inbuilt dictionary where desired responses are missing.</li>
+<li>In ‘narrow’ responses where people indicate they are trans and indicate their identified gender are recoded as the identified gender (e.g. ‘Male to Female’ is recoded as Female). We wish to acknowledge that this may not reflect how some individuals would classify themselves when given these categories and in some contexts may make systematic errors. The broad_en coding dictionary attempts to avoid these issues as much as possible - however users can provide a custom dictionary to add to or overwrite our coding decisions if they feel this is more appropriate. We welcome people to update the inbuilt dictionary where desired responses are missing.</li>
 <li>In both dictionaries we assume that typographical features such as spacing are not relevant to re-coding of the gender response (e.g. we assume that “genderqueer” and “gender queer” are equivalent). This is unlikely to be true for all contexts.</li>
 </ul>
-<p>The ‘broad’ coding separates out those who identify as trans female/male or cis female/male into separate categories it should not be assumed that all people who describe as male/female are cis, if you are assessing trans status we recommend a two part question see:</p>
+<p>The ‘broad_en’ coding separates out those who identify as trans female/male or cis female/male into separate categories it should not be assumed that all people who describe as male/female are cis, if you are assessing trans status we recommend a two part question see:</p>
 <p>Bauer, Greta &amp; Braimoh, Jessica &amp; Scheim, Ayden &amp; Dharma, Christoffer. (2017). Transgender-inclusive measures of sex/gender for population surveys: Mixed-methods evaluation and recommendations. PLoS ONE. 12.</p>
 </div>
 <div id="contributing-to-this-package" class="section level1">
 <h1 class="hasAnchor">
 <a href="#contributing-to-this-package" class="anchor"></a>Contributing to this package</h1>
-<p>This package is a reflection of cultural context of the package contributors we welcome issues and pull requests to make the package more inclusive and/or suitable for a broader range of cultural contexts. We particularly welcome addition of non-English dictionaries or of other genderdiverse responses to the broad and narrow dictionaries.</p>
+<p>This package is a reflection of cultural context of the package contributors we welcome issues and pull requests to make the package more inclusive and/or suitable for a broad_ener range of cultural contexts. We particularly welcome addition of non-English dictionaries or of other genderdiverse responses to the broad_en and narrow dictionaries.</p>
 </div>
 <div id="acknowledgement-of-country" class="section level1">
 <h1 class="hasAnchor">

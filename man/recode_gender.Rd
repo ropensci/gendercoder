@@ -4,13 +4,17 @@
 \alias{recode_gender}
 \title{recode_gender}
 \usage{
-recode_gender(gender = gender, dictionary = gendercoder::broad, fill = FALSE)
+recode_gender(
+  gender = gender,
+  dictionary = gendercoder::broad_en,
+  fill = FALSE
+)
 }
 \arguments{
 \item{gender}{a character vector of gender responses for recoding}
 
 \item{dictionary}{a list that the contains gender responses and their
-replacement values. A built-in dictionary \code{broad} is used by
+replacement values. A built-in dictionary \code{broad_en} is used by
 default if an alternative dictionary is not supplied.}
 
 \item{fill}{logical indicating if gender responses that are not found in
@@ -34,7 +38,7 @@ df <- data.frame(
 )
 
 df \%>\% mutate(recoded_gender = recode_gender(gender,
-  dictionary = broad,
+  dictionary = broad_en,
   fill = TRUE
 ))
 }

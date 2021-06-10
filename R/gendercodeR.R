@@ -11,7 +11,7 @@ NULL
 
 #' sample
 #'
-#' A sample data.frame of free text gender for testing and demonstration
+#' A sample data.frame of free text gender in English for testing and demonstration
 #'
 #' @name sample
 #' @docType data
@@ -19,7 +19,9 @@ NULL
 
 #' broad
 #'
-#' A broad dictionary for the recode_gender function in list form
+#' This dictionary is deprecated, please use broad_en instead.
+#'
+#' A broad English dictionary for the recode_gender function in list form
 #'
 #' @name broad
 #' @docType data
@@ -27,8 +29,26 @@ NULL
 
 #' narrow
 #'
-#' A narrow dictionary for the recode_gender function in list form
+#' This dictionary is deprecated, please use narrow_en instead.
+#'
+#' A narrow English dictionary for the recode_gender function in list form
 #'
 #' @name narrow
+#' @docType data
+NULL
+
+#' broad_en
+#'
+#' A broad English dictionary for the recode_gender function in list form
+#'
+#' @name broad_en
+#' @docType data
+NULL
+
+#' narrow_en
+#'
+#' A narrow English dictionary for the recode_gender function in list form
+#'
+#' @name narrow_en
 #' @docType data
 NULL
