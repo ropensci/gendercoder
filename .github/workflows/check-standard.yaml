@@ -5,10 +5,12 @@ on:
     branches:
       - main
       - master
+      - dev
   pull_request:
     branches:
       - main
       - master
+      - dev
 
 name: R-CMD-check
 
@@ -44,6 +46,7 @@ jobs:
       - name: Query dependencies
         run: |
           install.packages('remotes')
+          install.packages('rcmdcheck')
           saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
           writeLines(sprintf("R-%i.%i", getRversion()$major, getRversion()$minor), ".github/R-version")
         shell: Rscript {0}
