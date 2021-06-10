@@ -75,10 +75,18 @@ jobs:
           Rscript
           -e "if (!shinytest::dependenciesInstalled()) shinytest::installDependencies()"
 
-      - name: Run tests
-        shell: Rscript {0}
+      - name: Check
+        env:
+          _R_CHECK_CRAN_INCOMING_: false
         run: |
-          shiny::runTests(".", assert = TRUE)
+          options(crayon.enabled = TRUE)
+          rcmdcheck::rcmdcheck(args = c("--no-manual", "--as-cran"), error_on = "warning", check_dir = "check")
+        shell: Rscript {0}
+
+      - name: Show testthat output
+        if: always()
+        run: find check -name 'testthat.Rout*' -exec cat '{}' \; || true
+        shell: bash
 
       - name: Upload test results
         if: failure()
