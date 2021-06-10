@@ -7,7 +7,7 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{ scivrs_app() }
+#' \dontrun{ gendercoder_app() }
 #'
 gendercoder_app <- function(...) {
   pckgs <- c("shiny", "shinydashboard", "readr",

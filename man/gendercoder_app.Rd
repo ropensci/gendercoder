@@ -13,6 +13,6 @@ gendercoder_app(...)
 Code your data interactively in a shiny app that runs locally in RStudio or your web browser (recommended). It does not connect to the web at all, so your data are completely private.
 }
 \examples{
-\dontrun{ scivrs_app() }
+\dontrun{ gendercoder_app() }
 
 }
