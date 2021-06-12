@@ -55,7 +55,10 @@ shinyServer(function(input, output) {
       }
     )
 
-    output$out1 <-  renderDT({df_out()})
+    output$out1 <-  renderDT({
+      df_out() %>%
+        dplyr::select(input$vars, gender_coded)
+      })
 
 
 })
