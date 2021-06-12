@@ -38,34 +38,19 @@ recode_gender <- function(gender = gender,
                           dictionary = gendercoder::broad,
                           retain_unmatched = FALSE) {
 
-  if (class(dictionary) != "list") {
-    stop(paste({{ dictionary }}, "is not a list"))
-  }
-
-  dictionary <- purrr::map(dictionary, tolower)
+  dictionary <- tolower(dictionary)
   names(dictionary) <- tolower(names(dictionary))
 
   # remove duplicates (if any) from dictionary
-  dictionary <- (dictionary[!duplicated(names(dictionary), fromLast = TRUE)])
+  dictionary <- dictionary[!duplicated(names(dictionary), fromLast = TRUE)]
 
   # match using supplied dictionary
-  recoded_list <- dictionary[tolower(trimws(gender))]
+  recoded<- dictionary[tolower(trimws(gender))]
 
   # replace missing values with inputs
-  if (retain_unmatched == TRUE & length(gender[which_is_na(recoded_list)]) > 0) {
-    message(
-      paste(
-        length(gender[which_is_na(recoded_list)]),
-        "results not matched from the dictionary have been filled",
-        "with the user inputted values"
-      )
-    )
-    recoded_list[which_is_na(recoded_list)] <- gender[which_is_na(recoded_list)]
-  }
-  if (retain_unmatched == FALSE) {
-    recoded_list[which_is_na(recoded_list)] <- NA
-  }
+  if (retain_unmatched == TRUE){
+      recoded[is.na(recoded)] <-  gender[is.na(recoded)]
+}
+    unname( recoded )
 
-  # return the values of the named list
-  purrr::flatten_chr(recoded_list)
 }

@@ -148,9 +148,9 @@ dictionary. The custom dictionary should be a list in the following
 format. 
 
 ```{r}
-# name of the list element is the user input value and the list element is the 
+# name of the vector element is the user input value and the vector element is the 
 # replacement value corresponding to that name as a lower case string.
-custom_dictionary <- list(
+custom_dictionary <- c(
   masculino = "male",
   hombre = "male",
   mujer = "female",
@@ -161,7 +161,7 @@ str(custom_dictionary)
 ```
 
 Custom dictionaries can be used in place of an inbuilt dictionary or can 
-supplement the inbuilt dictionary by providing a vector of lists to the 
+supplement the inbuilt dictionary by providing a vector of vectors to the 
 dictionary argument. Where the lists contain duplicated elements, the last 
 version of the duplicated value will be used for recoding. This allows you to 
 use the inbuilt dictionary but change the coding of one or more responses from 

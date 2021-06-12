@@ -19,7 +19,7 @@ NULL
 
 #' broad
 #'
-#' A broad dictionary for the recode_gender function in list form
+#' A broad dictionary for the recode_gender function in named vector form
 #'
 #' @name broad
 #' @docType data
@@ -27,7 +27,7 @@ NULL
 
 #' narrow
 #'
-#' A narrow dictionary for the recode_gender function in list form
+#' A narrow dictionary for the recode_gender function in named vector form
 #'
 #' @name narrow
 #' @docType data
