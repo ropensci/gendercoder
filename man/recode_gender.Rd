@@ -37,7 +37,7 @@ df <- data.frame(
   age = c(34L, 37L, 77L, 52L, 68L, 67L, 83L)
 )
 
-df \%>\% mutate(recoded_gender = recode_gender(gender,
+df$recoded_gender <-  recode_gender(df$gender,
   dictionary = broad,
   retain_unmatched = TRUE
 ))
