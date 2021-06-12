@@ -26,8 +26,8 @@ shinyServer(function(input, output) {
 
     df_out <-  reactive({
 
-        if(input$dictionary == "broad") {df_out <- df() %>% bind_cols(gender_coded = recode_gender(df()[[input$vars]], broad))}
-        if(input$dictionary == "narrow") {df_out <- df() %>% bind_cols(gender_coded = recode_gender(df()[[input$vars]], narrow))}
+        if(input$dictionary == "broad") {df_out  <- bind_cols(df(), gender_coded = recode_gender(df()[[input$vars]], broad))}
+        if(input$dictionary == "narrow") {df_out <- bind_cols(df(), gender_coded = recode_gender(df()[[input$vars]], narrow))}
 
         df_out
 
@@ -57,8 +57,7 @@ shinyServer(function(input, output) {
     )
 
     output$out1 <-  renderDT({
-      df_out() %>%
-        dplyr::select(input$vars, gender_coded)
+      dplyr::select(df_out(), input$vars, gender_coded)
       })
 
 
