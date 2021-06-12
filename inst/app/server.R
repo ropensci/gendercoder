@@ -17,6 +17,7 @@ shinyServer(function(input, output) {
         if (grepl(".sav$", inFile$name)) df <- read_sav(inFile$datapath)
         if (grepl(".dta$", inFile$name)) df <- read_dta(inFile$datapath)
         if (grepl(".csv$", inFile$name)) df <- read_csv(inFile$datapath)
+        if (grepl(".rds$", inFile$name)) df <- read_rds(inFile$datapath)
 
         df
 
