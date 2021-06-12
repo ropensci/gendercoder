@@ -48,7 +48,15 @@ recode_gender <- function(gender = gender,
   recoded<- dictionary[tolower(trimws(gender))]
 
   # replace missing values with inputs
-  if (retain_unmatched == TRUE){
+  if (retain_unmatched == TRUE & length(gender[which_is_na(recoded)]) > 0) {
+      message(
+        paste(
+          length(gender[which_is_na(recoded)]),
+          "results not matched from the dictionary have been filled",
+          "with the user inputted values"
+        )
+      )
+
       recoded[is.na(recoded)] <-  gender[is.na(recoded)]
 }
     unname( recoded )
