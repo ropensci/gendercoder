@@ -188,11 +188,11 @@ sample %>%
   knitr::kable(caption = "All responses not classified by the combined dictionaries")
 ```
 
-### fill
+### retain_unmatched
 
-The `fill` argument is used to determine the handling for recoding of values
+The `retain_unmatched` argument is used to determine the handling for recoding of values
 not contained in the dictionary. By default, unmatched values are coded as NA. 
-`fill = TRUE` will fill unmatched responses with the participant provided 
+`retain_unmatched = TRUE` will fill unmatched responses with the participant provided 
 response. 
 
 ```{r}
@@ -200,11 +200,11 @@ sample %>%
   mutate(recoded_gender = recode_gender(gender = Gender, 
                                         dictionary = c(narrow, 
                                                        custom_dictionary),
-                                        fill = TRUE)) %>% 
+                                        retain_unmatched = TRUE)) %>% 
   group_by(recoded_gender) %>% 
   summarise(count = n()) %>% 
   arrange(-count) %>% 
-  knitr::kable(caption = "Summary of gender categories after use of the combined dictionary and `fill = TRUE`")
+  knitr::kable(caption = "Summary of gender categories after use of the combined dictionary and `retain_unmatched = TRUE`")
 ```
 
 # A disclaimer on handling gender responses

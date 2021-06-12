@@ -43,12 +43,12 @@ categories, “male”, “female”, and “sex and gender diverse”.
 
 The core function, `gender_recode()`, takes 3 arguments,
 
--   `gender` the vector of free-text gender,
+  - `gender` the vector of free-text gender,
 
--   `dictionary` the preferred dictionary, and
+  - `dictionary` the preferred dictionary, and
 
--   `fill` a logical indicating whether original values should be
-    carried over if there is no match.
+  - `retain_unmatched` a logical indicating whether original values
+    should be carried over if there is no match.
 
 Basic usage is demonstrated below.
 
@@ -56,8 +56,8 @@ Basic usage is demonstrated below.
 library(gendercoder)
 
 tibble(gender = c("male", "MALE", "mle", "I am male", "femail", "female", "enby")) %>% 
-  mutate(broad_gender  = recode_gender(gender, dictionary = broad, fill = TRUE),
-         narrow_gender = recode_gender(gender, dictionary = narrow, fill = FALSE)
+  mutate(broad_gender  = recode_gender(gender, dictionary = broad, retain_unmatched = TRUE),
+         narrow_gender = recode_gender(gender, dictionary = narrow, retain_unmatched = FALSE)
   )
 #> 1 results not matched from the dictionary have been filled with the user inputted values
 #> # A tibble: 7 x 3

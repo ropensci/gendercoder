@@ -11,7 +11,7 @@ which_is_na <- function(x) {
 #' @param dictionary a list that contains gender responses and their
 #'   replacement values. A built-in dictionary \code{broad} is used by
 #'   default if an alternative dictionary is not supplied.
-#' @param fill logical indicating if gender responses that are not found in
+#' @param retain_unmatched logical indicating if gender responses that are not found in
 #'   dictionary should be filled with the uncleaned values during recoding
 #'
 #' @return a character vector of recoded genders
@@ -28,7 +28,7 @@ which_is_na <- function(x) {
 #'
 #' df %>% mutate(recoded_gender = recode_gender(gender,
 #'   dictionary = broad,
-#'   fill = TRUE
+#'   retain_unmatched = TRUE
 #' ))
 #' }
 #'
@@ -36,7 +36,7 @@ which_is_na <- function(x) {
 
 recode_gender <- function(gender = gender,
                           dictionary = gendercoder::broad,
-                          fill = FALSE) {
+                          retain_unmatched = FALSE) {
 
   if (class(dictionary) != "list") {
     stop(paste({{ dictionary }}, "is not a list"))
@@ -52,7 +52,7 @@ recode_gender <- function(gender = gender,
   recoded_list <- dictionary[tolower(trimws(gender))]
 
   # replace missing values with inputs
-  if (fill == TRUE & length(gender[which_is_na(recoded_list)]) > 0) {
+  if (retain_unmatched == TRUE & length(gender[which_is_na(recoded_list)]) > 0) {
     message(
       paste(
         length(gender[which_is_na(recoded_list)]),
@@ -62,7 +62,7 @@ recode_gender <- function(gender = gender,
     )
     recoded_list[which_is_na(recoded_list)] <- gender[which_is_na(recoded_list)]
   }
-  if (fill == FALSE) {
+  if (retain_unmatched == FALSE) {
     recoded_list[which_is_na(recoded_list)] <- NA
   }
 
