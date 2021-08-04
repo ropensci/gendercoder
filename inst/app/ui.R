@@ -19,9 +19,10 @@ dashboardPage(
 
         # Control
         radioButtons("dictionary", "Coding dictionary:",
-                     choiceValues = c("broad", 'narrow'),
-                     choiceNames = c("Broad", 'Narrow'),
-                     selected = "broad"),
+                     choiceValues = c("broad_en", 'narrow_en'),
+                     choiceNames = c("Broad - English", 'Narrow - English'),
+                     selected = "broad_en"),
+
 
         # Variable selection:
         htmlOutput("varselect"),

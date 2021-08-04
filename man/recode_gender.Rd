@@ -6,15 +6,25 @@
 \usage{
 recode_gender(
   gender = gender,
+<<<<<<< HEAD
+  dictionary = gendercoder::broad_en,
+  fill = FALSE
+=======
   dictionary = gendercoder::broad,
   retain_unmatched = FALSE
+>>>>>>> dev
 )
 }
 \arguments{
 \item{gender}{a character vector of gender responses for recoding}
 
+<<<<<<< HEAD
+\item{dictionary}{a list that the contains gender responses and their
+replacement values. A built-in dictionary \code{broad_en} is used by
+=======
 \item{dictionary}{a list that contains gender responses and their
 replacement values. A built-in dictionary \code{broad} is used by
+>>>>>>> dev
 default if an alternative dictionary is not supplied.}
 
 \item{retain_unmatched}{logical indicating if gender responses that are not found in
@@ -37,9 +47,15 @@ df <- data.frame(
   age = c(34L, 37L, 77L, 52L, 68L, 67L, 83L)
 )
 
+<<<<<<< HEAD
+df \%>\% mutate(recoded_gender = recode_gender(gender,
+  dictionary = broad_en,
+  fill = TRUE
+=======
 df$recoded_gender <-  recode_gender(df$gender,
   dictionary = broad,
   retain_unmatched = TRUE
+>>>>>>> dev
 ))
 }
 

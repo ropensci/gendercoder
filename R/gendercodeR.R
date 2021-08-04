@@ -11,24 +11,24 @@ NULL
 
 #' sample
 #'
-#' A sample data.frame of free text gender for testing and demonstration
+#' A sample data.frame of free text gender in English for testing and demonstration
 #'
 #' @name sample
 #' @docType data
 NULL
 
-#' broad
+#' broad_en
 #'
-#' A broad dictionary for the recode_gender function in named vector form
+#' A broad English dictionary for the recode_gender function in list form
 #'
-#' @name broad
+#' @name broad_en
 #' @docType data
 NULL
 
-#' narrow
+#' narrow_en
 #'
-#' A narrow dictionary for the recode_gender function in named vector form
+#' A narrow English dictionary for the recode_gender function in list form
 #'
-#' @name narrow
+#' @name narrow_en
 #' @docType data
 NULL

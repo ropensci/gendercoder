@@ -1,3 +1,4 @@
+
 which_is_na <- function(x) {
   which(is.na(names(x)))
 }
@@ -8,8 +9,8 @@ which_is_na <- function(x) {
 #' an inbuilt or custom dictionary.
 #'
 #' @param gender a character vector of gender responses for recoding
-#' @param dictionary a list that contains gender responses and their
-#'   replacement values. A built-in dictionary \code{broad} is used by
+#' @param dictionary a list that the contains gender responses and their
+#'   replacement values. A built-in dictionary \code{broad_en} is used by
 #'   default if an alternative dictionary is not supplied.
 #' @param retain_unmatched logical indicating if gender responses that are not found in
 #'   dictionary should be filled with the uncleaned values during recoding
@@ -26,8 +27,8 @@ which_is_na <- function(x) {
 #'   age = c(34L, 37L, 77L, 52L, 68L, 67L, 83L)
 #' )
 #'
-#' df$recoded_gender <-  recode_gender(df$gender,
-#'   dictionary = broad,
+#' df %>% mutate(recoded_gender = recode_gender(gender,
+#'   dictionary = broad_en,
 #'   retain_unmatched = TRUE
 #' ))
 #' }
@@ -35,8 +36,12 @@ which_is_na <- function(x) {
 #' @export recode_gender
 
 recode_gender <- function(gender = gender,
-                          dictionary = gendercoder::broad,
+                          dictionary = gendercoder::broad_en,
                           retain_unmatched = FALSE) {
+
+  if (class(dictionary) != "character") {
+    stop(paste({{ dictionary }}, "is not a character vector"))
+  }
 
   dictionary <- tolower(dictionary)
   names(dictionary) <- tolower(names(dictionary))
@@ -48,11 +53,11 @@ recode_gender <- function(gender = gender,
   recoded<- dictionary[tolower(trimws(gender))]
 
   # replace missing values with inputs
-  if (retain_unmatched == TRUE & length(gender[which_is_na(recoded)]) > 0) {
+  if (retain_unmatched == TRUE & length(gender[gendercoder:::which_is_na(recoded)]) > 0) {
       message(
         paste(
-          length(gender[which_is_na(recoded)]),
-          "results not matched from the dictionary have been filled",
+         # length(gender[gendercoder:::which_is_na(recoded)]),
+          "Results not matched from the dictionary have been filled",
           "with the user inputted values"
         )
       )
