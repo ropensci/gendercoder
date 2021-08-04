@@ -5,8 +5,12 @@
 \alias{narrow}
 \title{narrow}
 \description{
+<<<<<<< HEAD
 This dictionary is deprecated, please use narrow_en instead.
 }
 \details{
 A narrow English dictionary for the recode_gender function in list form
+=======
+A narrow dictionary for the recode_gender function in named vector form
+>>>>>>> dev
 }

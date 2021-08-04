@@ -5,8 +5,12 @@
 \alias{broad}
 \title{broad}
 \description{
+<<<<<<< HEAD
 This dictionary is deprecated, please use broad_en instead.
 }
 \details{
 A broad English dictionary for the recode_gender function in list form
+=======
+A broad dictionary for the recode_gender function in named vector form
+>>>>>>> dev
 }

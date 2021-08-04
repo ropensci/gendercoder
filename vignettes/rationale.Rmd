@@ -10,7 +10,7 @@ vignette: >
 
 # gendercoder
 
-The goal of gendercoder is to allow simple re-coding of free-text gender responses.
+The goal of gendercoder is to allow simple recoding of free-text gender responses.
 
 ## Installation
 
@@ -148,9 +148,9 @@ dictionary. The custom dictionary should be a list in the following
 format. 
 
 ```{r}
-# name of the list element is the user input value and the list element is the 
+# name of the vector element is the user input value and the vector element is the 
 # replacement value corresponding to that name as a lower case string.
-custom_dictionary <- list(
+custom_dictionary <- c(
   masculino = "male",
   hombre = "male",
   mujer = "female",
@@ -161,9 +161,9 @@ str(custom_dictionary)
 ```
 
 Custom dictionaries can be used in place of an inbuilt dictionary or can 
-supplement the inbuilt dictionary by providing a vector of lists to the 
-dictionary argument. Where the lists contain duplicated elements the last 
-version of the duplicated value will be used for re-coding. This allows you to 
+supplement the inbuilt dictionary by providing a vector of vectors to the 
+dictionary argument. Where the lists contain duplicated elements, the last 
+version of the duplicated value will be used for recoding. This allows you to 
 use the inbuilt dictionary but change the coding of one or more responses from 
 that dictionary. Here the addition of Spanish terms allows for recoding of 11 
 previously uncoded responses.
@@ -188,11 +188,11 @@ sample %>%
   knitr::kable(caption = "All responses not classified by the combined dictionaries")
 ```
 
-### fill
+### retain_unmatched
 
-The `fill` argument is used to determine the handling the re-coding of values
+The `retain_unmatched` argument is used to determine the handling for recoding of values
 not contained in the dictionary. By default, unmatched values are coded as NA. 
-`fill = TRUE` will fill unmatched responses with the participant provided 
+`retain_unmatched = TRUE` will fill unmatched responses with the participant provided 
 response. 
 
 ```{r}
@@ -200,24 +200,24 @@ sample %>%
   mutate(recoded_gender = recode_gender(gender = Gender, 
                                         dictionary = c(narrow_en, 
                                                        custom_dictionary),
-                                        fill = TRUE)) %>% 
+                                        retain_unmatched = TRUE)) %>% 
   group_by(recoded_gender) %>% 
   summarise(count = n()) %>% 
   arrange(-count) %>% 
-  knitr::kable(caption = "Summary of gender categories after use of the combined dictionary and `fill = TRUE`")
+  knitr::kable(caption = "Summary of gender categories after use of the combined dictionary and `retain_unmatched = TRUE`")
 ```
 
-# A disclaimer on gender
+# A disclaimer on handling gender responses
 
 This package attempts to remove typographical errors from free text gender data.
-The defaults that we used are specific to our context and your data may be
-different. 
+The defaults that we used are specific to our context and your data or context 
+may be different. 
 
-We offer two built-in dictionaries, board and narrow. Both are opinionated
-about how gender descriptors collapse into categories. 
+We offer two built-in dictionaries, broad and narrow. Both are necessarily 
+opinionated about how gender descriptors collapse into categories. 
 
-However, as these are culturally specific they may not be suitable for your data. 
-In particularly the narrow setting makes opinionated choices about some responses 
+However, as these are culturally specific, they may not be suitable for your data. 
+In particular the narrow option makes opinionated choices about some responses 
 that we want to acknowledge are potentially problematic. In particular,
 
 - In 'narrow_en' coding intersex responses are recoded as 'sex and gender
@@ -230,10 +230,10 @@ themselves when given these categories and in some contexts may make
 systematic errors. The broad coding dictionary attempts to avoid these
 issues as much as possible - however users can provide a custom
 dictionary to add to or overwrite our coding decisions if they feel
-this is more appropriate. We welcome people to update the inbuilt
-dictionary where desired responses are missing.
-- In both dictionaries we assume that typographical features such as spacing
-are not relevant to re-coding of the gender response (e.g. we assume that
+this is more appropriate. We welcome people to update the inbuilt dictionary 
+where desired responses are missing.
+- In both dictionaries, we assume that typographical features such as spacing
+are not relevant to recoding the gender response (e.g. we assume that
 "genderqueer" and "gender queer" are equivalent). This is unlikely to be 
 true for all contexts. 
 
@@ -249,11 +249,12 @@ Mixed-methods evaluation and recommendations. PLoS ONE. 12.
 
 # Contributing to this package
 
-This package is a reflection of cultural context of the package contributors we 
+This package is a reflection of cultural context of the package contributors; we 
 welcome issues and pull requests to make the package more inclusive and/or 
-suitable for a broader range of cultural contexts. We particularly welcome 
+suitable for a broader range of cultural contexts. We particularly welcome the
 addition of non-English dictionaries or of other genderdiverse responses to the 
 broad_en and narrow_en dictionaries.
+
 
 # Acknowledgement of Country
 

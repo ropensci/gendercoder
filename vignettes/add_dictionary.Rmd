@@ -1,0 +1,100 @@
+---
+title: "Adding to the dictionary"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Adding to the dictionary}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, echo = FALSE, message=FALSE}
+df <-  dplyr::tibble(gender = c("male", "enby", "womn", "mlae", "mann", "frau", "femme", 
+                         "homme", "nin"))
+```
+## Outline
+
+While the `gendercoder` dictionaries aim to be as comprehensive as possible, it
+is inevitable that new typos and variations will occur in wild data. Moreover, 
+at present, the dictionaries are limited to data the authors have had access to 
+which has been collected in English. As such, if you are collecting data, you 
+will at some point want to add to or create your own dictionaries (and if so, 
+we strongly encourage contributions either as [a pull request via github](https://github.com/ropenscilabs/gendercoder), or by [raising an issue](https://github.com/ropenscilabs/gendercoder/issues/new) so the team can 
+help).
+
+## Adding to the dictionary
+
+Let's say I have free-text gender data, but some of it is not in English.
+
+```{r example-data, message=FALSE}
+library(gendercoder)
+library(dplyr)
+df
+```
+
+I can create a new dictionary by creating a named vector, where the names are 
+the raw, uncoded values, and the values are the desired outputs. This can then 
+be used as the dictionary in the `recode_gender()` function.
+
+```{r new-dictionary}
+new_dictionary <- c(
+  mann = "man", 
+  frau = "woman", 
+  femme = "woman", 
+  homme = "man", 
+  nin = "man")
+
+df %>% 
+  mutate(recoded_gender = recode_gender(gender, 
+                                        dictionary = new_dictionary, 
+                                        retain_unmatched = TRUE))
+
+```
+However, as you can see using just this new dictionary leaves a number of 
+responses uncoded that the in-built dictionaries could handle. As the 
+dictionaries are just vectors, we can simply concatenate these to use both at 
+the same time. 
+
+We can do this in-line...
+
+```{r inline-augmentation}
+df %>% 
+  mutate(recoded_gender = recode_gender(gender, 
+                                        dictionary = c(broad, new_dictionary), 
+                                        retain_unmatched = TRUE))
+```
+Or otherwise we can create a new dictionary and call that later, useful if you 
+might want to save an augmented dictionary for later use or for contributing to 
+the package.
+```{r stepped-augmentation}
+broad_plus <-  c(broad, new_dictionary)
+
+df %>% 
+  mutate(recoded_gender = recode_gender(gender, 
+                                        dictionary = broad_plus, 
+                                        retain_unmatched = TRUE))
+```
+
+## Making it official
+
+Let's say you are happy with your `broad_plus` dictionary and think it should be 
+part of the `broad` dictionary in the package. All you need to do is [fork the 
+gendercoder repo](https://docs.github.com/en/get-started/quickstart/fork-a-repo), 
+[clone it to your local device](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository-from-github/cloning-a-repository), and then rename 
+your vector and use the `usethis::use_data()` function to overwrite the `broad` 
+dictionary as shown below. 
+
+```{r replacing-dictionaries, eval=FALSE}
+broad <-  broad_plus
+usethis::use_data(broad, overwrite = TRUE)
+```
+
+Once you've pushed the changes to your fork, you can [make a pull request](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork). Please tell us 
+what you're adding so we know what to look out for and how to test it.  
+

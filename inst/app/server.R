@@ -17,6 +17,7 @@ shinyServer(function(input, output) {
         if (grepl(".sav$", inFile$name)) df <- read_sav(inFile$datapath)
         if (grepl(".dta$", inFile$name)) df <- read_dta(inFile$datapath)
         if (grepl(".csv$", inFile$name)) df <- read_csv(inFile$datapath)
+        if (grepl(".rds$", inFile$name)) df <- read_rds(inFile$datapath)
 
         df
 
@@ -27,7 +28,6 @@ shinyServer(function(input, output) {
 
         if(input$dictionary == "broad_en") {df_out <- df() %>% bind_cols(gender_coded = recode_gender(df()[[input$vars]], broad_en))}
         if(input$dictionary == "narrow_en") {df_out <- df() %>% bind_cols(gender_coded = recode_gender(df()[[input$vars]], narrow_en))}
-
         df_out
 
         })
@@ -55,7 +55,9 @@ shinyServer(function(input, output) {
       }
     )
 
-    output$out1 <-  renderDT({df_out()})
+    output$out1 <-  renderDT({
+      dplyr::select(df_out(), input$vars, gender_coded)
+      })
 
 
 })

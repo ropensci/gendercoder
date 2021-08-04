@@ -17,26 +17,6 @@ NULL
 #' @docType data
 NULL
 
-#' broad
-#'
-#' This dictionary is deprecated, please use broad_en instead.
-#'
-#' A broad English dictionary for the recode_gender function in list form
-#'
-#' @name broad
-#' @docType data
-NULL
-
-#' narrow
-#'
-#' This dictionary is deprecated, please use narrow_en instead.
-#'
-#' A narrow English dictionary for the recode_gender function in list form
-#'
-#' @name narrow
-#' @docType data
-NULL
-
 #' broad_en
 #'
 #' A broad English dictionary for the recode_gender function in list form

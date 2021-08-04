@@ -11,8 +11,9 @@ dashboardPage(
                              "text/comma-separated-values,text/plain",
                              ".csv",
                              ".dta",
-                             ".sav"),
-                placeholder = ".dta, .sav, or .csv"),
+                             ".sav",
+                             ".rds"),
+                placeholder = ".dta, .sav, .rds, or .csv"),
 
 
 
@@ -21,6 +22,7 @@ dashboardPage(
                      choiceValues = c("broad_en", 'narrow_en'),
                      choiceNames = c("Broad - English", 'Narrow - English'),
                      selected = "broad_en"),
+
 
         # Variable selection:
         htmlOutput("varselect"),
