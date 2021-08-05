@@ -82,13 +82,8 @@ gendercoder::gendercoder_app()
 This package is a reflection of cultural context of the package contributors; we 
 welcome issues and pull requests to make the package more inclusive and/or 
 suitable for a broader range of cultural contexts. We particularly welcome 
-<<<<<<< HEAD
-addition of non-English dictionaries or of other genderdiverse responses to the 
-broad_en and narrow_en dictionaries.
-=======
 addition of non-English dictionaries or of other gender-diverse responses to the 
 broad and narrow dictionaries.
->>>>>>> dev
 
 ## Citation Information
 

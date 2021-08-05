@@ -43,11 +43,11 @@ categories, “man”, “woman”, “boy”, “girl”, and “sex and gender
 
 The core function, `gender_recode()`, takes 3 arguments,
 
-  - `gender` the vector of free-text gender,
+-   `gender` the vector of free-text gender,
 
-  - `dictionary` the preferred dictionary, and
+-   `dictionary` the preferred dictionary, and
 
-  - `retain_unmatched` a logical indicating whether original values
+-   `retain_unmatched` a logical indicating whether original values
     should be carried over if there is no match.
 
 Basic usage is demonstrated below.
@@ -56,15 +56,10 @@ Basic usage is demonstrated below.
 library(gendercoder)
 
 tibble(gender = c("male", "MALE", "mle", "I am male", "femail", "female", "enby")) %>% 
-<<<<<<< HEAD
-  mutate(broad_gender  = recode_gender(gender, dictionary = broad_en, fill = TRUE),
-         narrow_gender = recode_gender(gender, dictionary = narrow_en, fill = FALSE)
-=======
-  mutate(broad_gender  = recode_gender(gender, dictionary = broad, retain_unmatched = TRUE),
-         narrow_gender = recode_gender(gender, dictionary = narrow, retain_unmatched = FALSE)
->>>>>>> dev
+  mutate(broad_gender  = recode_gender(gender, dictionary = broad_en, retain_unmatched = TRUE),
+         narrow_gender = recode_gender(gender, dictionary = narrow_en, retain_unmatched = FALSE)
   )
-#> 1 results not matched from the dictionary have been filled with the user inputted values
+#> Results not matched from the dictionary have been filled with the user inputted values
 #> # A tibble: 7 x 3
 #>   gender    broad_gender narrow_gender         
 #>   <chr>     <chr>        <chr>                 
@@ -95,11 +90,7 @@ This package is a reflection of cultural context of the package
 contributors; we welcome issues and pull requests to make the package
 more inclusive and/or suitable for a broader range of cultural contexts.
 We particularly welcome addition of non-English dictionaries or of other
-<<<<<<< HEAD
-genderdiverse responses to the broad\_en and narrow\_en dictionaries.
-=======
 gender-diverse responses to the broad and narrow dictionaries.
->>>>>>> dev
 
 ## Citation Information
 

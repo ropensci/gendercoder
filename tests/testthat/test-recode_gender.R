@@ -3,8 +3,8 @@ library(gendercoder)
 
 test_that("Recodes common typos",{
           expect_match(recode_gender("enby", dictionary = broad_en, retain_unmatched = TRUE), "non-binary")
-          expect_match(recode_gender("mlae", dictionary = broad_en, retain_unmatched = TRUE), "male")
-          expect_match(recode_gender("famela", dictionary = broad_en, retain_unmatched = TRUE), "female")
+          expect_match(recode_gender("mlae", dictionary = broad_en, retain_unmatched = TRUE), "man")
+          expect_match(recode_gender("famela", dictionary = broad_en, retain_unmatched = TRUE), "woman")
           expect_match(recode_gender("enby", dictionary = narrow_en, retain_unmatched = TRUE), "sex and gender diverse")
           expect_match(recode_gender("enby", dictionary = narrow_en, retain_unmatched = FALSE), "sex and gender diverse")
 
@@ -23,7 +23,7 @@ test_that("Leaves blanks if retain_unmatched = FALSE", {
 
 test_that("Warns regarding replacement", {
   expect_message(recode_gender(c("mlae", "fish"), retain_unmatched = TRUE),
-                 regexp = "1 results not matched from the dictionary have been retain_unmatcheded with the user inputted values")
+                 regexp = "Results not matched from the dictionary have been filled with the user inputted values")
 })
 
 test_that("Input matches output length", {

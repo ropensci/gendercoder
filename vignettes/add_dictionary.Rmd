@@ -66,14 +66,14 @@ We can do this in-line...
 ```{r inline-augmentation}
 df %>% 
   mutate(recoded_gender = recode_gender(gender, 
-                                        dictionary = c(broad, new_dictionary), 
+                                        dictionary = c(broad_en, new_dictionary), 
                                         retain_unmatched = TRUE))
 ```
 Or otherwise we can create a new dictionary and call that later, useful if you 
 might want to save an augmented dictionary for later use or for contributing to 
 the package.
 ```{r stepped-augmentation}
-broad_plus <-  c(broad, new_dictionary)
+broad_plus <-  c(broad_en, new_dictionary)
 
 df %>% 
   mutate(recoded_gender = recode_gender(gender, 
@@ -91,8 +91,8 @@ your vector and use the `usethis::use_data()` function to overwrite the `broad`
 dictionary as shown below. 
 
 ```{r replacing-dictionaries, eval=FALSE}
-broad <-  broad_plus
-usethis::use_data(broad, overwrite = TRUE)
+broad_en <-  broad_plus
+usethis::use_data(broad_en, overwrite = TRUE)
 ```
 
 Once you've pushed the changes to your fork, you can [make a pull request](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork). Please tell us 

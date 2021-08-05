@@ -53,10 +53,10 @@ recode_gender <- function(gender = gender,
   recoded<- dictionary[tolower(trimws(gender))]
 
   # replace missing values with inputs
-  if (retain_unmatched == TRUE & length(gender[gendercoder:::which_is_na(recoded)]) > 0) {
+  if (retain_unmatched == TRUE & length(gender[which_is_na(recoded)]) > 0) {
       message(
         paste(
-         # length(gender[gendercoder:::which_is_na(recoded)]),
+         # length(gender[which_is_na(recoded)]),
           "Results not matched from the dictionary have been filled",
           "with the user inputted values"
         )
