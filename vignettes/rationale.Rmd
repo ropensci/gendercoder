@@ -1,14 +1,11 @@
 ---
-title: "rationale"
+title: "Introduction to gendercoder"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{rationale}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
-
-
-# gendercoder
 
 The goal of gendercoder is to allow simple recoding of free-text gender responses.
 
@@ -89,7 +86,7 @@ to a custom dictionary.
 sample %>% 
   mutate(recoded_gender = recode_gender(gender = Gender, dictionary = broad_en)) %>% 
   filter(is.na(recoded_gender)) %>% 
-  knitr::kable(caption = "All responses not classified by the inbuilt dictionary")
+  knitr::kable(caption = "All responses not classified by the built-in dictionary")
 
 ```
 
@@ -97,7 +94,7 @@ sample %>%
 
 ### dictionary
 
-The package provides two inbuilt dictionaries. The use of these is controlled 
+The package provides two built-in dictionaries. The use of these is controlled 
 using the `dictionary` argument. The first `dictionary = broad_en` provides 
 corrects spelling and standardises terms while maintaining the diversity of responses. 
 This is the default dictionary for gendercoder() as it preserves as much gender
@@ -143,7 +140,7 @@ sample %>%
   knitr::kable(caption = "Summary of gender categories after use of the *narrow* dictionary")
 ```
 
-You can also specify a custom dictionary to replace or supplement the inbuilt 
+You can also specify a custom dictionary to replace or supplement the built-in 
 dictionary. The custom dictionary should be a list in the following 
 format. 
 
@@ -151,20 +148,20 @@ format.
 # name of the vector element is the user input value and the vector element is the 
 # replacement value corresponding to that name as a lower case string.
 custom_dictionary <- c(
-  masculino = "male",
-  hombre = "male",
-  mujer = "female",
-  femenina = "female"
+  masculino = "man",
+  hombre = "man",
+  mujer = "woman",
+  femenina = "woman"
 )
 
 str(custom_dictionary)
 ```
 
-Custom dictionaries can be used in place of an inbuilt dictionary or can 
-supplement the inbuilt dictionary by providing a vector of vectors to the 
+Custom dictionaries can be used in place of a built-in dictionary or can 
+supplement the built-in dictionary by providing a vector of vectors to the 
 dictionary argument. Where the lists contain duplicated elements, the last 
 version of the duplicated value will be used for recoding. This allows you to 
-use the inbuilt dictionary but change the coding of one or more responses from 
+use the built-in dictionary but change the coding of one or more responses from 
 that dictionary. Here the addition of Spanish terms allows for recoding of 11 
 previously uncoded responses.
 
@@ -213,7 +210,7 @@ This package attempts to remove typographical errors from free text gender data.
 The defaults that we used are specific to our context and your data or context 
 may be different. 
 
-We offer two built-in dictionaries, broad and narrow. Both are necessarily 
+We offer two built-in dictionaries, broad_en and narrow_en. Both are necessarily 
 opinionated about how gender descriptors collapse into categories. 
 
 However, as these are culturally specific, they may not be suitable for your data. 
@@ -230,7 +227,7 @@ themselves when given these categories and in some contexts may make
 systematic errors. The broad coding dictionary attempts to avoid these
 issues as much as possible - however users can provide a custom
 dictionary to add to or overwrite our coding decisions if they feel
-this is more appropriate. We welcome people to update the inbuilt dictionary 
+this is more appropriate. We welcome people to update the built-in dictionary 
 where desired responses are missing.
 - In both dictionaries, we assume that typographical features such as spacing
 are not relevant to recoding the gender response (e.g. we assume that
@@ -238,7 +235,7 @@ are not relevant to recoding the gender response (e.g. we assume that
 true for all contexts. 
 
 
-The 'broad' coding separates out those who identify as trans
+The 'broad_en' coding separates out those who identify as trans
 female/male or cis female/male into separate categories it should not
 be assumed that all people who describe as male/female are cis, if you
 are assessing trans status we recommend a two part question see:

@@ -39,7 +39,7 @@ library(gendercoder)
 ## Basic use
 
 The gendercoder package permits the efficient re-coding of free-text gender 
-responses within a tidyverse pipeline. It contains two in-built English output 
+responses within a tidyverse pipeline. It contains two built-in English output 
 dictionaries, a default `broad_en` dictionary which corrects spelling and 
 standardises terms while maintaining the diversity of responses and a 
 `narrow_en` dictionary which contains fewer gender categories, "man", "woman", 

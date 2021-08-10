@@ -57,7 +57,7 @@ df %>%
 
 ```
 However, as you can see using just this new dictionary leaves a number of 
-responses uncoded that the in-built dictionaries could handle. As the 
+responses uncoded that the built-in dictionaries could handle. As the 
 dictionaries are just vectors, we can simply concatenate these to use both at 
 the same time. 
 

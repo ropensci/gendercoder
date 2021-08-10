@@ -6,7 +6,7 @@ which_is_na <- function(x) {
 #' recode_gender
 #'
 #' \code{recode_gender} matches uncleaned gender responses to cleaned list using
-#' an inbuilt or custom dictionary.
+#' an built-in or custom dictionary.
 #'
 #' @param gender a character vector of gender responses for recoding
 #' @param dictionary a list that the contains gender responses and their

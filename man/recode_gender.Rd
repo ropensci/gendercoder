@@ -25,7 +25,7 @@ a character vector of recoded genders
 }
 \description{
 \code{recode_gender} matches uncleaned gender responses to cleaned list using
-an inbuilt or custom dictionary.
+an built-in or custom dictionary.
 }
 \examples{
 

@@ -3,8 +3,8 @@
 
 #custom_dictionary <- list(
 #  apogender = "sex and gender diverse",
-#  males = "male",
-#  females = "female",
+#  males = "man",
+#  females = "woman",
 #  boi = "sex and gender diverse")
 #
 # dictionary_df <- read.csv("data.csv")
