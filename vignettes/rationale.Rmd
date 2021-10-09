@@ -2,7 +2,7 @@
 title: "Introduction to gendercoder"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{rationale}
+  %\VignetteIndexEntry{Introduction to gendercoder}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
