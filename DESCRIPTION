@@ -20,8 +20,14 @@ Authors@R: c(
   person("Mathew", "Ling", 
          role = c("aut"),
          email = "mathewtyling@gmail.com", 
-         comment = c(ORCID = "https://orcid.org/0000-0002-0940-2538"))       
-         )
+         comment = c(ORCID = "https://orcid.org/0000-0002-0940-2538")),       
+  person("Julia", "Silge", 
+         role = "rev",
+    comment = "Julia reviewed the package (v. 0.0.0.9000) for rOpenSci, see <https://github.com/ropensci/software-review/issues/435>"),
+  person("Elin", "Waring", 
+         role = "rev",
+  comment = "Elin reviewed the package (v. 0.0.0.9000) for rOpenSci, see <https://github.com/ropensci/software-review/issues/435>")
+  )
 Description: Provides functions and dictionaries for recoding of freetext gender responses into more consistent categories.
 Depends: R (>= 3.0.0)
 Maintainer: Emily Kothe <emily.kothe@deakin.edu.au>
