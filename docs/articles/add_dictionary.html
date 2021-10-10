@@ -186,10 +186,10 @@
 <div id="making-it-official" class="section level2">
 <h2 class="hasAnchor">
 <a href="#making-it-official" class="anchor"></a>Making it official</h2>
-<p>Let’s say you are happy with your <code>broad_plus</code> dictionary and think it should be part of the <code>broad</code> dictionary in the package. All you need to do is <a href="https://docs.github.com/en/get-started/quickstart/fork-a-repo">fork the gendercoder repo</a>, <a href="https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository-from-github/cloning-a-repository">clone it to your local device</a>, and then rename your vector and use the <code>usethis::use_data()</code> function to overwrite the <code>broad</code> dictionary as shown below.</p>
+<p>Let’s say you are happy with your <code>broad_plus</code> dictionary and think it should be part of the <code>broad</code> dictionary in the package. All you need to do is <a href="https://docs.github.com/en/get-started/quickstart/fork-a-repo">fork the gendercoder repo</a>, <a href="https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository-from-github/cloning-a-repository">clone it to your local device</a>, and then rename your vector and use the <code><a href="https://usethis.r-lib.org/reference/use_data.html">usethis::use_data()</a></code> function to overwrite the <code>broad</code> dictionary as shown below.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">broad_en</span> <span class="op">&lt;-</span>  <span class="va">broad_plus</span>
-<span class="fu">usethis</span><span class="fu">::</span><span class="fu">use_data</span><span class="op">(</span><span class="va">broad_en</span>, overwrite <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_data.html">use_data</a></span><span class="op">(</span><span class="va">broad_en</span>, overwrite <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <p>Once you’ve pushed the changes to your fork, you can <a href="https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork">make a pull request</a>. Please tell us what you’re adding so we know what to look out for and how to test it.</p>
 </div>
   </div>

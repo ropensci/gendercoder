@@ -34,22 +34,15 @@ Maintainer: Emily Kothe <emily.kothe@deakin.edu.au>
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.1
-Imports: 
-    purrr
+RoxygenNote: 7.1.2
 Suggests: 
     testthat (>= 2.1.0),
-    shinytest,
     knitr,
     rmarkdown,
     dplyr,
     covr,
-    shiny,
-    shinydashboard,
     readr,
-    rlang,
-    DT,
-    haven
+    rlang
 VignetteBuilder: knitr
 URL: https://github.com/ropenscilabs/gendercoder
 BugReports: https://github.com/ropenscilabs/gendercoder/issues

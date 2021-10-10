@@ -98,7 +98,7 @@
 <div id="basic-use" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basic-use" class="anchor"></a>Basic use</h2>
-<p>The gendercoder package permits the efficient re-coding of free-text gender responses within a tidyverse pipeline. It contains two in-built English output dictionaries, a default <code>broad_en</code> dictionary which corrects spelling and standardises terms while maintaining the diversity of responses and a <code>narrow_en</code> dictionary which contains fewer gender categories, “man”, “woman”, “boy”, “girl”, and “sex and gender diverse”.</p>
+<p>The gendercoder package permits the efficient re-coding of free-text gender responses within a tidyverse pipeline. It contains two built-in English output dictionaries, a default <code>broad_en</code> dictionary which corrects spelling and standardises terms while maintaining the diversity of responses and a <code>narrow_en</code> dictionary which contains fewer gender categories, “man”, “woman”, “boy”, “girl”, and “sex and gender diverse”.</p>
 <p>The core function, <code>gender_recode()</code>, takes 3 arguments,</p>
 <ul>
 <li><p><code>gender</code> the vector of free-text gender,</p></li>
@@ -124,11 +124,6 @@
 <span class="co">#&gt; 5 femail    woman        woman                 </span>
 <span class="co">#&gt; 6 female    woman        woman                 </span>
 <span class="co">#&gt; 7 enby      non-binary   sex and gender diverse</span></code></pre></div>
-<p>The package now also contains a shiny app for use of the <code>gender_recode()</code> function by GUI. The app takes data in <code>.dta</code>, <code>.csv</code>, and <code>.sav</code> formats.</p>
-<p>To use the app, call the <code><a href="reference/gendercoder_app.html">gendercoder_app()</a></code> function.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">gendercoder</span><span class="fu">::</span><span class="fu"><a href="reference/gendercoder_app.html">gendercoder_app</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<p><img src="reference/figures/UI.png"></p>
 </div>
 <div id="contributing-to-this-package" class="section level2">
 <h2 class="hasAnchor">

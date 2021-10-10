@@ -35,7 +35,7 @@ library(gendercoder)
 ## Basic use
 
 The gendercoder package permits the efficient re-coding of free-text
-gender responses within a tidyverse pipeline. It contains two in-built
+gender responses within a tidyverse pipeline. It contains two built-in
 English output dictionaries, a default `broad_en` dictionary which
 corrects spelling and standardises terms while maintaining the diversity
 of responses and a `narrow_en` dictionary which contains fewer gender
@@ -71,18 +71,6 @@ tibble(gender = c("male", "MALE", "mle", "I am male", "femail", "female", "enby"
 #> 6 female    woman        woman                 
 #> 7 enby      non-binary   sex and gender diverse
 ```
-
-The package now also contains a shiny app for use of the
-`gender_recode()` function by GUI. The app takes data in `.dta`, `.csv`,
-and `.sav` formats.
-
-To use the app, call the `gendercoder_app()` function.
-
-``` r
-gendercoder::gendercoder_app()
-```
-
-<img src="man/figures/UI.png">
 
 ## Contributing to this package
 
