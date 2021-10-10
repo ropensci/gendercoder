@@ -72,6 +72,25 @@ tibble(gender = c("male", "MALE", "mle", "I am male", "femail", "female", "enby"
 #> 7 enby      non-binary   sex and gender diverse
 ```
 
+The package does not need to be used as part of a tidyverse pipeline:
+
+``` r
+df <- tibble(gender = c("male", "MALE", "mle", "I am male", "femail", "female", "enby")) 
+
+df$gender_broad <- recode_gender(df$gender, dictionary = broad_en)
+df
+#> # A tibble: 7 x 2
+#>   gender    gender_broad
+#>   <chr>     <chr>       
+#> 1 male      man         
+#> 2 MALE      man         
+#> 3 mle       man         
+#> 4 I am male <NA>        
+#> 5 femail    woman       
+#> 6 female    woman       
+#> 7 enby      non-binary
+```
+
 ## Contributing to this package
 
 This package is a reflection of cultural context of the package

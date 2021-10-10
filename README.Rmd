@@ -66,6 +66,16 @@ tibble(gender = c("male", "MALE", "mle", "I am male", "femail", "female", "enby"
   
 ```
 
+The package does not need to be used as part of a tidyverse pipeline:
+
+```{r}
+df <- tibble(gender = c("male", "MALE", "mle", "I am male", "femail", "female", "enby")) 
+
+df$gender_broad <- recode_gender(df$gender, dictionary = broad_en)
+df
+```
+
+
 ## Contributing to this package
 
 This package is a reflection of cultural context of the package contributors; we 
