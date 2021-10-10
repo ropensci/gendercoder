@@ -1,14 +1,11 @@
 ---
-title: "rationale"
+title: "Introduction to gendercoder"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{rationale}
+  %\VignetteIndexEntry{Introduction to gendercoder}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
-
-
-# gendercoder
 
 The goal of gendercoder is to allow simple recoding of free-text gender responses.
 
@@ -66,16 +63,16 @@ into pre-defined response categories.
 ```{r}
 sample %>% 
   head(10) %>% 
-  mutate(recoded_gender = recode_gender(gender = Gender, dictionary = broad)) %>% 
-  knitr::kable(caption = "The broad dictionary applied to `head(sample)`")
+  mutate(recoded_gender = recode_gender(gender = Gender, dictionary = broad_en)) %>% 
+  knitr::kable(caption = "The broad_en dictionary applied to `head(sample)`")
 
 sample %>% 
-  mutate(recoded_gender = recode_gender(gender = Gender, dictionary = broad)) %>% 
+  mutate(recoded_gender = recode_gender(gender = Gender, dictionary = broad_en)) %>% 
   filter(!is.na(recoded_gender)) %>% 
   group_by(recoded_gender) %>% 
   summarise(count = n()) %>% 
   arrange(-count) %>% 
-  knitr::kable(caption = "Summary of gender categories after use of the *broad* dictionary")
+  knitr::kable(caption = "Summary of gender categories after use of the *broad_en* dictionary")
 
 ```
 
@@ -87,9 +84,9 @@ to a custom dictionary.
 ```{r}
 
 sample %>% 
-  mutate(recoded_gender = recode_gender(gender = Gender, dictionary = broad)) %>% 
+  mutate(recoded_gender = recode_gender(gender = Gender, dictionary = broad_en)) %>% 
   filter(is.na(recoded_gender)) %>% 
-  knitr::kable(caption = "All responses not classified by the inbuilt dictionary")
+  knitr::kable(caption = "All responses not classified by the built-in dictionary")
 
 ```
 
@@ -97,24 +94,24 @@ sample %>%
 
 ### dictionary
 
-The package provides two inbuilt dictionaries. The use of these is controlled 
-using the `dictionary` argument. The first `dictionary = broad` provides 
+The package provides two built-in dictionaries. The use of these is controlled 
+using the `dictionary` argument. The first `dictionary = broad_en` provides 
 corrects spelling and standardises terms while maintaining the diversity of responses. 
 This is the default dictionary for gendercoder() as it preserves as much gender
 diversity as possible. 
 
 However in some cases you may wish to collapse gender into a smaller set of 
-categories by using the `narrow` dictionary (`dictionary = narrow`). This 
-dictionary contains only three gender categories, "male", "female", and 
-"sex and gender diverse". 
+categories by using the `narrow_en` dictionary (`dictionary = narrow_en`). This 
+dictionary contains fewer gender categories, "man", "woman", 
+"boy", "girl", and "sex and gender diverse". 
 
-The "male" category includes all participants who indicate that they are
+The "man" category includes all participants who indicate that they are
 
 - male
 - trans male  (including female to male transgender respondents)
 - cis male
 
-The "female" category includes all participants who indicate that they are
+The "woman" category includes all participants who indicate that they are
 
 - female
 - trans female (including male to female transgender respondents)
@@ -132,39 +129,39 @@ that they are
 ```{r} 
 sample %>% 
   head(10) %>% 
-  mutate(recoded_gender = recode_gender(gender = Gender, dictionary = narrow)) %>% 
+  mutate(recoded_gender = recode_gender(gender = Gender, dictionary = narrow_en)) %>% 
   knitr::kable(caption = "The narrow dictionary applied to `head(sample)`")
 
 sample %>% 
-  mutate(recoded_gender = recode_gender(gender = Gender, dictionary = narrow)) %>% 
+  mutate(recoded_gender = recode_gender(gender = Gender, dictionary = narrow_en)) %>% 
   group_by(recoded_gender) %>% 
   summarise(count = n()) %>% 
   arrange(-count) %>% 
   knitr::kable(caption = "Summary of gender categories after use of the *narrow* dictionary")
 ```
 
-You can also specify a custom dictionary to replace or supplement the inbuilt 
+You can also specify a custom dictionary to replace or supplement the built-in 
 dictionary. The custom dictionary should be a list in the following 
 format. 
 
 ```{r}
-# name of the list element is the user input value and the list element is the 
+# name of the vector element is the user input value and the vector element is the 
 # replacement value corresponding to that name as a lower case string.
-custom_dictionary <- list(
-  masculino = "male",
-  hombre = "male",
-  mujer = "female",
-  femenina = "female"
+custom_dictionary <- c(
+  masculino = "man",
+  hombre = "man",
+  mujer = "woman",
+  femenina = "woman"
 )
 
 str(custom_dictionary)
 ```
 
-Custom dictionaries can be used in place of an inbuilt dictionary or can 
-supplement the inbuilt dictionary by providing a vector of lists to the 
+Custom dictionaries can be used in place of a built-in dictionary or can 
+supplement the built-in dictionary by providing a vector of vectors to the 
 dictionary argument. Where the lists contain duplicated elements, the last 
 version of the duplicated value will be used for recoding. This allows you to 
-use the inbuilt dictionary but change the coding of one or more responses from 
+use the built-in dictionary but change the coding of one or more responses from 
 that dictionary. Here the addition of Spanish terms allows for recoding of 11 
 previously uncoded responses.
 
@@ -172,7 +169,7 @@ previously uncoded responses.
 
 sample %>% 
   mutate(recoded_gender = recode_gender(gender = Gender, 
-                                        dictionary = c(narrow, 
+                                        dictionary = c(narrow_en, 
                                                        custom_dictionary))) %>% 
   group_by(recoded_gender) %>% 
   summarise(count = n()) %>% 
@@ -182,29 +179,29 @@ sample %>%
 
 sample %>% 
   mutate(recoded_gender = recode_gender(gender = Gender, 
-                                        dictionary = c(narrow, 
+                                        dictionary = c(narrow_en, 
                                                        custom_dictionary))) %>% 
   filter(is.na(recoded_gender)) %>% 
   knitr::kable(caption = "All responses not classified by the combined dictionaries")
 ```
 
-### fill
+### retain_unmatched
 
-The `fill` argument is used to determine the handling for recoding of values
+The `retain_unmatched` argument is used to determine the handling for recoding of values
 not contained in the dictionary. By default, unmatched values are coded as NA. 
-`fill = TRUE` will fill unmatched responses with the participant provided 
+`retain_unmatched = TRUE` will fill unmatched responses with the participant provided 
 response. 
 
 ```{r}
 sample %>% 
   mutate(recoded_gender = recode_gender(gender = Gender, 
-                                        dictionary = c(narrow, 
+                                        dictionary = c(narrow_en, 
                                                        custom_dictionary),
-                                        fill = TRUE)) %>% 
+                                        retain_unmatched = TRUE)) %>% 
   group_by(recoded_gender) %>% 
   summarise(count = n()) %>% 
   arrange(-count) %>% 
-  knitr::kable(caption = "Summary of gender categories after use of the combined dictionary and `fill = TRUE`")
+  knitr::kable(caption = "Summary of gender categories after use of the combined dictionary and `retain_unmatched = TRUE`")
 ```
 
 # A disclaimer on handling gender responses
@@ -213,31 +210,32 @@ This package attempts to remove typographical errors from free text gender data.
 The defaults that we used are specific to our context and your data or context 
 may be different. 
 
-We offer two built-in dictionaries, broad and narrow. Both are necessarily 
+We offer two built-in dictionaries, broad_en and narrow_en. Both are necessarily 
 opinionated about how gender descriptors collapse into categories. 
 
 However, as these are culturally specific, they may not be suitable for your data. 
 In particular the narrow option makes opinionated choices about some responses 
 that we want to acknowledge are potentially problematic. In particular,
 
-- With narrow coding, intersex responses are recoded as 'sex and gender
+- In 'narrow_en' coding intersex responses are recoded as 'sex and gender
 diverse'
-- With narrow coding, responses of people who indicate they are trans plus 
-their gender are recoded as the identified gender (e.g. 'Male to Female' is 
-recoded as Female). We wish to acknowledge that this may not reflect how some 
-individuals would classify themselves when given these categories; in some 
-contexts this recoding may make systematic errors. The broad coding dictionary 
-attempts to avoid these issues as much as possible; however users can provide a 
-custom dictionary to add to or overwrite our coding decisions if they feel
-this is more appropriate. We welcome contributions to update the inbuilt
-dictionary where desired responses are missing.
+- In 'narrow_en' responses where people indicate they are trans and
+indicate their identified gender are recoded as the identified gender
+(e.g. 'Male to Female' is recoded as 'woman'). We wish to acknowledge
+that this may not reflect how some individuals would classify
+themselves when given these categories and in some contexts may make
+systematic errors. The broad coding dictionary attempts to avoid these
+issues as much as possible - however users can provide a custom
+dictionary to add to or overwrite our coding decisions if they feel
+this is more appropriate. We welcome people to update the built-in dictionary 
+where desired responses are missing.
 - In both dictionaries, we assume that typographical features such as spacing
 are not relevant to recoding the gender response (e.g. we assume that
 "genderqueer" and "gender queer" are equivalent). This is unlikely to be 
 true for all contexts. 
 
 
-The 'broad' coding separates out those who identify as trans
+The 'broad_en' coding separates out those who identify as trans
 female/male or cis female/male into separate categories it should not
 be assumed that all people who describe as male/female are cis, if you
 are assessing trans status we recommend a two part question see:
@@ -250,9 +248,10 @@ Mixed-methods evaluation and recommendations. PLoS ONE. 12.
 
 This package is a reflection of cultural context of the package contributors; we 
 welcome issues and pull requests to make the package more inclusive and/or 
-suitable for a broader range of cultural contexts. We particularly welcome 
-addition of non-English dictionaries or of other gender-diverse responses to the 
-broad and narrow dictionaries.
+suitable for a broader range of cultural contexts. We particularly welcome the
+addition of non-English dictionaries or of other genderdiverse responses to the 
+broad_en and narrow_en dictionaries.
+
 
 # Acknowledgement of Country
 

@@ -9,3 +9,4 @@
 CODE_OF_CONDUCT.md
 paper
 cran-comments.md
+^codecov\.yml$

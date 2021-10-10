@@ -1,6 +1,6 @@
 #' gendercoder: A Package for Recoding Freetext Gender Data
 #'
-#' Provides built-in dictionaries and  a function \code{recode_gender}
+#' Provides dictionaries and  a function \code{recode_gender}
 #' to allow for easy automatic coding of common variations in free text
 #' responses to the question \bold{"What is your gender?"}
 #'
@@ -11,24 +11,24 @@ NULL
 
 #' sample
 #'
-#' A sample data.frame of free text gender for testing and demonstration
+#' A sample data.frame of free text gender in English for testing and demonstration
 #'
 #' @name sample
 #' @docType data
 NULL
 
-#' broad
+#' broad_en
 #'
-#' A broad dictionary for the recode_gender function in list form
+#' A broad English dictionary for the recode_gender function in list form
 #'
-#' @name broad
+#' @name broad_en
 #' @docType data
 NULL
 
-#' narrow
+#' narrow_en
 #'
-#' A narrow dictionary for the recode_gender function in list form
+#' A narrow English dictionary for the recode_gender function in list form
 #'
-#' @name narrow
+#' @name narrow_en
 #' @docType data
 NULL

@@ -2,26 +2,28 @@ context("gender_recode")
 library(gendercoder)
 
 test_that("Recodes common typos",{
-          expect_match(recode_gender("enby", dictionary = broad, fill = TRUE), "non-binary")
-          expect_match(recode_gender("mlae", dictionary = broad, fill = TRUE), "male")
-          expect_match(recode_gender("famela", dictionary = broad, fill = TRUE), "female")
-          expect_match(recode_gender("enby", dictionary = narrow, fill = TRUE), "sex and gender diverse")
-          expect_match(recode_gender("enby", dictionary = narrow, fill = FALSE), "sex and gender diverse")
+          expect_match(recode_gender("enby", dictionary = broad_en, retain_unmatched = TRUE), "non-binary")
+          expect_match(recode_gender("mlae", dictionary = broad_en, retain_unmatched = TRUE), "man")
+          expect_match(recode_gender("famela", dictionary = broad_en, retain_unmatched = TRUE), "woman")
+          expect_match(recode_gender("enby", dictionary = narrow_en, retain_unmatched = TRUE), "sex and gender diverse")
+          expect_match(recode_gender("enby", dictionary = narrow_en, retain_unmatched = FALSE), "sex and gender diverse")
 
 })
 
 test_that("Dictionaries generate different outcomes", {
-  expect_true(recode_gender("enby", dictionary = broad, fill = TRUE) !=
-                recode_gender("enby", dictionary = narrow, fill = TRUE))
+
+  expect_true(recode_gender("enby", dictionary = broad_en, retain_unmatched = TRUE) !=
+                recode_gender("enby", dictionary = narrow_en, retain_unmatched = TRUE))
 })
 
-test_that("Leaves blanks if fill = FALSE", {
-  expect_true(is.na(recode_gender("apache", dictionary = narrow, fill = FALSE)))
+test_that("Leaves blanks if retain_unmatched = FALSE", {
+  expect_true(is.na(recode_gender("apache", dictionary = narrow_en, retain_unmatched = FALSE)))
+
 })
 
 test_that("Warns regarding replacement", {
-  expect_message(recode_gender(c("mlae", "fish"), fill = TRUE),
-                 regexp = "1 results not matched from the dictionary have been filled with the user inputted values")
+  expect_message(recode_gender(c("mlae", "fish"), retain_unmatched = TRUE),
+                 regexp = "Results not matched from the dictionary have been filled with the user inputted values")
 })
 
 test_that("Input matches output length", {
