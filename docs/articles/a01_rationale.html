@@ -54,10 +54,10 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/add_dictionary.html">Adding to the dictionary</a>
+      <a href="../articles/a01_rationale.html">Introduction to gendercoder</a>
     </li>
     <li>
-      <a href="../articles/rationale.html">Introduction to gendercoder</a>
+      <a href="../articles/a02_add_dictionary.html">Adding to the dictionary</a>
     </li>
   </ul>
 </li>
@@ -79,14 +79,14 @@
 
       
 
-      </header><script src="rationale_files/header-attrs-2.10/header-attrs.js"></script><div class="row">
+      </header><script src="a01_rationale_files/header-attrs-2.10.4/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Introduction to gendercoder</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/ropenscilabs/gendercoder/blob/master/vignettes/rationale.Rmd"><code>vignettes/rationale.Rmd</code></a></small>
-      <div class="hidden name"><code>rationale.Rmd</code></div>
+      <small class="dont-index">Source: <a href="https://github.com/ropenscilabs/gendercoder/blob/master/vignettes/a01_rationale.Rmd"><code>vignettes/a01_rationale.Rmd</code></a></small>
+      <div class="hidden name"><code>a01_rationale.Rmd</code></div>
 
     </div>
 
@@ -98,7 +98,7 @@
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>This package is not on CRAN. To use this package please run the following code:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"ropenscilabs/gendercoder"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"ropenscilabs/gendercoder"</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ropenscilabs/gendercoder">gendercoder</a></span><span class="op">)</span></code></pre></div>
 </div>
 <div id="why-would-we-do-this" class="section level2">
@@ -1142,7 +1142,7 @@
 <div id="a-disclaimer-on-handling-gender-responses" class="section level1">
 <h1 class="hasAnchor">
 <a href="#a-disclaimer-on-handling-gender-responses" class="anchor"></a>A disclaimer on handling gender responses</h1>
-<p>This package attempts to remove typographical errors from free text gender data. The defaults that we used are specific to our context and your data or context may be different.</p>
+<p>This package attempts to remove typographical errors from free text gender data. The defaults that we used are specific to our context and the time at which the package was developed and your data or context may be different.</p>
 <p>We offer two built-in dictionaries, broad_en and narrow_en. Both are necessarily opinionated about how gender descriptors collapse into categories.</p>
 <p>However, as these are culturally specific, they may not be suitable for your data. In particular the narrow option makes opinionated choices about some responses that we want to acknowledge are potentially problematic. In particular,</p>
 <ul>
@@ -1156,7 +1156,7 @@
 <div id="contributing-to-this-package" class="section level1">
 <h1 class="hasAnchor">
 <a href="#contributing-to-this-package" class="anchor"></a>Contributing to this package</h1>
-<p>This package is a reflection of cultural context of the package contributors; we welcome issues and pull requests to make the package more inclusive and/or suitable for a broader range of cultural contexts. We particularly welcome the addition of non-English dictionaries or of other genderdiverse responses to the broad_en and narrow_en dictionaries.</p>
+<p>This package is a reflection of cultural context of the package contributors. We acknowledge that understandings of gender are bound by both culture and time and are continually changing. As such, we welcome issues and pull requests to make the package more inclusive, more reflective of current understandings of gender inclusive languages and/or suitable for a broader range of cultural contexts. We particularly welcome addition of non-English dictionaries or of other gender-diverse responses to the broad_en and narrow_en dictionaries.</p>
 </div>
 <div id="acknowledgement-of-country" class="section level1">
 <h1 class="hasAnchor">
