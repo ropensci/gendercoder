@@ -17,18 +17,18 @@ NULL
 #' @docType data
 NULL
 
-#' broad_en
+#' manylevels_en
 #'
-#' A broad English dictionary for the recode_gender function in list form
+#' A English dictionary for the recode_gender function that has many levels
 #'
-#' @name broad_en
+#' @name manylevels_en
 #' @docType data
 NULL
 
-#' narrow_en
+#' fewlevels_en
 #'
-#' A narrow English dictionary for the recode_gender function in list form
+#' A English dictionary for the recode_gender function that has fewer levels
 #'
-#' @name narrow_en
+#' @name fewlevels_en
 #' @docType data
 NULL

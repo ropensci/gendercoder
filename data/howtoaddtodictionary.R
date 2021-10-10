@@ -1,16 +1,18 @@
-#library(dplyr)
-#library(gendercoder)
-
-#custom_dictionary <- list(
-#  apogender = "sex and gender diverse",
-#  males = "man",
-#  females = "woman",
-#  boi = "sex and gender diverse")
+## Supply a new dictionary as a vector
 #
-# dictionary_df <- read.csv("data.csv")
-# dictionary_from_df <- as.list(tibble::deframe(dictionary_df))
+# new_dictionary <- c(
+#   mann = "man",
+#   frau = "woman",
+#   femme = "woman",
+#   homme = "man",
+#   nin = "man")
 
-#new <- append(narrow, custom_dictionary)
-#narrow <- new
+## Append the new dictionary to an old one
+#
+# new <- append(manylevels_en, custom_dictionary)
+# manylevels_en <- new
+# usethis::use_data(manylevels_en, overwrite = TRUE)
 
-#usethis::use_data(narrow, overwrite = TRUE)
+## Create a new dictionary
+#
+# usethis::use_data(new, overwrite = TRUE)
