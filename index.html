@@ -54,10 +54,10 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="articles/add_dictionary.html">Adding to the dictionary</a>
+      <a href="articles/a01_rationale.html">Introduction to gendercoder</a>
     </li>
     <li>
-      <a href="articles/rationale.html">Introduction to gendercoder</a>
+      <a href="articles/a02_add_dictionary.html">Adding to the dictionary</a>
     </li>
   </ul>
 </li>
@@ -98,7 +98,7 @@
 <div id="basic-use" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basic-use" class="anchor"></a>Basic use</h2>
-<p>The gendercoder package permits the efficient re-coding of free-text gender responses within a tidyverse pipeline. It contains two built-in English output dictionaries, a default <code>broad_en</code> dictionary which corrects spelling and standardises terms while maintaining the diversity of responses and a <code>narrow_en</code> dictionary which contains fewer gender categories, “man”, “woman”, “boy”, “girl”, and “sex and gender diverse”.</p>
+<p>The gendercoder package permits the efficient re-coding of free-text gender responses within a tidyverse pipeline. It contains two built-in English output dictionaries, a default <code>manylevels_en</code> dictionary which corrects spelling and standardises terms while maintaining the diversity of responses and a <code>fewlevels_en</code> dictionary which contains fewer gender categories, “man”, “woman”, “boy”, “girl”, and “sex and gender diverse”.</p>
 <p>The core function, <code>gender_recode()</code>, takes 3 arguments,</p>
 <ul>
 <li><p><code>gender</code> the vector of free-text gender,</p></li>
@@ -110,20 +110,20 @@
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ropenscilabs/gendercoder">gendercoder</a></span><span class="op">)</span>
 
 <span class="fu">tibble</span><span class="op">(</span>gender <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"male"</span>, <span class="st">"MALE"</span>, <span class="st">"mle"</span>, <span class="st">"I am male"</span>, <span class="st">"femail"</span>, <span class="st">"female"</span>, <span class="st">"enby"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">mutate</span><span class="op">(</span>broad_gender  <span class="op">=</span> <span class="fu"><a href="reference/recode_gender.html">recode_gender</a></span><span class="op">(</span><span class="va">gender</span>, dictionary <span class="op">=</span> <span class="va">broad_en</span>, retain_unmatched <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,
-         narrow_gender <span class="op">=</span> <span class="fu"><a href="reference/recode_gender.html">recode_gender</a></span><span class="op">(</span><span class="va">gender</span>, dictionary <span class="op">=</span> <span class="va">narrow_en</span>, retain_unmatched <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+  <span class="fu">mutate</span><span class="op">(</span>manylevels_gender  <span class="op">=</span> <span class="fu"><a href="reference/recode_gender.html">recode_gender</a></span><span class="op">(</span><span class="va">gender</span>, dictionary <span class="op">=</span> <span class="va">manylevels_en</span>, retain_unmatched <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,
+         fewlevels_gender <span class="op">=</span> <span class="fu"><a href="reference/recode_gender.html">recode_gender</a></span><span class="op">(</span><span class="va">gender</span>, dictionary <span class="op">=</span> <span class="va">fewlevels_en</span>, retain_unmatched <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
   <span class="op">)</span>
 <span class="co">#&gt; Results not matched from the dictionary have been filled with the user inputted values</span>
 <span class="co">#&gt; # A tibble: 7 x 3</span>
-<span class="co">#&gt;   gender    broad_gender narrow_gender         </span>
-<span class="co">#&gt;   &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;                 </span>
-<span class="co">#&gt; 1 male      man          man                   </span>
-<span class="co">#&gt; 2 MALE      man          man                   </span>
-<span class="co">#&gt; 3 mle       man          man                   </span>
-<span class="co">#&gt; 4 I am male I am male    &lt;NA&gt;                  </span>
-<span class="co">#&gt; 5 femail    woman        woman                 </span>
-<span class="co">#&gt; 6 female    woman        woman                 </span>
-<span class="co">#&gt; 7 enby      non-binary   sex and gender diverse</span></code></pre></div>
+<span class="co">#&gt;   gender    manylevels_gender fewlevels_gender      </span>
+<span class="co">#&gt;   &lt;chr&gt;     &lt;chr&gt;             &lt;chr&gt;                 </span>
+<span class="co">#&gt; 1 male      man               man                   </span>
+<span class="co">#&gt; 2 MALE      man               man                   </span>
+<span class="co">#&gt; 3 mle       man               man                   </span>
+<span class="co">#&gt; 4 I am male I am male         &lt;NA&gt;                  </span>
+<span class="co">#&gt; 5 femail    woman             woman                 </span>
+<span class="co">#&gt; 6 female    woman             woman                 </span>
+<span class="co">#&gt; 7 enby      non-binary        sex and gender diverse</span></code></pre></div>
 <p>The package does not need to be used as part of a tidyverse pipeline:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="op">(</span>gender <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"male"</span>, <span class="st">"MALE"</span>, <span class="st">"mle"</span>, <span class="st">"I am male"</span>, <span class="st">"femail"</span>, <span class="st">"female"</span>, <span class="st">"enby"</span><span class="op">)</span><span class="op">)</span> 
@@ -144,7 +144,7 @@
 <div id="contributing-to-this-package" class="section level2">
 <h2 class="hasAnchor">
 <a href="#contributing-to-this-package" class="anchor"></a>Contributing to this package</h2>
-<p>This package is a reflection of cultural context of the package contributors; we welcome issues and pull requests to make the package more inclusive and/or suitable for a broader range of cultural contexts. We particularly welcome addition of non-English dictionaries or of other gender-diverse responses to the broad and narrow dictionaries.</p>
+<p>This package is a reflection of cultural context of the package contributors. We acknowledge that understandings of gender are bound by both culture and time and are continually changing. As such, we welcome issues and pull requests to make the package more inclusive, more reflective of current understandings of gender inclusive languages and/or suitable for a broader range of cultural contexts. We particularly welcome addition of non-English dictionaries or of other gender-diverse responses to the manylevels_en and fewlevels_en dictionaries.</p>
 </div>
 <div id="citation-information" class="section level2">
 <h2 class="hasAnchor">
