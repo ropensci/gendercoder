@@ -10,7 +10,7 @@
 # dictionary_df <- read.csv("data.csv")
 # dictionary_from_df <- as.list(tibble::deframe(dictionary_df))
 
-#new <- append(narrow, custom_dictionary)
-#narrow <- new
+#new <- append(fewlevels_en, custom_dictionary)
+#fewlevels_en <- new
 
-#usethis::use_data(narrow, overwrite = TRUE)
+#usethis::use_data(fewlevels_en, overwrite = TRUE)

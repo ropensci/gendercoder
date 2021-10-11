@@ -2,22 +2,22 @@ context("gender_recode")
 library(gendercoder)
 
 test_that("Recodes common typos",{
-          expect_match(recode_gender("enby", dictionary = broad_en, retain_unmatched = TRUE), "non-binary")
-          expect_match(recode_gender("mlae", dictionary = broad_en, retain_unmatched = TRUE), "man")
-          expect_match(recode_gender("famela", dictionary = broad_en, retain_unmatched = TRUE), "woman")
-          expect_match(recode_gender("enby", dictionary = narrow_en, retain_unmatched = TRUE), "sex and gender diverse")
-          expect_match(recode_gender("enby", dictionary = narrow_en, retain_unmatched = FALSE), "sex and gender diverse")
+          expect_match(recode_gender("enby", dictionary = manylevels_en, retain_unmatched = TRUE), "non-binary")
+          expect_match(recode_gender("mlae", dictionary = manylevels_en, retain_unmatched = TRUE), "man")
+          expect_match(recode_gender("famela", dictionary = manylevels_en, retain_unmatched = TRUE), "woman")
+          expect_match(recode_gender("enby", dictionary = fewlevels_en, retain_unmatched = TRUE), "sex and gender diverse")
+          expect_match(recode_gender("enby", dictionary = fewlevels_en, retain_unmatched = FALSE), "sex and gender diverse")
 
 })
 
 test_that("Dictionaries generate different outcomes", {
 
-  expect_true(recode_gender("enby", dictionary = broad_en, retain_unmatched = TRUE) !=
-                recode_gender("enby", dictionary = narrow_en, retain_unmatched = TRUE))
+  expect_true(recode_gender("enby", dictionary = manylevels_en, retain_unmatched = TRUE) !=
+                recode_gender("enby", dictionary = fewlevels_en, retain_unmatched = TRUE))
 })
 
 test_that("Leaves blanks if retain_unmatched = FALSE", {
-  expect_true(is.na(recode_gender("apache", dictionary = narrow_en, retain_unmatched = FALSE)))
+  expect_true(is.na(recode_gender("apache", dictionary = fewlevels_en, retain_unmatched = FALSE)))
 
 })
 

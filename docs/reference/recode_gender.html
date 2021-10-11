@@ -96,10 +96,10 @@ an built-in or custom dictionary." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/add_dictionary.html">Adding to the dictionary</a>
+      <a href="../articles/a01_rationale.html">Introduction to gendercoder</a>
     </li>
     <li>
-      <a href="../articles/rationale.html">Introduction to gendercoder</a>
+      <a href="../articles/a02_add_dictionary.html">Adding to the dictionary</a>
     </li>
   </ul>
 </li>
@@ -136,7 +136,7 @@ an built-in or custom dictionary.</p>
 
     <pre class="usage"><span class='fu'>recode_gender</span><span class='op'>(</span>
   gender <span class='op'>=</span> <span class='va'>gender</span>,
-  dictionary <span class='op'>=</span> <span class='fu'>gendercoder</span><span class='fu'>::</span><span class='va'><a href='broad_en.html'>broad_en</a></span>,
+  dictionary <span class='op'>=</span> <span class='fu'>gendercoder</span><span class='fu'>::</span><span class='va'><a href='manylevels_en.html'>manylevels_en</a></span>,
   retain_unmatched <span class='op'>=</span> <span class='cn'>FALSE</span>
 <span class='op'>)</span></pre>
 
@@ -150,7 +150,7 @@ an built-in or custom dictionary.</p>
     <tr>
       <th>dictionary</th>
       <td><p>a list that the contains gender responses and their
-replacement values. A built-in dictionary <code>broad_en</code> is used by
+replacement values. A built-in dictionary <code>manylevels_en</code> is used by
 default if an alternative dictionary is not supplied.</p></td>
     </tr>
     <tr>
@@ -175,7 +175,7 @@ dictionary should be filled with the uncleaned values during recoding</p></td>
 <span class='op'>)</span>
 
 <span class='va'>df</span> <span class='op'>%&gt;%</span> <span class='fu'>mutate</span><span class='op'>(</span>recoded_gender <span class='op'>=</span> <span class='fu'>recode_gender</span><span class='op'>(</span><span class='va'>gender</span>,
-  dictionary <span class='op'>=</span> <span class='va'>broad_en</span>,
+  dictionary <span class='op'>=</span> <span class='va'>manylevels_en</span>,
   retain_unmatched <span class='op'>=</span> <span class='cn'>TRUE</span>
 <span class='op'>)</span><span class='op'>)</span>
 <span class='op'>}</span>

@@ -6,7 +6,7 @@
 \usage{
 recode_gender(
   gender = gender,
-  dictionary = gendercoder::broad_en,
+  dictionary = gendercoder::manylevels_en,
   retain_unmatched = FALSE
 )
 }
@@ -14,7 +14,7 @@ recode_gender(
 \item{gender}{a character vector of gender responses for recoding}
 
 \item{dictionary}{a list that the contains gender responses and their
-replacement values. A built-in dictionary \code{broad_en} is used by
+replacement values. A built-in dictionary \code{manylevels_en} is used by
 default if an alternative dictionary is not supplied.}
 
 \item{retain_unmatched}{logical indicating if gender responses that are not found in
@@ -38,7 +38,7 @@ df <- data.frame(
 )
 
 df \%>\% mutate(recoded_gender = recode_gender(gender,
-  dictionary = broad_en,
+  dictionary = manylevels_en,
   retain_unmatched = TRUE
 ))
 }

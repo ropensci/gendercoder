@@ -40,9 +40,9 @@ library(gendercoder)
 
 The gendercoder package permits the efficient re-coding of free-text gender 
 responses within a tidyverse pipeline. It contains two built-in English output 
-dictionaries, a default `broad_en` dictionary which corrects spelling and 
+dictionaries, a default `manylevels_en` dictionary which corrects spelling and 
 standardises terms while maintaining the diversity of responses and a 
-`narrow_en` dictionary which contains fewer gender categories, "man", "woman", 
+`fewlevels_en` dictionary which contains fewer gender categories, "man", "woman", 
 "boy", "girl", and "sex and gender diverse". 
 
 The core function, `gender_recode()`, takes 3 arguments, 
@@ -60,8 +60,8 @@ Basic usage is demonstrated below.
 library(gendercoder)
 
 tibble(gender = c("male", "MALE", "mle", "I am male", "femail", "female", "enby")) %>% 
-  mutate(broad_gender  = recode_gender(gender, dictionary = broad_en, retain_unmatched = TRUE),
-         narrow_gender = recode_gender(gender, dictionary = narrow_en, retain_unmatched = FALSE)
+  mutate(manylevels_gender  = recode_gender(gender, dictionary = manylevels_en, retain_unmatched = TRUE),
+         fewlevels_gender = recode_gender(gender, dictionary = fewlevels_en, retain_unmatched = FALSE)
   )
   
 ```
@@ -71,7 +71,7 @@ The package does not need to be used as part of a tidyverse pipeline:
 ```{r}
 df <- tibble(gender = c("male", "MALE", "mle", "I am male", "femail", "female", "enby")) 
 
-df$gender_broad <- recode_gender(df$gender, dictionary = broad_en)
+df$manylevels_gender <- recode_gender(df$gender, dictionary = manylevels_en)
 df
 ```
 
@@ -82,7 +82,7 @@ This package is a reflection of cultural context of the package contributors; we
 welcome issues and pull requests to make the package more inclusive and/or 
 suitable for a broader range of cultural contexts. We particularly welcome 
 addition of non-English dictionaries or of other gender-diverse responses to the 
-broad and narrow dictionaries.
+manylevels_en and fewlevels_en dictionaries.
 
 ## Citation Information
 

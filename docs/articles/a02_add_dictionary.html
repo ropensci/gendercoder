@@ -54,10 +54,10 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/add_dictionary.html">Adding to the dictionary</a>
+      <a href="../articles/a01_rationale.html">Introduction to gendercoder</a>
     </li>
     <li>
-      <a href="../articles/rationale.html">Introduction to gendercoder</a>
+      <a href="../articles/a02_add_dictionary.html">Adding to the dictionary</a>
     </li>
   </ul>
 </li>
@@ -79,14 +79,14 @@
 
       
 
-      </header><script src="add_dictionary_files/header-attrs-2.10.4/header-attrs.js"></script><div class="row">
+      </header><script src="a02_add_dictionary_files/header-attrs-2.10/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Adding to the dictionary</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/ropenscilabs/gendercoder/blob/master/vignettes/add_dictionary.Rmd"><code>vignettes/add_dictionary.Rmd</code></a></small>
-      <div class="hidden name"><code>add_dictionary.Rmd</code></div>
+      <small class="dont-index">Source: <a href="https://github.com/ropenscilabs/gendercoder/blob/master/vignettes/a02_add_dictionary.Rmd"><code>vignettes/a02_add_dictionary.Rmd</code></a></small>
+      <div class="hidden name"><code>a02_add_dictionary.Rmd</code></div>
 
     </div>
 
@@ -104,7 +104,6 @@
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ropenscilabs/gendercoder">gendercoder</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
-<span class="co">#&gt; Warning: package 'dplyr' was built under R version 4.0.5</span>
 <span class="va">df</span>
 <span class="co">#&gt; # A tibble: 9 x 1</span>
 <span class="co">#&gt;   gender</span>
@@ -149,7 +148,7 @@
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">df</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>recoded_gender <span class="op">=</span> <span class="fu"><a href="../reference/recode_gender.html">recode_gender</a></span><span class="op">(</span><span class="va">gender</span>, 
-                                        dictionary <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">broad_en</span>, <span class="va">new_dictionary</span><span class="op">)</span>, 
+                                        dictionary <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">manylevels_en</span>, <span class="va">new_dictionary</span><span class="op">)</span>, 
                                         retain_unmatched <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 9 x 2</span>
 <span class="co">#&gt;   gender recoded_gender</span>
@@ -165,11 +164,11 @@
 <span class="co">#&gt; 9 nin    man</span></code></pre></div>
 <p>Or otherwise we can create a new dictionary and call that later, useful if you might want to save an augmented dictionary for later use or for contributing to the package.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">broad_plus</span> <span class="op">&lt;-</span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">broad_en</span>, <span class="va">new_dictionary</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">manylevels_plus</span> <span class="op">&lt;-</span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">manylevels_en</span>, <span class="va">new_dictionary</span><span class="op">)</span>
 
 <span class="va">df</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>recoded_gender <span class="op">=</span> <span class="fu"><a href="../reference/recode_gender.html">recode_gender</a></span><span class="op">(</span><span class="va">gender</span>, 
-                                        dictionary <span class="op">=</span> <span class="va">broad_plus</span>, 
+                                        dictionary <span class="op">=</span> <span class="va">manylevels_plus</span>, 
                                         retain_unmatched <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 9 x 2</span>
 <span class="co">#&gt;   gender recoded_gender</span>
@@ -187,10 +186,10 @@
 <div id="making-it-official" class="section level2">
 <h2 class="hasAnchor">
 <a href="#making-it-official" class="anchor"></a>Making it official</h2>
-<p>Let’s say you are happy with your <code>broad_plus</code> dictionary and think it should be part of the <code>broad</code> dictionary in the package. All you need to do is <a href="https://docs.github.com/en/get-started/quickstart/fork-a-repo">fork the gendercoder repo</a>, <a href="https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository-from-github/cloning-a-repository">clone it to your local device</a>, and then rename your vector and use the <code><a href="https://usethis.r-lib.org/reference/use_data.html">usethis::use_data()</a></code> function to overwrite the <code>broad</code> dictionary as shown below.</p>
+<p>Let’s say you are happy with your <code>manylevels_plus</code> dictionary and think it should be part of the <code>manylevels_en</code> dictionary in the package. All you need to do is <a href="https://docs.github.com/en/get-started/quickstart/fork-a-repo">fork the gendercoder repo</a>, <a href="https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository-from-github/cloning-a-repository">clone it to your local device</a>, and then rename your vector and use the <code><a href="https://usethis.r-lib.org/reference/use_data.html">usethis::use_data()</a></code> function to overwrite the <code>manylevels_en</code> dictionary as shown below.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">broad_en</span> <span class="op">&lt;-</span>  <span class="va">broad_plus</span>
-<span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_data.html">use_data</a></span><span class="op">(</span><span class="va">broad_en</span>, overwrite <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">manylevels_en</span> <span class="op">&lt;-</span>  <span class="va">manylevels_plus</span>
+<span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_data.html">use_data</a></span><span class="op">(</span><span class="va">manylevels_en</span>, overwrite <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <p>Once you’ve pushed the changes to your fork, you can <a href="https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork">make a pull request</a>. Please tell us what you’re adding so we know what to look out for and how to test it.</p>
 </div>
   </div>

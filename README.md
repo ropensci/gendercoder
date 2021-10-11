@@ -36,9 +36,9 @@ library(gendercoder)
 
 The gendercoder package permits the efficient re-coding of free-text
 gender responses within a tidyverse pipeline. It contains two built-in
-English output dictionaries, a default `broad_en` dictionary which
+English output dictionaries, a default `manylevels_en` dictionary which
 corrects spelling and standardises terms while maintaining the diversity
-of responses and a `narrow_en` dictionary which contains fewer gender
+of responses and a `fewlevels_en` dictionary which contains fewer gender
 categories, “man”, “woman”, “boy”, “girl”, and “sex and gender diverse”.
 
 The core function, `gender_recode()`, takes 3 arguments,
@@ -56,20 +56,20 @@ Basic usage is demonstrated below.
 library(gendercoder)
 
 tibble(gender = c("male", "MALE", "mle", "I am male", "femail", "female", "enby")) %>% 
-  mutate(broad_gender  = recode_gender(gender, dictionary = broad_en, retain_unmatched = TRUE),
-         narrow_gender = recode_gender(gender, dictionary = narrow_en, retain_unmatched = FALSE)
+  mutate(manylevels_gender  = recode_gender(gender, dictionary = manylevels_en, retain_unmatched = TRUE),
+         fewlevels_gender = recode_gender(gender, dictionary = fewlevels_en, retain_unmatched = FALSE)
   )
 #> Results not matched from the dictionary have been filled with the user inputted values
 #> # A tibble: 7 x 3
-#>   gender    broad_gender narrow_gender         
-#>   <chr>     <chr>        <chr>                 
-#> 1 male      man          man                   
-#> 2 MALE      man          man                   
-#> 3 mle       man          man                   
-#> 4 I am male I am male    <NA>                  
-#> 5 femail    woman        woman                 
-#> 6 female    woman        woman                 
-#> 7 enby      non-binary   sex and gender diverse
+#>   gender    manylevels_gender fewlevels_gender      
+#>   <chr>     <chr>             <chr>                 
+#> 1 male      man               man                   
+#> 2 MALE      man               man                   
+#> 3 mle       man               man                   
+#> 4 I am male I am male         <NA>                  
+#> 5 femail    woman             woman                 
+#> 6 female    woman             woman                 
+#> 7 enby      non-binary        sex and gender diverse
 ```
 
 The package does not need to be used as part of a tidyverse pipeline:
@@ -77,17 +77,17 @@ The package does not need to be used as part of a tidyverse pipeline:
 ``` r
 df <- tibble(gender = c("male", "MALE", "mle", "I am male", "femail", "female", "enby")) 
 
-df$gender_broad <- recode_gender(df$gender, dictionary = broad_en)
+df$manylevels_gender <- recode_gender(df$gender, dictionary = manylevels_en)
 df
 #> # A tibble: 7 x 2
-#>   gender    gender_broad
-#>   <chr>     <chr>       
-#> 1 male      man         
-#> 2 MALE      man         
-#> 3 mle       man         
-#> 4 I am male <NA>        
-#> 5 femail    woman       
-#> 6 female    woman       
+#>   gender    manylevels_gender
+#>   <chr>     <chr>            
+#> 1 male      man              
+#> 2 MALE      man              
+#> 3 mle       man              
+#> 4 I am male <NA>             
+#> 5 femail    woman            
+#> 6 female    woman            
 #> 7 enby      non-binary
 ```
 
@@ -97,7 +97,8 @@ This package is a reflection of cultural context of the package
 contributors; we welcome issues and pull requests to make the package
 more inclusive and/or suitable for a broader range of cultural contexts.
 We particularly welcome addition of non-English dictionaries or of other
-gender-diverse responses to the broad and narrow dictionaries.
+gender-diverse responses to the manylevels\_en and fewlevels\_en
+dictionaries.
 
 ## Citation Information
 
