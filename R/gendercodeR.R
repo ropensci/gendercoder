@@ -19,7 +19,7 @@ NULL
 
 #' manylevels_en
 #'
-#' A English dictionary for the recode_gender function with many levels
+#' A English dictionary for the recode_gender function that has many levels
 #'
 #' @name manylevels_en
 #' @docType data
@@ -27,7 +27,7 @@ NULL
 
 #' fewlevels_en
 #'
-#' A English dictionary for the recode_gender function with few levels
+#' A English dictionary for the recode_gender function that has fewer levels
 #'
 #' @name fewlevels_en
 #' @docType data

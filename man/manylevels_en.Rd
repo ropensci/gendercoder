@@ -5,5 +5,9 @@
 \alias{manylevels_en}
 \title{manylevels_en}
 \description{
+<<<<<<< HEAD
 A English dictionary for the recode_gender function with many levels
+=======
+A English dictionary for the recode_gender function that has many levels
+>>>>>>> f379f8c41dc9dd327250cc91ba6f999d6a79cfca
 }

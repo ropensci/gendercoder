@@ -5,5 +5,5 @@
 \alias{fewlevels_en}
 \title{fewlevels_en}
 \description{
-A English dictionary for the recode_gender function with few levels
+A English dictionary for the recode_gender function that has fewer levels
 }

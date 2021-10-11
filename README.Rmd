@@ -78,11 +78,13 @@ df
 
 ## Contributing to this package
 
-This package is a reflection of cultural context of the package contributors; we 
-welcome issues and pull requests to make the package more inclusive and/or 
-suitable for a broader range of cultural contexts. We particularly welcome 
-addition of non-English dictionaries or of other gender-diverse responses to the 
-manylevels_en and fewlevels_en dictionaries.
+This package is a reflection of cultural context of the package contributors. 
+We acknowledge that understandings of gender are bound by both culture and time 
+and are continually changing. As such, we welcome issues and pull requests to 
+make the package more inclusive, more reflective of current understandings of 
+gender inclusive languages and/or suitable for a broader range of cultural 
+contexts. We particularly welcome addition of non-English dictionaries or of 
+other gender-diverse responses to the manylevels_en and fewlevels_en dictionaries.
 
 ## Citation Information
 

@@ -207,15 +207,19 @@ sample %>%
 # A disclaimer on handling gender responses
 
 This package attempts to remove typographical errors from free text gender data.
-The defaults that we used are specific to our context and your data or context 
-may be different. 
+The defaults that we used are specific to our context and the time at which the 
+package was developed and your data or context may be different. 
 
 We offer two built-in dictionaries, manylevels_en and fewlevels_en. Both are necessarily 
 opinionated about how gender descriptors collapse into categories. 
 
 However, as these are culturally specific, they may not be suitable for your data. 
 In particular the fewlevels_en option makes opinionated choices about some responses 
+<<<<<<< HEAD:vignettes/a01_rationale.Rmd
 that we want to acknowledge are potentially problematic. In particular,
+=======
+that we want to acknowledge are potentially problematic. Specifically,
+>>>>>>> f379f8c41dc9dd327250cc91ba6f999d6a79cfca:vignettes/rationale.Rmd
 
 - In 'fewlevels_en' coding intersex responses are recoded as 'sex and gender
 diverse'
@@ -246,12 +250,22 @@ Mixed-methods evaluation and recommendations. PLoS ONE. 12.
 
 # Contributing to this package
 
+<<<<<<< HEAD:vignettes/a01_rationale.Rmd
 This package is a reflection of cultural context of the package contributors; we 
 welcome issues and pull requests to make the package more inclusive and/or 
 suitable for a broader range of cultural contexts. We particularly welcome the
 addition of non-English dictionaries or of other genderdiverse responses to the 
 manylevels_en and fewlevels_en dictionaries.
 
+=======
+This package is a reflection of cultural context of the package contributors. 
+We acknowledge that understandings of gender are bound by both culture and time 
+and are continually changing. As such, we welcome issues and pull requests to 
+make the package more inclusive, more reflective of current understandings of 
+gender inclusive languages and/or suitable for a broader range of cultural 
+contexts. We particularly welcome addition of non-English dictionaries or of 
+other gender-diverse responses to the manylevels_en and fewlevels_en dictionaries.
+>>>>>>> f379f8c41dc9dd327250cc91ba6f999d6a79cfca:vignettes/rationale.Rmd
 
 # Acknowledgement of Country
 
