@@ -29,3 +29,8 @@ test_that("Warns regarding replacement", {
 test_that("Input matches output length", {
   expect_equal(length(1:3), length(recode_gender(1:3)))
 })
+
+test_that("Error if dictionary not supplied as a character vector", {
+  expect_error(recode_gender(c("mlae"), dictionary = 1:7),
+                 regexp = "The supplied dictionary is not a character vector")
+})

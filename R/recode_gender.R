@@ -40,7 +40,7 @@ recode_gender <- function(gender = gender,
                           retain_unmatched = FALSE) {
 
   if (class(dictionary) != "character") {
-    stop(paste({{ dictionary }}, "is not a character vector"))
+    stop("The supplied dictionary is not a character vector")
   }
 
   dictionary <- tolower(dictionary)
