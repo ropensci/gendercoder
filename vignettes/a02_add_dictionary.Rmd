@@ -66,33 +66,33 @@ We can do this in-line...
 ```{r inline-augmentation}
 df %>% 
   mutate(recoded_gender = recode_gender(gender, 
-                                        dictionary = c(broad_en, new_dictionary), 
+                                        dictionary = c(manylevels_en, new_dictionary), 
                                         retain_unmatched = TRUE))
 ```
 Or otherwise we can create a new dictionary and call that later, useful if you 
 might want to save an augmented dictionary for later use or for contributing to 
 the package.
 ```{r stepped-augmentation}
-broad_plus <-  c(broad_en, new_dictionary)
+manylevels_plus <-  c(manylevels_en, new_dictionary)
 
 df %>% 
   mutate(recoded_gender = recode_gender(gender, 
-                                        dictionary = broad_plus, 
+                                        dictionary = manylevels_plus, 
                                         retain_unmatched = TRUE))
 ```
 
 ## Making it official
 
-Let's say you are happy with your `broad_plus` dictionary and think it should be 
-part of the `broad` dictionary in the package. All you need to do is [fork the 
+Let's say you are happy with your `manylevels_plus` dictionary and think it should be 
+part of the `manylevels_en` dictionary in the package. All you need to do is [fork the 
 gendercoder repo](https://docs.github.com/en/get-started/quickstart/fork-a-repo), 
 [clone it to your local device](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository-from-github/cloning-a-repository), and then rename 
-your vector and use the `usethis::use_data()` function to overwrite the `broad` 
+your vector and use the `usethis::use_data()` function to overwrite the `manylevels_en` 
 dictionary as shown below. 
 
 ```{r replacing-dictionaries, eval=FALSE}
-broad_en <-  broad_plus
-usethis::use_data(broad_en, overwrite = TRUE)
+manylevels_en <-  manylevels_plus
+usethis::use_data(manylevels_en, overwrite = TRUE)
 ```
 
 Once you've pushed the changes to your fork, you can [make a pull request](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork). Please tell us 

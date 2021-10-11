@@ -10,7 +10,7 @@ which_is_na <- function(x) {
 #'
 #' @param gender a character vector of gender responses for recoding
 #' @param dictionary a list that the contains gender responses and their
-#'   replacement values. A built-in dictionary \code{broad_en} is used by
+#'   replacement values. A built-in dictionary \code{manylevels_en} is used by
 #'   default if an alternative dictionary is not supplied.
 #' @param retain_unmatched logical indicating if gender responses that are not found in
 #'   dictionary should be filled with the uncleaned values during recoding
@@ -28,7 +28,7 @@ which_is_na <- function(x) {
 #' )
 #'
 #' df %>% mutate(recoded_gender = recode_gender(gender,
-#'   dictionary = broad_en,
+#'   dictionary = manylevels_en,
 #'   retain_unmatched = TRUE
 #' ))
 #' }
@@ -36,7 +36,7 @@ which_is_na <- function(x) {
 #' @export recode_gender
 
 recode_gender <- function(gender = gender,
-                          dictionary = gendercoder::broad_en,
+                          dictionary = gendercoder::manylevels_en,
                           retain_unmatched = FALSE) {
 
   if (class(dictionary) != "character") {

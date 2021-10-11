@@ -2,7 +2,7 @@ pandoc: 2.11.2
 pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
-  add_dictionary: add_dictionary.html
-  rationale: rationale.html
-last_built: 2021-10-10T02:56Z
+  a01_rationale: a01_rationale.html
+  a02_add_dictionary: a02_add_dictionary.html
+last_built: 2021-10-10T06:42Z
 

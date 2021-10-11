@@ -63,16 +63,16 @@ into pre-defined response categories.
 ```{r}
 sample %>% 
   head(10) %>% 
-  mutate(recoded_gender = recode_gender(gender = Gender, dictionary = broad_en)) %>% 
-  knitr::kable(caption = "The broad_en dictionary applied to `head(sample)`")
+  mutate(recoded_gender = recode_gender(gender = Gender, dictionary = manylevels_en)) %>% 
+  knitr::kable(caption = "The manylevels_en dictionary applied to `head(sample)`")
 
 sample %>% 
-  mutate(recoded_gender = recode_gender(gender = Gender, dictionary = broad_en)) %>% 
+  mutate(recoded_gender = recode_gender(gender = Gender, dictionary = manylevels_en)) %>% 
   filter(!is.na(recoded_gender)) %>% 
   group_by(recoded_gender) %>% 
   summarise(count = n()) %>% 
   arrange(-count) %>% 
-  knitr::kable(caption = "Summary of gender categories after use of the *broad_en* dictionary")
+  knitr::kable(caption = "Summary of gender categories after use of the *manylevels_en* dictionary")
 
 ```
 
@@ -84,7 +84,7 @@ to a custom dictionary.
 ```{r}
 
 sample %>% 
-  mutate(recoded_gender = recode_gender(gender = Gender, dictionary = broad_en)) %>% 
+  mutate(recoded_gender = recode_gender(gender = Gender, dictionary = manylevels_en)) %>% 
   filter(is.na(recoded_gender)) %>% 
   knitr::kable(caption = "All responses not classified by the built-in dictionary")
 
@@ -95,13 +95,13 @@ sample %>%
 ### dictionary
 
 The package provides two built-in dictionaries. The use of these is controlled 
-using the `dictionary` argument. The first `dictionary = broad_en` provides 
+using the `dictionary` argument. The first `dictionary = manylevels_en` provides 
 corrects spelling and standardises terms while maintaining the diversity of responses. 
 This is the default dictionary for gendercoder() as it preserves as much gender
 diversity as possible. 
 
 However in some cases you may wish to collapse gender into a smaller set of 
-categories by using the `narrow_en` dictionary (`dictionary = narrow_en`). This 
+categories by using the `fewlevels_en` dictionary (`dictionary = fewlevels_en`). This 
 dictionary contains fewer gender categories, "man", "woman", 
 "boy", "girl", and "sex and gender diverse". 
 
@@ -129,15 +129,15 @@ that they are
 ```{r} 
 sample %>% 
   head(10) %>% 
-  mutate(recoded_gender = recode_gender(gender = Gender, dictionary = narrow_en)) %>% 
-  knitr::kable(caption = "The narrow dictionary applied to `head(sample)`")
+  mutate(recoded_gender = recode_gender(gender = Gender, dictionary = fewlevels_en)) %>% 
+  knitr::kable(caption = "The fewlevels_en dictionary applied to `head(sample)`")
 
 sample %>% 
-  mutate(recoded_gender = recode_gender(gender = Gender, dictionary = narrow_en)) %>% 
+  mutate(recoded_gender = recode_gender(gender = Gender, dictionary = fewlevels_en)) %>% 
   group_by(recoded_gender) %>% 
   summarise(count = n()) %>% 
   arrange(-count) %>% 
-  knitr::kable(caption = "Summary of gender categories after use of the *narrow* dictionary")
+  knitr::kable(caption = "Summary of gender categories after use of the *fewlevels_en* dictionary")
 ```
 
 You can also specify a custom dictionary to replace or supplement the built-in 
@@ -169,7 +169,7 @@ previously uncoded responses.
 
 sample %>% 
   mutate(recoded_gender = recode_gender(gender = Gender, 
-                                        dictionary = c(narrow_en, 
+                                        dictionary = c(fewlevels_en, 
                                                        custom_dictionary))) %>% 
   group_by(recoded_gender) %>% 
   summarise(count = n()) %>% 
@@ -179,7 +179,7 @@ sample %>%
 
 sample %>% 
   mutate(recoded_gender = recode_gender(gender = Gender, 
-                                        dictionary = c(narrow_en, 
+                                        dictionary = c(fewlevels_en, 
                                                        custom_dictionary))) %>% 
   filter(is.na(recoded_gender)) %>% 
   knitr::kable(caption = "All responses not classified by the combined dictionaries")
@@ -195,7 +195,7 @@ response.
 ```{r}
 sample %>% 
   mutate(recoded_gender = recode_gender(gender = Gender, 
-                                        dictionary = c(narrow_en, 
+                                        dictionary = c(fewlevels_en, 
                                                        custom_dictionary),
                                         retain_unmatched = TRUE)) %>% 
   group_by(recoded_gender) %>% 
@@ -207,24 +207,24 @@ sample %>%
 # A disclaimer on handling gender responses
 
 This package attempts to remove typographical errors from free text gender data.
-The defaults that we used are specific to our context and your data or context 
-may be different. 
+The defaults that we used are specific to our context and the time at which the 
+package was developed and your data or context may be different. 
 
-We offer two built-in dictionaries, broad_en and narrow_en. Both are necessarily 
+We offer two built-in dictionaries, manylevels_en and fewlevels_en. Both are necessarily 
 opinionated about how gender descriptors collapse into categories. 
 
 However, as these are culturally specific, they may not be suitable for your data. 
-In particular the narrow option makes opinionated choices about some responses 
-that we want to acknowledge are potentially problematic. In particular,
+In particular the fewlevels_en option makes opinionated choices about some responses 
+that we want to acknowledge are potentially problematic. Specifically,
 
-- In 'narrow_en' coding intersex responses are recoded as 'sex and gender
+- In 'fewlevels_en' coding intersex responses are recoded as 'sex and gender
 diverse'
-- In 'narrow_en' responses where people indicate they are trans and
+- In 'fewlevels_en' responses where people indicate they are trans and
 indicate their identified gender are recoded as the identified gender
 (e.g. 'Male to Female' is recoded as 'woman'). We wish to acknowledge
 that this may not reflect how some individuals would classify
 themselves when given these categories and in some contexts may make
-systematic errors. The broad coding dictionary attempts to avoid these
+systematic errors. The manylevels_en coding dictionary attempts to avoid these
 issues as much as possible - however users can provide a custom
 dictionary to add to or overwrite our coding decisions if they feel
 this is more appropriate. We welcome people to update the built-in dictionary 
@@ -235,7 +235,7 @@ are not relevant to recoding the gender response (e.g. we assume that
 true for all contexts. 
 
 
-The 'broad_en' coding separates out those who identify as trans
+The 'manylevels_en' coding separates out those who identify as trans
 female/male or cis female/male into separate categories it should not
 be assumed that all people who describe as male/female are cis, if you
 are assessing trans status we recommend a two part question see:
@@ -246,12 +246,13 @@ Mixed-methods evaluation and recommendations. PLoS ONE. 12.
 
 # Contributing to this package
 
-This package is a reflection of cultural context of the package contributors; we 
-welcome issues and pull requests to make the package more inclusive and/or 
-suitable for a broader range of cultural contexts. We particularly welcome the
-addition of non-English dictionaries or of other genderdiverse responses to the 
-broad_en and narrow_en dictionaries.
-
+This package is a reflection of cultural context of the package contributors. 
+We acknowledge that understandings of gender are bound by both culture and time 
+and are continually changing. As such, we welcome issues and pull requests to 
+make the package more inclusive, more reflective of current understandings of 
+gender inclusive languages and/or suitable for a broader range of cultural 
+contexts. We particularly welcome addition of non-English dictionaries or of 
+other gender-diverse responses to the manylevels_en and fewlevels_en dictionaries.
 
 # Acknowledgement of Country
 
