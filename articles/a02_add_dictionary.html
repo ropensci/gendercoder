@@ -126,7 +126,7 @@
   homme <span class="op">=</span> <span class="st">"man"</span>, 
   nin <span class="op">=</span> <span class="st">"man"</span><span class="op">)</span>
 
-<span class="va">df</span> <span class="op">%&gt;%</span> 
+<span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>recoded_gender <span class="op">=</span> <span class="fu"><a href="../reference/recode_gender.html">recode_gender</a></span><span class="op">(</span><span class="va">gender</span>, 
                                         dictionary <span class="op">=</span> <span class="va">new_dictionary</span>, 
                                         retain_unmatched <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>
@@ -146,7 +146,7 @@
 <p>However, as you can see using just this new dictionary leaves a number of responses uncoded that the built-in dictionaries could handle. As the dictionaries are just vectors, we can simply concatenate these to use both at the same time.</p>
 <p>We can do this in-line…</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">df</span> <span class="op">%&gt;%</span> 
+<code class="sourceCode R"><span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>recoded_gender <span class="op">=</span> <span class="fu"><a href="../reference/recode_gender.html">recode_gender</a></span><span class="op">(</span><span class="va">gender</span>, 
                                         dictionary <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">manylevels_en</span>, <span class="va">new_dictionary</span><span class="op">)</span>, 
                                         retain_unmatched <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>
@@ -166,7 +166,7 @@
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">manylevels_plus</span> <span class="op">&lt;-</span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">manylevels_en</span>, <span class="va">new_dictionary</span><span class="op">)</span>
 
-<span class="va">df</span> <span class="op">%&gt;%</span> 
+<span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>recoded_gender <span class="op">=</span> <span class="fu"><a href="../reference/recode_gender.html">recode_gender</a></span><span class="op">(</span><span class="va">gender</span>, 
                                         dictionary <span class="op">=</span> <span class="va">manylevels_plus</span>, 
                                         retain_unmatched <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>

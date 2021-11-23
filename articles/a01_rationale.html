@@ -116,10 +116,10 @@
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ropenscilabs/gendercoder">gendercoder</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
 
-<span class="va">sample</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">Gender</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>count <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="op">-</span><span class="va">count</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+<span class="va">sample</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">Gender</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>count <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="op">-</span><span class="va">count</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span>caption <span class="op">=</span> <span class="st">"Summary of gender categories before coding"</span><span class="op">)</span></code></pre></div>
 <table class="table">
 <caption>Summary of gender categories before coding</caption>
@@ -544,12 +544,12 @@
 </table>
 <p>Recoding using the <code>gender_coder()</code> function classifies all but 28 responses into pre-defined response categories.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sample</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>recoded_gender <span class="op">=</span> <span class="fu"><a href="../reference/recode_gender.html">recode_gender</a></span><span class="op">(</span>gender <span class="op">=</span> <span class="va">Gender</span>, dictionary <span class="op">=</span> <span class="va">manylevels_en</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+<code class="sourceCode R"><span class="va">sample</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>recoded_gender <span class="op">=</span> <span class="fu"><a href="../reference/recode_gender.html">recode_gender</a></span><span class="op">(</span>gender <span class="op">=</span> <span class="va">Gender</span>, dictionary <span class="op">=</span> <span class="va">manylevels_en</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span>caption <span class="op">=</span> <span class="st">"The manylevels_en dictionary applied to `head(sample)`"</span><span class="op">)</span></code></pre></div>
 <table class="table">
-<caption>The manylevels_en dictionary applied to <code><a href="https://rdrr.io/r/utils/head.html">head(sample)</a></code>
+<caption>The manylevels_en dictionary applied to <code>head(sample)</code>
 </caption>
 <thead><tr class="header">
 <th align="left">Gender</th>
@@ -599,12 +599,12 @@
 </tbody>
 </table>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sample</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>recoded_gender <span class="op">=</span> <span class="fu"><a href="../reference/recode_gender.html">recode_gender</a></span><span class="op">(</span>gender <span class="op">=</span> <span class="va">Gender</span>, dictionary <span class="op">=</span> <span class="va">manylevels_en</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">recoded_gender</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">recoded_gender</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>count <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="op">-</span><span class="va">count</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+<code class="sourceCode R"><span class="va">sample</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>recoded_gender <span class="op">=</span> <span class="fu"><a href="../reference/recode_gender.html">recode_gender</a></span><span class="op">(</span>gender <span class="op">=</span> <span class="va">Gender</span>, dictionary <span class="op">=</span> <span class="va">manylevels_en</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">recoded_gender</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">recoded_gender</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>count <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="op">-</span><span class="va">count</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span>caption <span class="op">=</span> <span class="st">"Summary of gender categories after use of the *manylevels_en* dictionary"</span><span class="op">)</span></code></pre></div>
 <table class="table">
 <caption>Summary of gender categories after use of the <em>manylevels_en</em> dictionary</caption>
@@ -661,9 +661,9 @@
 </table>
 <p>In this dataset unclassified responses are a mix of unusual responses and apparent response errors (e.g. numbers and symbols). While some of these are genuinely missing (i.e. Gender = 40), other could be manually recoded, or added to a custom dictionary.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sample</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>recoded_gender <span class="op">=</span> <span class="fu"><a href="../reference/recode_gender.html">recode_gender</a></span><span class="op">(</span>gender <span class="op">=</span> <span class="va">Gender</span>, dictionary <span class="op">=</span> <span class="va">manylevels_en</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">recoded_gender</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+<code class="sourceCode R"><span class="va">sample</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>recoded_gender <span class="op">=</span> <span class="fu"><a href="../reference/recode_gender.html">recode_gender</a></span><span class="op">(</span>gender <span class="op">=</span> <span class="va">Gender</span>, dictionary <span class="op">=</span> <span class="va">manylevels_en</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">recoded_gender</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span>caption <span class="op">=</span> <span class="st">"All responses not classified by the built-in dictionary"</span><span class="op">)</span></code></pre></div>
 <table class="table">
 <caption>All responses not classified by the built-in dictionary</caption>
@@ -812,12 +812,12 @@
 <li>gender-queer</li>
 </ul>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sample</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>recoded_gender <span class="op">=</span> <span class="fu"><a href="../reference/recode_gender.html">recode_gender</a></span><span class="op">(</span>gender <span class="op">=</span> <span class="va">Gender</span>, dictionary <span class="op">=</span> <span class="va">fewlevels_en</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+<code class="sourceCode R"><span class="va">sample</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>recoded_gender <span class="op">=</span> <span class="fu"><a href="../reference/recode_gender.html">recode_gender</a></span><span class="op">(</span>gender <span class="op">=</span> <span class="va">Gender</span>, dictionary <span class="op">=</span> <span class="va">fewlevels_en</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span>caption <span class="op">=</span> <span class="st">"The fewlevels_en dictionary applied to `head(sample)`"</span><span class="op">)</span></code></pre></div>
 <table class="table">
-<caption>The fewlevels_en dictionary applied to <code><a href="https://rdrr.io/r/utils/head.html">head(sample)</a></code>
+<caption>The fewlevels_en dictionary applied to <code>head(sample)</code>
 </caption>
 <thead><tr class="header">
 <th align="left">Gender</th>
@@ -867,11 +867,11 @@
 </tbody>
 </table>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sample</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>recoded_gender <span class="op">=</span> <span class="fu"><a href="../reference/recode_gender.html">recode_gender</a></span><span class="op">(</span>gender <span class="op">=</span> <span class="va">Gender</span>, dictionary <span class="op">=</span> <span class="va">fewlevels_en</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">recoded_gender</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>count <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="op">-</span><span class="va">count</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+<code class="sourceCode R"><span class="va">sample</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>recoded_gender <span class="op">=</span> <span class="fu"><a href="../reference/recode_gender.html">recode_gender</a></span><span class="op">(</span>gender <span class="op">=</span> <span class="va">Gender</span>, dictionary <span class="op">=</span> <span class="va">fewlevels_en</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">recoded_gender</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>count <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="op">-</span><span class="va">count</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span>caption <span class="op">=</span> <span class="st">"Summary of gender categories after use of the *fewlevels_en* dictionary"</span><span class="op">)</span></code></pre></div>
 <table class="table">
 <caption>Summary of gender categories after use of the <em>fewlevels_en</em> dictionary</caption>
@@ -918,13 +918,13 @@
 ##  - attr(*, "names")= chr [1:4] "masculino" "hombre" "mujer" "femenina"</code></pre>
 <p>Custom dictionaries can be used in place of a built-in dictionary or can supplement the built-in dictionary by providing a vector of vectors to the dictionary argument. Where the lists contain duplicated elements, the last version of the duplicated value will be used for recoding. This allows you to use the built-in dictionary but change the coding of one or more responses from that dictionary. Here the addition of Spanish terms allows for recoding of 11 previously uncoded responses.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sample</span> <span class="op">%&gt;%</span> 
+<code class="sourceCode R"><span class="va">sample</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>recoded_gender <span class="op">=</span> <span class="fu"><a href="../reference/recode_gender.html">recode_gender</a></span><span class="op">(</span>gender <span class="op">=</span> <span class="va">Gender</span>, 
                                         dictionary <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">fewlevels_en</span>, 
-                                                       <span class="va">custom_dictionary</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">recoded_gender</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>count <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="op">-</span><span class="va">count</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+                                                       <span class="va">custom_dictionary</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">recoded_gender</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>count <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="op">-</span><span class="va">count</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span>caption <span class="op">=</span> <span class="st">"Summary of gender categories after use of the combined dictionaries"</span><span class="op">)</span></code></pre></div>
 <table class="table">
 <caption>Summary of gender categories after use of the combined dictionaries</caption>
@@ -956,11 +956,11 @@
 </tbody>
 </table>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sample</span> <span class="op">%&gt;%</span> 
+<code class="sourceCode R"><span class="va">sample</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>recoded_gender <span class="op">=</span> <span class="fu"><a href="../reference/recode_gender.html">recode_gender</a></span><span class="op">(</span>gender <span class="op">=</span> <span class="va">Gender</span>, 
                                         dictionary <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">fewlevels_en</span>, 
-                                                       <span class="va">custom_dictionary</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">recoded_gender</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+                                                       <span class="va">custom_dictionary</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">recoded_gender</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span>caption <span class="op">=</span> <span class="st">"All responses not classified by the combined dictionaries"</span><span class="op">)</span></code></pre></div>
 <table class="table">
 <caption>All responses not classified by the combined dictionaries</caption>
@@ -1041,14 +1041,14 @@
 <a href="#retain_unmatched" class="anchor"></a>retain_unmatched</h3>
 <p>The <code>retain_unmatched</code> argument is used to determine the handling for recoding of values not contained in the dictionary. By default, unmatched values are coded as NA. <code>retain_unmatched = TRUE</code> will fill unmatched responses with the participant provided response.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sample</span> <span class="op">%&gt;%</span> 
+<code class="sourceCode R"><span class="va">sample</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>recoded_gender <span class="op">=</span> <span class="fu"><a href="../reference/recode_gender.html">recode_gender</a></span><span class="op">(</span>gender <span class="op">=</span> <span class="va">Gender</span>, 
                                         dictionary <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">fewlevels_en</span>, 
                                                        <span class="va">custom_dictionary</span><span class="op">)</span>,
-                                        retain_unmatched <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">recoded_gender</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>count <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="op">-</span><span class="va">count</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+                                        retain_unmatched <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">recoded_gender</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>count <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="op">-</span><span class="va">count</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span>caption <span class="op">=</span> <span class="st">"Summary of gender categories after use of the combined dictionary and `retain_unmatched = TRUE`"</span><span class="op">)</span></code></pre></div>
 <pre><code>## Results not matched from the dictionary have been filled with the user inputted values</code></pre>
 <table class="table">
@@ -1144,7 +1144,7 @@
 <a href="#a-disclaimer-on-handling-gender-responses" class="anchor"></a>A disclaimer on handling gender responses</h1>
 <p>This package attempts to remove typographical errors from free text gender data. The defaults that we used are specific to our context and the time at which the package was developed and your data or context may be different.</p>
 <p>We offer two built-in dictionaries, manylevels_en and fewlevels_en. Both are necessarily opinionated about how gender descriptors collapse into categories.</p>
-<p>However, as these are culturally specific, they may not be suitable for your data. In particular the fewlevels_en option makes opinionated choices about some responses &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD:vignettes/a01_rationale.Rmd that we want to acknowledge are potentially problematic. In particular, ======= that we want to acknowledge are potentially problematic. Specifically, &gt;&gt;&gt;&gt;&gt;&gt;&gt; f379f8c41dc9dd327250cc91ba6f999d6a79cfca:vignettes/rationale.Rmd</p>
+<p>However, as these are culturally specific, they may not be suitable for your data. In particular the fewlevels_en option makes opinionated choices about some responses that we want to acknowledge are potentially problematic. Specifically,</p>
 <ul>
 <li>In ‘fewlevels_en’ coding intersex responses are recoded as ‘sex and gender diverse’</li>
 <li>In ‘fewlevels_en’ responses where people indicate they are trans and indicate their identified gender are recoded as the identified gender (e.g. ‘Male to Female’ is recoded as ‘woman’). We wish to acknowledge that this may not reflect how some individuals would classify themselves when given these categories and in some contexts may make systematic errors. The manylevels_en coding dictionary attempts to avoid these issues as much as possible - however users can provide a custom dictionary to add to or overwrite our coding decisions if they feel this is more appropriate. We welcome people to update the built-in dictionary where desired responses are missing.</li>
@@ -1156,8 +1156,7 @@
 <div id="contributing-to-this-package" class="section level1">
 <h1 class="hasAnchor">
 <a href="#contributing-to-this-package" class="anchor"></a>Contributing to this package</h1>
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD:vignettes/a01_rationale.Rmd This package is a reflection of cultural context of the package contributors; we welcome issues and pull requests to make the package more inclusive and/or suitable for a broader range of cultural contexts. We particularly welcome the addition of non-English dictionaries or of other genderdiverse responses to the manylevels_en and fewlevels_en dictionaries.</p>
-<p>======= This package is a reflection of cultural context of the package contributors. We acknowledge that understandings of gender are bound by both culture and time and are continually changing. As such, we welcome issues and pull requests to make the package more inclusive, more reflective of current understandings of gender inclusive languages and/or suitable for a broader range of cultural contexts. We particularly welcome addition of non-English dictionaries or of other gender-diverse responses to the manylevels_en and fewlevels_en dictionaries. &gt;&gt;&gt;&gt;&gt;&gt;&gt; f379f8c41dc9dd327250cc91ba6f999d6a79cfca:vignettes/rationale.Rmd</p>
+<p>This package is a reflection of cultural context of the package contributors. We acknowledge that understandings of gender are bound by both culture and time and are continually changing. As such, we welcome issues and pull requests to make the package more inclusive, more reflective of current understandings of gender inclusive languages and/or suitable for a broader range of cultural contexts. We particularly welcome addition of non-English dictionaries or of other gender-diverse responses to the manylevels_en and fewlevels_en dictionaries.</p>
 </div>
 <div id="acknowledgement-of-country" class="section level1">
 <h1 class="hasAnchor">
