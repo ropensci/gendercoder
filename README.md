@@ -41,7 +41,7 @@ corrects spelling and standardises terms while maintaining the diversity
 of responses and a `fewlevels_en` dictionary which contains fewer gender
 categories, “man”, “woman”, “boy”, “girl”, and “sex and gender diverse”.
 
-The core function, `gender_recode()`, takes 3 arguments,
+The core function, `recode_gender()`, takes 3 arguments,
 
 -   `gender` the vector of free-text gender,
 
@@ -60,7 +60,7 @@ tibble(gender = c("male", "MALE", "mle", "I am male", "femail", "female", "enby"
          fewlevels_gender = recode_gender(gender, dictionary = fewlevels_en, retain_unmatched = FALSE)
   )
 #> Results not matched from the dictionary have been filled with the user inputted values
-#> # A tibble: 7 x 3
+#> # A tibble: 7 × 3
 #>   gender    manylevels_gender fewlevels_gender      
 #>   <chr>     <chr>             <chr>                 
 #> 1 male      man               man                   
@@ -79,7 +79,7 @@ df <- tibble(gender = c("male", "MALE", "mle", "I am male", "femail", "female", 
 
 df$manylevels_gender <- recode_gender(df$gender, dictionary = manylevels_en)
 df
-#> # A tibble: 7 x 2
+#> # A tibble: 7 × 2
 #>   gender    manylevels_gender
 #>   <chr>     <chr>            
 #> 1 male      man              
@@ -100,7 +100,7 @@ issues and pull requests to make the package more inclusive, more
 reflective of current understandings of gender inclusive languages
 and/or suitable for a broader range of cultural contexts. We
 particularly welcome addition of non-English dictionaries or of other
-gender-diverse responses to the manylevels\_en and fewlevels\_en
+gender-diverse responses to the manylevels_en and fewlevels_en
 dictionaries.
 
 ## Citation Information
