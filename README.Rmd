@@ -45,7 +45,7 @@ standardises terms while maintaining the diversity of responses and a
 `fewlevels_en` dictionary which contains fewer gender categories, "man", "woman", 
 "boy", "girl", and "sex and gender diverse". 
 
-The core function, `gender_recode()`, takes 3 arguments, 
+The core function, `recode_gender()`, takes 3 arguments, 
 
 - `gender` the vector of free-text gender,
 
