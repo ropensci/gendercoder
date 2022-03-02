@@ -99,11 +99,19 @@ dictionary should be filled with the uncleaned values during recoding</p></dd>
 <span class="r-in">  age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">34L</span>, <span class="fl">37L</span>, <span class="fl">77L</span>, <span class="fl">52L</span>, <span class="fl">68L</span>, <span class="fl">67L</span>, <span class="fl">83L</span><span class="op">)</span></span>
 <span class="r-in"><span class="op">)</span></span>
 <span class="r-in"></span>
-<span class="r-in"><span class="va">df</span> <span class="op">%&gt;%</span> <span class="fu">mutate</span><span class="op">(</span>recoded_gender <span class="op">=</span> <span class="fu">recode_gender</span><span class="op">(</span><span class="va">gender</span>,</span>
+<span class="r-in"><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span><span class="va">df</span>, recoded_gender <span class="op">=</span> <span class="fu">recode_gender</span><span class="op">(</span><span class="va">gender</span>,</span>
 <span class="r-in">  dictionary <span class="op">=</span> <span class="va">manylevels_en</span>,</span>
 <span class="r-in">  retain_unmatched <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span class="r-in"><span class="op">)</span><span class="op">)</span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in df %&gt;% mutate(recoded_gender = recode_gender(gender, dictionary = manylevels_en,     retain_unmatched = TRUE)):</span> could not find function "%&gt;%"</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Results not matched from the dictionary have been filled with the user inputted values</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      gender age recoded_gender</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1      male  34            man</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2      MALE  37            man</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3       mle  77            man</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4 I am male  52      I am male</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5    femail  68          woman</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6    female  67          woman</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7      enby  83     non-binary</span>
 <span class="r-in"></span>
 </code></pre></div>
     </div>
