@@ -29,7 +29,6 @@ an built-in or custom dictionary.
 }
 \examples{
 
-\dontrun{
 
 df <- data.frame(
   stringsAsFactors = FALSE,
@@ -41,6 +40,5 @@ df \%>\% mutate(recoded_gender = recode_gender(gender,
   dictionary = manylevels_en,
   retain_unmatched = TRUE
 ))
-}
 
 }

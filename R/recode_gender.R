@@ -19,7 +19,6 @@ which_is_na <- function(x) {
 #'
 #' @examples
 #'
-#' \dontrun{
 #'
 #' df <- data.frame(
 #'   stringsAsFactors = FALSE,
@@ -31,7 +30,6 @@ which_is_na <- function(x) {
 #'   dictionary = manylevels_en,
 #'   retain_unmatched = TRUE
 #' ))
-#' }
 #'
 #' @export recode_gender
 
