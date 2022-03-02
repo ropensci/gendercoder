@@ -26,7 +26,7 @@ which_is_na <- function(x) {
 #'   age = c(34L, 37L, 77L, 52L, 68L, 67L, 83L)
 #' )
 #'
-#' df %>% mutate(recoded_gender = recode_gender(gender,
+#' dplyr::mutate(df, recoded_gender = recode_gender(gender,
 #'   dictionary = manylevels_en,
 #'   retain_unmatched = TRUE
 #' ))
