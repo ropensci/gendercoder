@@ -42,5 +42,5 @@ Suggests:
     dplyr,
     covr
 VignetteBuilder: knitr
-URL: https://github.com/ropenscilabs/gendercoder
-BugReports: https://github.com/ropenscilabs/gendercoder/issues
+URL: https://github.com/ropensci/gendercoder
+BugReports: https://github.com/ropensci/gendercoder/issues

@@ -19,8 +19,8 @@ library(dplyr)
 [![CRAN status](https://www.r-pkg.org/badges/version/gendercoder)](https://CRAN.R-project.org/package=gendercoder)
 [![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![R-CMD-check](https://github.com/ropenscilabs/gendercoder/workflows/R-CMD-check/badge.svg)](https://github.com/ropenscilabs/gendercoder/actions)
-[![Codecov test coverage](https://codecov.io/gh/ropenscilabs/gendercoder/branch/master/graph/badge.svg)](https://codecov.io/gh/ropenscilabs/gendercoder?branch=master)
+[![R-CMD-check](https://github.com/ropensci/gendercoder/workflows/R-CMD-check/badge.svg)](https://github.com/ropensci/gendercoder/actions)
+[![Codecov test coverage](https://codecov.io/gh/ropensci/gendercoder/branch/master/graph/badge.svg)](https://codecov.io/gh/ropensci/gendercoder?branch=master)
 <!-- badges: end -->
 
 
@@ -33,7 +33,7 @@ while managing troll-responses and the workload implications of manual coding.
 This package is not on CRAN. To use this package please run the following code:
 
 ``` r
-devtools::install_github("ropenscilabs/gendercoder")
+devtools::install_github("ropensci/gendercoder")
 library(gendercoder)
 ```
 ## Basic use
@@ -86,7 +86,7 @@ gender inclusive languages and/or suitable for a broader range of cultural
 contexts. We particularly welcome addition of non-English dictionaries or of 
 other gender-diverse responses to the `manylevels_en` and `fewlevels_en` dictionaries.
 
-The ["Adding to the dictionary"](https://ropenscilabs.github.io/gendercoder/articles/a02_add_dictionary.html) vignette includes information about how to make changes to the dictionary either for your own use or when contributiong to the gendercoder package.
+The ["Adding to the dictionary"](https://ropensci.github.io/gendercoder/articles/a02_add_dictionary.html) vignette includes information about how to make changes to the dictionary either for your own use or when contributiong to the gendercoder package.
 
 ## Citation Information
 
@@ -94,7 +94,7 @@ Please cite this package as:
 
 Jennifer Beaudry, Emily Kothe, Felix Singleton Thorn, Rhydwyn McGuire, Nicholas Tierney and Mathew Ling (2020).
   gendercoder: Recodes Sex/Gender Descriptions into a Standard Set. R package version 0.0.0.9000.
-  https://github.com/ropenscilabs/gendercoder
+  https://github.com/ropensci/gendercoder
 
 ## Acknowledgement of Country
 

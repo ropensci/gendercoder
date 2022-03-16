@@ -14,7 +14,7 @@ The goal of gendercoder is to allow simple recoding of free-text gender response
 This package is not on CRAN. To use this package please run the following code:
 
 ``` r
-devtools::install_github("ropenscilabs/gendercoder")
+devtools::install_github("ropensci/gendercoder")
 library(gendercoder)
 ```
 
@@ -253,7 +253,7 @@ gender inclusive languages and/or suitable for a broader range of cultural
 contexts. We particularly welcome addition of non-English dictionaries or of 
 other gender-diverse responses to the manylevels_en and fewlevels_en dictionaries.
 
-The ["Adding to the dictionary"](https://ropenscilabs.github.io/gendercoder/articles/a02_add_dictionary.html) vignette includes information about how to make changes to the dictionary either for your own use or when contributiong to the gendercoder package.
+The ["Adding to the dictionary"](https://ropensci.github.io/gendercoder/articles/a02_add_dictionary.html) vignette includes information about how to make changes to the dictionary either for your own use or when contributiong to the gendercoder package.
 
 # Acknowledgement of Country
 

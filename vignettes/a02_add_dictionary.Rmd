@@ -25,7 +25,7 @@ is inevitable that new typos and variations will occur in wild data. Moreover,
 at present, the dictionaries are limited to data the authors have had access to 
 which has been collected in English. As such, if you are collecting data, you 
 will at some point want to add to or create your own dictionaries (and if so, 
-we strongly encourage contributions either as [a pull request via github](https://github.com/ropenscilabs/gendercoder), or by [raising an issue](https://github.com/ropenscilabs/gendercoder/issues/new) so the team can 
+we strongly encourage contributions either as [a pull request via github](https://github.com/ropensci/gendercoder), or by [raising an issue](https://github.com/ropensci/gendercoder/issues/new) so the team can 
 help).
 
 ## Adding to the dictionary
