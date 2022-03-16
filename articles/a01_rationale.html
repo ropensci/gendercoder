@@ -43,7 +43,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -60,7 +60,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/ropenscilabs/gendercoder/" class="external-link">
+  <a href="https://github.com/ropensci/gendercoder/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -81,7 +81,7 @@
       <h1 data-toc-skip>Introduction to gendercoder</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/ropenscilabs/gendercoder/blob/HEAD/vignettes/a01_rationale.Rmd" class="external-link"><code>vignettes/a01_rationale.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/ropensci/gendercoder/blob/HEAD/vignettes/a01_rationale.Rmd" class="external-link"><code>vignettes/a01_rationale.Rmd</code></a></small>
       <div class="hidden name"><code>a01_rationale.Rmd</code></div>
 
     </div>
@@ -94,8 +94,8 @@
 </h3>
 <p>This package is not on CRAN. To use this package please run the following code:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"ropenscilabs/gendercoder"</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ropenscilabs/gendercoder" class="external-link">gendercoder</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"ropensci/gendercoder"</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/gendercoder" class="external-link">gendercoder</a></span><span class="op">)</span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="why-would-we-do-this">Why would we do this?<a class="anchor" aria-label="anchor" href="#why-would-we-do-this"></a>
@@ -109,7 +109,7 @@
 </h3>
 <p><code><a href="../reference/gendercoder.html">gendercoder()</a></code> includes a sample dataset with actual free-text responses to the question “What is your gender?” from a number of studies of English-speaking participants. The sample dataset includes responses from 7756 participants. Naive coding identifies 103 unique responses to this item.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ropenscilabs/gendercoder" class="external-link">gendercoder</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/gendercoder" class="external-link">gendercoder</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span>
 
 <span class="va">sample</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
@@ -1153,7 +1153,7 @@
 <h2 id="contributing-to-this-package">Contributing to this package<a class="anchor" aria-label="anchor" href="#contributing-to-this-package"></a>
 </h2>
 <p>This package is a reflection of cultural context of the package contributors. We acknowledge that understandings of gender are bound by both culture and time and are continually changing. As such, we welcome issues and pull requests to make the package more inclusive, more reflective of current understandings of gender inclusive languages and/or suitable for a broader range of cultural contexts. We particularly welcome addition of non-English dictionaries or of other gender-diverse responses to the manylevels_en and fewlevels_en dictionaries.</p>
-<p>The <a href="https://ropenscilabs.github.io/gendercoder/articles/a02_add_dictionary.html" class="external-link">“Adding to the dictionary”</a> vignette includes information about how to make changes to the dictionary either for your own use or when contributiong to the gendercoder package.</p>
+<p>The <a href="https://ropensci.github.io/gendercoder/articles/a02_add_dictionary.html" class="external-link">“Adding to the dictionary”</a> vignette includes information about how to make changes to the dictionary either for your own use or when contributiong to the gendercoder package.</p>
 </div>
 <div class="section level2">
 <h2 id="acknowledgement-of-country">Acknowledgement of Country<a class="anchor" aria-label="anchor" href="#acknowledgement-of-country"></a>

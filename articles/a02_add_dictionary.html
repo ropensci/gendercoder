@@ -43,7 +43,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -60,7 +60,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/ropenscilabs/gendercoder/" class="external-link">
+  <a href="https://github.com/ropensci/gendercoder/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -81,7 +81,7 @@
       <h1 data-toc-skip>Adding to the dictionary</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/ropenscilabs/gendercoder/blob/HEAD/vignettes/a02_add_dictionary.Rmd" class="external-link"><code>vignettes/a02_add_dictionary.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/ropensci/gendercoder/blob/HEAD/vignettes/a02_add_dictionary.Rmd" class="external-link"><code>vignettes/a02_add_dictionary.Rmd</code></a></small>
       <div class="hidden name"><code>a02_add_dictionary.Rmd</code></div>
 
     </div>
@@ -91,14 +91,14 @@
 <div class="section level2">
 <h2 id="outline">Outline<a class="anchor" aria-label="anchor" href="#outline"></a>
 </h2>
-<p>While the <code>gendercoder</code> dictionaries aim to be as comprehensive as possible, it is inevitable that new typos and variations will occur in wild data. Moreover, at present, the dictionaries are limited to data the authors have had access to which has been collected in English. As such, if you are collecting data, you will at some point want to add to or create your own dictionaries (and if so, we strongly encourage contributions either as <a href="https://github.com/ropenscilabs/gendercoder" class="external-link">a pull request via github</a>, or by <a href="https://github.com/ropenscilabs/gendercoder/issues/new" class="external-link">raising an issue</a> so the team can help).</p>
+<p>While the <code>gendercoder</code> dictionaries aim to be as comprehensive as possible, it is inevitable that new typos and variations will occur in wild data. Moreover, at present, the dictionaries are limited to data the authors have had access to which has been collected in English. As such, if you are collecting data, you will at some point want to add to or create your own dictionaries (and if so, we strongly encourage contributions either as <a href="https://github.com/ropensci/gendercoder" class="external-link">a pull request via github</a>, or by <a href="https://github.com/ropensci/gendercoder/issues/new" class="external-link">raising an issue</a> so the team can help).</p>
 </div>
 <div class="section level2">
 <h2 id="adding-to-the-dictionary">Adding to the dictionary<a class="anchor" aria-label="anchor" href="#adding-to-the-dictionary"></a>
 </h2>
 <p>Let’s say I have free-text gender data, but some of it is not in English.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ropenscilabs/gendercoder" class="external-link">gendercoder</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/gendercoder" class="external-link">gendercoder</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span>
 <span class="va">df</span>
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 9 × 1</span></span>

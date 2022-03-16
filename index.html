@@ -43,7 +43,7 @@
   <a href="reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -60,7 +60,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/ropenscilabs/gendercoder/" class="external-link">
+  <a href="https://github.com/ropensci/gendercoder/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -89,7 +89,7 @@
 <p>This package is not on CRAN. To use this package please run the following code:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"ropenscilabs/gendercoder"</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ropenscilabs/gendercoder" class="external-link">gendercoder</a></span><span class="op">)</span></code></pre></div>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/gendercoder" class="external-link">gendercoder</a></span><span class="op">)</span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="basic-use">Basic use<a class="anchor" aria-label="anchor" href="#basic-use"></a>
@@ -103,7 +103,7 @@
 </ul>
 <p>Basic usage is demonstrated below.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ropenscilabs/gendercoder" class="external-link">gendercoder</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/gendercoder" class="external-link">gendercoder</a></span><span class="op">)</span>
 
 <span class="fu">tibble</span><span class="op">(</span>gender <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"male"</span>, <span class="st">"MALE"</span>, <span class="st">"mle"</span>, <span class="st">"I am male"</span>, <span class="st">"femail"</span>, <span class="st">"female"</span>, <span class="st">"enby"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">mutate</span><span class="op">(</span>manylevels_gender  <span class="op">=</span> <span class="fu"><a href="reference/recode_gender.html">recode_gender</a></span><span class="op">(</span><span class="va">gender</span>, dictionary <span class="op">=</span> <span class="va">manylevels_en</span>, retain_unmatched <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,
@@ -161,8 +161,8 @@
     <div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/ropenscilabs/gendercoder/" class="external-link">Browse source code</a></li>
-<li><a href="https://github.com/ropenscilabs/gendercoder/issues" class="external-link">Report a bug</a></li>
+<li><a href="https://github.com/ropensci/gendercoder/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/ropensci/gendercoder/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
 
@@ -174,12 +174,6 @@
 </ul>
 </div>
 
-<div class="community">
-<h2 data-toc-skip>Community</h2>
-<ul class="list-unstyled">
-<li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
-</ul>
-</div>
 
 <div class="citation">
 <h2 data-toc-skip>Citation</h2>
