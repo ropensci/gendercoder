@@ -2,25 +2,28 @@ Package: gendercoder
 Title: Recodes Sex/Gender Descriptions into a Standard Set
 Version: 0.0.0.9000
 Authors@R: c(
+  person("Yaoxiang", "Li", role = c("aut", "cre"),
+        email = "liyaoxiang@outlook.com", 
+        comment = c(ORCID = "0000-0001-9200-1016")),
   person("Jennifer", "Beaudry", role = "aut",
     email = "jbeaudry@swin.edu.au",
-    comment = c(ORCID = "https://orcid.org/0000-0003-1596-6708")),
-  person("Emily", "Kothe", role = c("aut", "cre"),
+    comment = c(ORCID = "0000-0003-1596-6708")),
+  person("Emily", "Kothe", role = "aut",
     email = "emily.kothe@deakin.edu.au",
-    comment = c(ORCID = "https://orcid.org/0000-0003-1210-0554")),
+    comment = c(ORCID = "0000-0003-1210-0554")),
   person("Felix", "Singleton Thorn", role = "aut",
     email = "fsingletonthorn@gmail.com", 
-    comment = c(ORCID = "https://orcid.org/0000-0002-0237-6146")),
+    comment = c(ORCID = "0000-0002-0237-6146")),
   person("Rhydwyn", "McGuire", role = "aut",
     email = "rhydwyn@rhydwyn.net"),
   person("Nicholas", "Tierney", 
-         role = c("aut"),
+         role = "aut",
          email = "nicholas.tierney@gmail.com", 
-         comment = c(ORCID = "https://orcid.org/0000-0003-1460-8722")),
+         comment = c(ORCID = "0000-0003-1460-8722")),
   person("Mathew", "Ling", 
-         role = c("aut"),
+         role = "aut",
          email = "mathewtyling@gmail.com", 
-         comment = c(ORCID = "https://orcid.org/0000-0002-0940-2538")),       
+         comment = c(ORCID = "0000-0002-0940-2538")),       
   person("Julia", "Silge", 
          role = "rev",
     comment = "Julia reviewed the package (v. 0.0.0.9000) for rOpenSci, see <https://github.com/ropensci/software-review/issues/435>"),
@@ -30,11 +33,11 @@ Authors@R: c(
   )
 Description: Provides functions and dictionaries for recoding of freetext gender responses into more consistent categories.
 Depends: R (>= 3.0.0)
-Maintainer: Emily Kothe <emily.kothe@deakin.edu.au>
+Maintainer: Yaoxiang Li <liyaoxiang@outlook.com>
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.3
 Suggests: 
     testthat (>= 2.1.0),
     knitr,
