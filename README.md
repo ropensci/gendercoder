@@ -12,9 +12,9 @@ stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![R-CMD-check](https://github.com/ropenscilabs/gendercoder/workflows/R-CMD-check/badge.svg)](https://github.com/ropenscilabs/gendercoder/actions)
+[![R-CMD-check](https://github.com/ropensci/gendercoder/workflows/R-CMD-check/badge.svg)](https://github.com/ropensci/gendercoder/actions)
 [![Codecov test
-coverage](https://codecov.io/gh/ropenscilabs/gendercoder/branch/master/graph/badge.svg)](https://codecov.io/gh/ropenscilabs/gendercoder?branch=master)
+coverage](https://codecov.io/gh/ropensci/gendercoder/branch/master/graph/badge.svg)](https://codecov.io/gh/ropensci/gendercoder?branch=master)
 <!-- badges: end -->
 
 The goal of gendercoder is to allow simple re-coding of free-text gender
@@ -28,7 +28,7 @@ This package is not on CRAN. To use this package please run the
 following code:
 
 ``` r
-devtools::install_github("ropenscilabs/gendercoder")
+devtools::install_github("ropensci/gendercoder")
 library(gendercoder)
 ```
 
@@ -43,12 +43,12 @@ categories, “man”, “woman”, “boy”, “girl”, and “sex and gender
 
 The core function, `gender_recode()`, takes 3 arguments,
 
--   `gender` the vector of free-text gender,
+- `gender` the vector of free-text gender,
 
--   `dictionary` the preferred dictionary, and
+- `dictionary` the preferred dictionary, and
 
--   `retain_unmatched` a logical indicating whether original values
-    should be carried over if there is no match.
+- `retain_unmatched` a logical indicating whether original values should
+  be carried over if there is no match.
 
 Basic usage is demonstrated below.
 
@@ -60,7 +60,7 @@ tibble(gender = c("male", "MALE", "mle", "I am male", "femail", "female", "enby"
          fewlevels_gender = recode_gender(gender, dictionary = fewlevels_en, retain_unmatched = FALSE)
   )
 #> Results not matched from the dictionary have been filled with the user inputted values
-#> # A tibble: 7 x 3
+#> # A tibble: 7 × 3
 #>   gender    manylevels_gender fewlevels_gender      
 #>   <chr>     <chr>             <chr>                 
 #> 1 male      man               man                   
@@ -79,7 +79,7 @@ df <- tibble(gender = c("male", "MALE", "mle", "I am male", "femail", "female", 
 
 df$manylevels_gender <- recode_gender(df$gender, dictionary = manylevels_en)
 df
-#> # A tibble: 7 x 2
+#> # A tibble: 7 × 2
 #>   gender    manylevels_gender
 #>   <chr>     <chr>            
 #> 1 male      man              
@@ -104,7 +104,7 @@ gender-diverse responses to the `manylevels_en` and `fewlevels_en`
 dictionaries.
 
 The [“Adding to the
-dictionary”](https://ropenscilabs.github.io/gendercoder/articles/a02_add_dictionary.html)
+dictionary”](https://ropensci.github.io/gendercoder/articles/a02_add_dictionary.html)
 vignette includes information about how to make changes to the
 dictionary either for your own use or when contributiong to the
 gendercoder package.
@@ -116,7 +116,7 @@ Please cite this package as:
 Jennifer Beaudry, Emily Kothe, Felix Singleton Thorn, Rhydwyn McGuire,
 Nicholas Tierney and Mathew Ling (2020). gendercoder: Recodes Sex/Gender
 Descriptions into a Standard Set. R package version 0.0.0.9000.
-<https://github.com/ropenscilabs/gendercoder>
+<https://github.com/ropensci/gendercoder>
 
 ## Acknowledgement of Country
 
