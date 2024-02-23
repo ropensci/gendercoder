@@ -90,13 +90,6 @@ other gender-diverse responses to the `manylevels_en` and `fewlevels_en` diction
 
 The ["Adding to the dictionary"](https://ropensci.github.io/gendercoder/articles/a02_add_dictionary.html) vignette includes information about how to make changes to the dictionary either for your own use or when contributiong to the gendercoder package.
 
-## Citation Information
-
-Please cite this package as:
-
-Jennifer Beaudry, Emily Kothe, Felix Singleton Thorn, Rhydwyn McGuire, Nicholas Tierney and Mathew Ling (2020).
-  gendercoder: Recodes Sex/Gender Descriptions into a Standard Set. R package version 0.0.0.9000.
-  https://github.com/ropensci/gendercoder
 
 ## Acknowledgement of Country
 
