@@ -1,4 +1,3 @@
-
 which_is_na <- function(x) {
   which(is.na(names(x)))
 }
@@ -36,7 +35,6 @@ which_is_na <- function(x) {
 recode_gender <- function(gender = gender,
                           dictionary = gendercoder::manylevels_en,
                           retain_unmatched = FALSE) {
-
   if (class(dictionary) != "character") {
     stop("The supplied dictionary is not a character vector")
   }
@@ -48,20 +46,19 @@ recode_gender <- function(gender = gender,
   dictionary <- dictionary[!duplicated(names(dictionary), fromLast = TRUE)]
 
   # match using supplied dictionary
-  recoded<- dictionary[tolower(trimws(gender))]
+  recoded <- dictionary[tolower(trimws(gender))]
 
   # replace missing values with inputs
   if (retain_unmatched == TRUE & length(gender[which_is_na(recoded)]) > 0) {
-      message(
-        paste(
-         # length(gender[which_is_na(recoded)]),
-          "Results not matched from the dictionary have been filled",
-          "with the user inputted values"
-        )
+    message(
+      paste(
+        # length(gender[which_is_na(recoded)]),
+        "Results not matched from the dictionary have been filled",
+        "with the user inputted values"
       )
+    )
 
-      recoded[is.na(recoded)] <-  gender[is.na(recoded)]
-}
-    unname( recoded )
-
+    recoded[is.na(recoded)] <- gender[is.na(recoded)]
+  }
+  unname(recoded)
 }
