@@ -61,8 +61,8 @@ Basic usage is demonstrated below.
 ```{r}
 library(gendercoder)
 
-tibble(gender = c("male", "MALE", "mle", "I am male", "femail", "female", "enby")) %>% 
-  mutate(manylevels_gender  = recode_gender(gender, dictionary = manylevels_en, retain_unmatched = TRUE),
+tibble::tibble(gender = c("male", "MALE", "mle", "I am male", "femail", "female", "enby")) |>
+  dplyr::mutate(manylevels_gender  = recode_gender(gender, dictionary = manylevels_en, retain_unmatched = TRUE),
          fewlevels_gender = recode_gender(gender, dictionary = fewlevels_en, retain_unmatched = FALSE)
   )
   
