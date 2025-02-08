@@ -1,32 +1,17 @@
 on:
   push:
     branches:
-      - main
       - master
-      - dev
   pull_request:
     branches:
-      - main
       - master
-      - dev
 
-name: R-CMD-check
+name: test-coverage
 
 jobs:
-  R-CMD-check:
-    runs-on: ${{ matrix.config.os }}
-    name: ${{ matrix.config.os }} (R ${{ matrix.config.r }})
-    strategy:
-      fail-fast: false
-      matrix:
-        config:
-          - {os: windows-latest, r: 'release'}
-          - {os: macOS-latest, r: 'release'}
-          - {os: ubuntu-20.04, r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
-          - {os: ubuntu-20.04, r: 'devel', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest", http-user-agent: "R/4.1.0 (ubuntu-20.04) R (4.1.0 x86_64-pc-linux-gnu x86_64 linux-gnu) on GitHub Actions" }
+  test-coverage:
+    runs-on: ubuntu-latest
     env:
-      R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
-      RSPM: ${{ matrix.config.rspm }}
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Checkout repository
@@ -35,50 +20,54 @@ jobs:
       - name: Set up R
         uses: ropensci/setup-r@v1
         with:
-          r-version: ${{ matrix.config.r }}
+          r-version: 'release'
 
       - name: Set up Pandoc
         uses: ropensci/setup-pandoc@v1
 
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libcurl4-openssl-dev libssl-dev
+
       - name: Query dependencies
         run: |
           install.packages("remotes")
-          install.packages("rcmdcheck")
           saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
           writeLines(sprintf("R-%i.%i", getRversion()$major, getRversion()$minor), ".github/R-version")
         shell: Rscript {0}
 
-      - name: Restore R package cache
+      - name: Cache R packages
         uses: ropensci/cache@v2
         with:
           path: ${{ env.R_LIBS_USER }}
-          key: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-${{ hashFiles('.github/depends.Rds') }}
-          restore-keys: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-
+          key: ${{ runner.os }}-R-${{ hashFiles('.github/R-version') }}-1-${{ hashFiles('.github/depends.Rds') }}
+          restore-keys: ${{ runner.os }}-R-${{ hashFiles('.github/R-version') }}-1-
 
-      - name: Install system dependencies
-        if: runner.os == 'Linux'
+      - name: Install dependencies
         run: |
-          while read -r cmd; do
-            eval sudo $cmd
-          done < <(Rscript -e 'writeLines(remotes::system_requirements("ubuntu", "20.04"))')
-
-      - name: Install R dependencies
-        run: |
-          remotes::install_cran("rcmdcheck")
+          install.packages(c("remotes", "covr"))
           remotes::install_deps(dependencies = TRUE)
         shell: Rscript {0}
 
-      - name: Run R CMD check
-        env:
-          _R_CHECK_CRAN_INCOMING_REMOTE_: false
+      - name: Check for missing packages
         run: |
-          options(crayon.enabled = TRUE)
-          rcmdcheck::rcmdcheck(args = c("--no-manual", "--as-cran"), error_on = "warning", check_dir = "check")
+          missing_pkgs <- setdiff(c("covr", "testthat"), rownames(installed.packages()))
+          if (length(missing_pkgs) > 0) {
+            cat("Missing packages:", paste(missing_pkgs, collapse = ", "), "\n")
+            install.packages(missing_pkgs)
+          } else {
+            cat("All required packages are installed.\n")
+          }
         shell: Rscript {0}
 
-      - name: Upload check results
-        if: failure()
-        uses: ropensci/upload-artifact@v1
-        with:
-          name: ${{ runner.os }}-r${{ matrix.config.r }}-results
-          path: check
+      - name: Run tests
+        run: |
+          testthat::test_local()
+        shell: Rscript {0}
+
+      - name: Test coverage
+        run: covr::codecov()
+        shell: Rscript {0}
+        env:
+          GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
