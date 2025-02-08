@@ -5,7 +5,7 @@
 \title{recode_gender}
 \usage{
 recode_gender(
-  gender = gender,
+  gender,
   dictionary = gendercoder::manylevels_en,
   retain_unmatched = FALSE
 )

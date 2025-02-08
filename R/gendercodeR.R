@@ -5,7 +5,7 @@
 #' responses to the question \bold{"What is your gender?"}
 #'
 #'
-#' @docType package
+#' @docType _PACKAGE
 #' @name gendercoder
 NULL
 

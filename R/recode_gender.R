@@ -27,24 +27,30 @@
 #' ))
 #'
 #' @export recode_gender
-recode_gender <- function(gender = gender,
+recode_gender <- function(gender,
                           dictionary = gendercoder::manylevels_en,
                           retain_unmatched = FALSE) {
+  # Ensure that gender is treated as character so that non-character input
+  # still produces an output of the same length.
+  gender <- as.character(gender)
+
   if (!is.vector(dictionary) || class(dictionary) != "character") {
-    stop("The supplied dictionary must be a character vector.")
+    stop("The supplied dictionary is not a character vector")
   }
 
+  # Normalize the dictionary
   dictionary <- tolower(dictionary)
   names(dictionary) <- tolower(names(dictionary))
   dictionary <- dictionary[!duplicated(names(dictionary))]
 
+  # Clean the gender input
   gender_lower <- tolower(trimws(gender))
   recoded <- dictionary[gender_lower]
 
   if (retain_unmatched) {
     unmatched_indices <- which(is.na(recoded))
     if (length(unmatched_indices) > 0) {
-      message("Some results not matched from the dictionary have been filled with the original values.")
+      message("Results not matched from the dictionary have been filled with the user inputted values")
       recoded[unmatched_indices] <- gender[unmatched_indices]
     }
   }
