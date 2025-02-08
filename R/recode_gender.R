@@ -34,7 +34,7 @@ recode_gender <- function(gender,
   # still produces an output of the same length.
   gender <- as.character(gender)
 
-  if (!is.vector(dictionary) || class(dictionary) != "character") {
+  if (!is.character(dictionary)) {
     stop("The supplied dictionary is not a character vector")
   }
 

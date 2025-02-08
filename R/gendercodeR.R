@@ -1,11 +1,8 @@
 #' gendercoder: A Package for Recoding Freetext Gender Data
 #'
-#' Provides dictionaries and  a function \code{recode_gender}
-#' to allow for easy automatic coding of common variations in free text
-#' responses to the question \bold{"What is your gender?"}
+#' Provides dictionaries and a function \code{recode_gender} to allow for easy automatic coding of common variations in free text responses to the question \strong{"What is your gender?"}
 #'
-#'
-#' @docType _PACKAGE
+#' @docType package
 #' @name gendercoder
 NULL
 
