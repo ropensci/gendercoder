@@ -2,8 +2,12 @@ stopifnot(
   grepl("non-binary", recode_gender("enby", dictionary = manylevels_en, retain_unmatched = TRUE)),
   grepl("man", recode_gender("mlae", dictionary = manylevels_en, retain_unmatched = TRUE)),
   grepl("woman", recode_gender("famela", dictionary = manylevels_en, retain_unmatched = TRUE)),
+  grepl("man", recode_gender("\u7537", dictionary = manylevels_en, retain_unmatched = TRUE)),
+  grepl("woman", recode_gender("\u5973", dictionary = manylevels_en, retain_unmatched = TRUE)),
   grepl("sex and gender diverse", recode_gender("enby", dictionary = fewlevels_en, retain_unmatched = TRUE)),
-  grepl("sex and gender diverse", recode_gender("enby", dictionary = fewlevels_en, retain_unmatched = FALSE))
+  grepl("sex and gender diverse", recode_gender("enby", dictionary = fewlevels_en, retain_unmatched = FALSE)),
+  grepl("man", recode_gender("\u7537", dictionary = fewlevels_en, retain_unmatched = TRUE)),
+  grepl("woman", recode_gender("\u5973", dictionary = fewlevels_en, retain_unmatched = TRUE))
 )
 
 stopifnot(
