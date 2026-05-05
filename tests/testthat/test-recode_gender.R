@@ -33,3 +33,12 @@ error_message <- tryCatch(
   error = conditionMessage
 )
 stopifnot(grepl("The supplied dictionary is not a character vector", error_message))
+
+app_test_data <- data.frame(gender = c("male", "enby"), stringsAsFactors = FALSE)
+app_rds <- tempfile(fileext = ".rds")
+app_rda <- tempfile(fileext = ".rda")
+saveRDS(app_test_data, app_rds)
+save(app_test_data, file = app_rda, version = 2)
+
+stopifnot(identical(gendercoder:::read_app_data(app_rds), app_test_data))
+stopifnot(identical(gendercoder:::read_app_data(app_rda), app_test_data))
