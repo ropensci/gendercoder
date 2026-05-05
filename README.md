@@ -9,7 +9,7 @@
 status](https://www.r-pkg.org/badges/version/gendercoder)](https://CRAN.R-project.org/package=gendercoder)
 [![Lifecycle:
 stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
-[![Project Status: Active – The project has reached a stable, usable
+[![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![R-CMD-check](https://github.com/ropensci/gendercoder/workflows/R-CMD-check/badge.svg)](https://github.com/ropensci/gendercoder/actions)
@@ -35,13 +35,13 @@ library(gendercoder)
 ## Basic use
 
 The gendercoder package permits the efficient re-coding of free-text
-gender responses within a tidyverse pipeline. It contains two built-in
+gender responses. It contains two built-in
 English output dictionaries, a default `manylevels_en` dictionary which
 corrects spelling and standardises terms while maintaining the diversity
 of responses and a `fewlevels_en` dictionary which contains fewer gender
-categories, “man”, “woman”, “boy”, “girl”, and “sex and gender diverse”.
+categories, "man", "woman", "boy", "girl", and "sex and gender diverse".
 
-The core function, `gender_recode()`, takes 3 arguments,
+The core function, `recode_gender()`, takes 3 arguments,
 
 - `gender` the vector of free-text gender,
 
@@ -55,41 +55,42 @@ Basic usage is demonstrated below.
 ``` r
 library(gendercoder)
 
-tibble(gender = c("male", "MALE", "mle", "I am male", "femail", "female", "enby")) %>% 
-  mutate(manylevels_gender  = recode_gender(gender, dictionary = manylevels_en, retain_unmatched = TRUE),
-         fewlevels_gender = recode_gender(gender, dictionary = fewlevels_en, retain_unmatched = FALSE)
-  )
+df <- data.frame(
+  stringsAsFactors = FALSE,
+  gender = c("male", "MALE", "mle", "I am male", "femail", "female", "enby")
+)
+
+df$manylevels_gender <- recode_gender(
+  df$gender,
+  dictionary = manylevels_en,
+  retain_unmatched = TRUE
+)
+df$fewlevels_gender <- recode_gender(
+  df$gender,
+  dictionary = fewlevels_en,
+  retain_unmatched = FALSE
+)
+df
 #> Results not matched from the dictionary have been filled with the user inputted values
-#> # A tibble: 7 × 3
-#>   gender    manylevels_gender fewlevels_gender      
-#>   <chr>     <chr>             <chr>                 
-#> 1 male      man               man                   
-#> 2 MALE      man               man                   
-#> 3 mle       man               man                   
-#> 4 I am male I am male         <NA>                  
-#> 5 femail    woman             woman                 
-#> 6 female    woman             woman                 
-#> 7 enby      non-binary        sex and gender diverse
+#>      gender manylevels_gender       fewlevels_gender
+#> 1      male               man                    man
+#> 2      MALE               man                    man
+#> 3       mle               man                    man
+#> 4 I am male         I am male                   <NA>
+#> 5    femail             woman                  woman
+#> 6    female             woman                  woman
+#> 7      enby        non-binary sex and gender diverse
 ```
 
-The package does not need to be used as part of a tidyverse pipeline:
+The package also includes a local Shiny app for interactive recoding:
 
 ``` r
-df <- tibble(gender = c("male", "MALE", "mle", "I am male", "femail", "female", "enby")) 
-
-df$manylevels_gender <- recode_gender(df$gender, dictionary = manylevels_en)
-df
-#> # A tibble: 7 × 2
-#>   gender    manylevels_gender
-#>   <chr>     <chr>            
-#> 1 male      man              
-#> 2 MALE      man              
-#> 3 mle       man              
-#> 4 I am male <NA>             
-#> 5 femail    woman            
-#> 6 female    woman            
-#> 7 enby      non-binary
+gendercoder_app()
 ```
+
+The app accepts `.csv`, `.dta`, `.sav`, `.rds`, `.rda`, and `.RData`
+files. It displays the selected gender column and the recoded output
+column, then lets you download the full recoded data.
 
 ## Contributing to this package
 
@@ -103,8 +104,8 @@ particularly welcome addition of non-English dictionaries or of other
 gender-diverse responses to the `manylevels_en` and `fewlevels_en`
 dictionaries.
 
-The [“Adding to the
-dictionary”](https://ropensci.github.io/gendercoder/articles/a02_add_dictionary.html)
+The ["Adding to the
+dictionary"](https://ropensci.github.io/gendercoder/articles/a02_add_dictionary.html)
 vignette includes information about how to make changes to the
 dictionary either for your own use or when contributiong to the
 gendercoder package.

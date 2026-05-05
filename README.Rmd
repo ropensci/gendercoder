@@ -11,7 +11,6 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   out.width = "100%"
 )
-library(dplyr)
 ```
 # gendercoder
 <!-- badges: start -->
@@ -41,13 +40,13 @@ library(gendercoder)
 ## Basic use
 
 The gendercoder package permits the efficient re-coding of free-text gender 
-responses within a tidyverse pipeline. It contains two built-in English output 
+responses. It contains two built-in English output 
 dictionaries, a default `manylevels_en` dictionary which corrects spelling and 
 standardises terms while maintaining the diversity of responses and a 
 `fewlevels_en` dictionary which contains fewer gender categories, "man", "woman", 
 "boy", "girl", and "sex and gender diverse". 
 
-The core function, `gender_recode()`, takes 3 arguments, 
+The core function, `recode_gender()`, takes 3 arguments, 
 
 - `gender` the vector of free-text gender,
 
@@ -61,21 +60,34 @@ Basic usage is demonstrated below.
 ```{r}
 library(gendercoder)
 
-tibble::tibble(gender = c("male", "MALE", "mle", "I am male", "femail", "female", "enby")) |>
-  dplyr::mutate(manylevels_gender  = recode_gender(gender, dictionary = manylevels_en, retain_unmatched = TRUE),
-         fewlevels_gender = recode_gender(gender, dictionary = fewlevels_en, retain_unmatched = FALSE)
-  )
+df <- data.frame(
+  stringsAsFactors = FALSE,
+  gender = c("male", "MALE", "mle", "I am male", "femail", "female", "enby")
+)
+
+df$manylevels_gender <- recode_gender(
+  df$gender,
+  dictionary = manylevels_en,
+  retain_unmatched = TRUE
+)
+df$fewlevels_gender <- recode_gender(
+  df$gender,
+  dictionary = fewlevels_en,
+  retain_unmatched = FALSE
+)
+df
   
 ```
 
-The package does not need to be used as part of a tidyverse pipeline:
+The package also includes a local Shiny app for interactive recoding:
 
 ```{r}
-df <- tibble(gender = c("male", "MALE", "mle", "I am male", "femail", "female", "enby")) 
-
-df$manylevels_gender <- recode_gender(df$gender, dictionary = manylevels_en)
-df
+gendercoder_app()
 ```
+
+The app accepts `.csv`, `.dta`, `.sav`, `.rds`, `.rda`, and `.RData` files. It
+displays the selected gender column and the recoded output column, then lets you
+download the full recoded data.
 
 
 ## Contributing to this package
