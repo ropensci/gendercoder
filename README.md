@@ -5,6 +5,8 @@
 
 <!-- badges: start -->
 
+<img src="man/figures/gendercoder-hex.svg" align="right" height="139" alt="gendercoder hex sticker" />
+
 [![CRAN
 status](https://www.r-pkg.org/badges/version/gendercoder)](https://CRAN.R-project.org/package=gendercoder)
 [![Lifecycle:
