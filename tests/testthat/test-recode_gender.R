@@ -58,15 +58,24 @@ stopifnot(grepl("max_distance must be a single non-negative number", distance_er
 
 app_test_data <- data.frame(gender = c("male", "enby"), stringsAsFactors = FALSE)
 app_csv <- tempfile(fileext = ".csv")
+app_dta <- tempfile(fileext = ".dta")
+app_sav <- tempfile(fileext = ".sav")
 app_rds <- tempfile(fileext = ".rds")
 app_rda <- tempfile(fileext = ".rda")
+app_rdata <- tempfile(fileext = ".RData")
 utils::write.csv(app_test_data, app_csv, row.names = FALSE)
+haven::write_dta(app_test_data, app_dta)
+haven::write_sav(app_test_data, app_sav)
 saveRDS(app_test_data, app_rds)
 save(app_test_data, file = app_rda, version = 2)
+save(app_test_data, file = app_rdata, version = 2)
 
 stopifnot(identical(as.data.frame(gendercoder:::read_app_data(app_csv)), app_test_data))
+stopifnot(identical(as.character(as.data.frame(gendercoder:::read_app_data(app_dta))$gender), app_test_data$gender))
+stopifnot(identical(as.character(as.data.frame(gendercoder:::read_app_data(app_sav))$gender), app_test_data$gender))
 stopifnot(identical(gendercoder:::read_app_data(app_rds), app_test_data))
 stopifnot(identical(gendercoder:::read_app_data(app_rda), app_test_data))
+stopifnot(identical(gendercoder:::read_app_data(app_rdata), app_test_data))
 
 unsupported_error <- tryCatch(
   gendercoder:::read_app_data(tempfile(fileext = ".txt")),
@@ -81,6 +90,32 @@ empty_rda_error <- tryCatch(
   error = conditionMessage
 )
 stopifnot(grepl("The R data file does not contain any objects", empty_rda_error))
+
+missing_app_package_warning <- NULL
+missing_app_packages <- withCallingHandlers(
+  gendercoder:::check_app_packages("gendercoderDefinitelyMissingPackage"),
+  warning = function(w) {
+    missing_app_package_warning <<- conditionMessage(w)
+    invokeRestart("muffleWarning")
+  }
+)
+stopifnot(
+  identical(missing_app_packages, FALSE),
+  grepl("You need to install the following packages to run the app", missing_app_package_warning)
+)
+
+missing_app_launch_warning <- NULL
+missing_app_launch <- withCallingHandlers(
+  gendercoder:::launch_gendercoder_app("gendercoderDefinitelyMissingPackage"),
+  warning = function(w) {
+    missing_app_launch_warning <<- conditionMessage(w)
+    invokeRestart("muffleWarning")
+  }
+)
+stopifnot(
+  identical(missing_app_launch, FALSE),
+  grepl("gendercoderDefinitelyMissingPackage", missing_app_launch_warning)
+)
 
 if (requireNamespace("shiny", quietly = TRUE)) {
   shiny_namespace <- asNamespace("shiny")

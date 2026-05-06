@@ -14,6 +14,18 @@
 #' }
 gendercoder_app <- function(...) {
   packages <- c("DT", "haven", "readr", "shiny", "shinydashboard")
+  launch_gendercoder_app(packages, ...)
+}
+
+launch_gendercoder_app <- function(packages, ...) {
+  if (!check_app_packages(packages)) {
+    return(invisible(FALSE))
+  }
+
+  shiny::runApp(appDir = system.file("app", package = "gendercoder"), ...)
+}
+
+check_app_packages <- function(packages) {
   available <- vapply(packages, requireNamespace, logical(1), quietly = TRUE)
 
   if (!all(available)) {
@@ -22,10 +34,10 @@ gendercoder_app <- function(...) {
       paste(packages[!available], collapse = ", "),
       call. = FALSE
     )
-    return(invisible(FALSE))
+    return(FALSE)
   }
 
-  shiny::runApp(appDir = system.file("app", package = "gendercoder"), ...)
+  TRUE
 }
 
 read_app_data <- function(path, name = path) {
