@@ -44,14 +44,66 @@ error_message <- tryCatch(
 )
 stopifnot(grepl("The supplied dictionary is not a character vector", error_message))
 
+dictionary_error <- tryCatch(
+  gender_create_dictionary("maile", dictionary = 1:7),
+  error = conditionMessage
+)
+stopifnot(grepl("The supplied dictionary is not a character vector", dictionary_error))
+
+distance_error <- tryCatch(
+  gender_create_dictionary("maile", max_distance = -1),
+  error = conditionMessage
+)
+stopifnot(grepl("max_distance must be a single non-negative number", distance_error))
+
 app_test_data <- data.frame(gender = c("male", "enby"), stringsAsFactors = FALSE)
+app_csv <- tempfile(fileext = ".csv")
 app_rds <- tempfile(fileext = ".rds")
 app_rda <- tempfile(fileext = ".rda")
+utils::write.csv(app_test_data, app_csv, row.names = FALSE)
 saveRDS(app_test_data, app_rds)
 save(app_test_data, file = app_rda, version = 2)
 
+stopifnot(identical(as.data.frame(gendercoder:::read_app_data(app_csv)), app_test_data))
 stopifnot(identical(gendercoder:::read_app_data(app_rds), app_test_data))
 stopifnot(identical(gendercoder:::read_app_data(app_rda), app_test_data))
+
+unsupported_error <- tryCatch(
+  gendercoder:::read_app_data(tempfile(fileext = ".txt")),
+  error = conditionMessage
+)
+stopifnot(grepl("Unsupported file type: txt", unsupported_error))
+
+empty_rda <- tempfile(fileext = ".rda")
+save(list = character(), file = empty_rda)
+empty_rda_error <- tryCatch(
+  gendercoder:::read_app_data(empty_rda),
+  error = conditionMessage
+)
+stopifnot(grepl("The R data file does not contain any objects", empty_rda_error))
+
+if (requireNamespace("shiny", quietly = TRUE)) {
+  shiny_namespace <- asNamespace("shiny")
+  original_run_app <- get("runApp", envir = shiny_namespace)
+  unlockBinding("runApp", shiny_namespace)
+  assign(
+    "runApp",
+    function(appDir, ...) list(appDir = appDir, args = list(...)),
+    envir = shiny_namespace
+  )
+  lockBinding("runApp", shiny_namespace)
+
+  app_launch <- gendercoder_app(launch.browser = FALSE)
+
+  unlockBinding("runApp", shiny_namespace)
+  assign("runApp", original_run_app, envir = shiny_namespace)
+  lockBinding("runApp", shiny_namespace)
+
+  stopifnot(
+    identical(app_launch$args$launch.browser, FALSE),
+    grepl("app$", app_launch$appDir)
+  )
+}
 
 suggested_dictionary <- gender_create_dictionary(
   c("maile", "I am male", "apache"),
