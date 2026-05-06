@@ -3,3 +3,5 @@ inst/doc
 .Rhistory
 *.Rproj
 .r-lib/
+gendercoder.Rcheck/
+gendercoder_*.tar.gz
