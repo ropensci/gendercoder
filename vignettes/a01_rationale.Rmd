@@ -11,7 +11,7 @@ The goal of gendercoder is to allow simple recoding of free-text gender response
 
 ## Installation
 
-This package is not on CRAN. To use this package please run the following code:
+You can install the development version from GitHub with:
 
 ``` r
 devtools::install_github("ropensci/gendercoder")
@@ -33,14 +33,14 @@ For example, male participants may provide free-text responses as "male", "man",
 "enby", "non-binary", "non binary"
 
 Manually coding of such free-text responses this is often not feasible with 
-larger datasets. `gendercoder()` uses dictionaries of common 
+larger datasets. `recode_gender()` uses dictionaries of common
 misspellings to re-code free-text responses into a consistent set of 
 responses. The small number of responses not automatically re-coded by 
-gendercoder() can then be feasibly manually recoded. 
+recode_gender() can then be feasibly manually recoded.
 
 ## Motivating example
 
-`gendercoder()` includes a sample dataset with actual free-text 
+`gendercoder` includes a sample dataset with actual free-text
 responses to the question "What is your gender?" from a number of studies of 
 English-speaking participants. The sample dataset includes responses from 7756
 participants. Naive coding identifies 103 unique responses to this item. 
@@ -97,7 +97,7 @@ sample %>%
 The package provides two built-in dictionaries. The use of these is controlled 
 using the `dictionary` argument. The first `dictionary = manylevels_en` provides 
 corrects spelling and standardises terms while maintaining the diversity of responses. 
-This is the default dictionary for gendercoder() as it preserves as much gender
+This is the default dictionary for `recode_gender()` as it preserves as much gender
 diversity as possible. 
 
 However in some cases you may wish to collapse gender into a smaller set of 
@@ -253,7 +253,7 @@ gender inclusive languages and/or suitable for a broader range of cultural
 contexts. We particularly welcome addition of non-English dictionaries or of 
 other gender-diverse responses to the manylevels_en and fewlevels_en dictionaries.
 
-The ["Adding to the dictionary"](https://ropensci.github.io/gendercoder/articles/a02_add_dictionary.html) vignette includes information about how to make changes to the dictionary either for your own use or when contributiong to the gendercoder package.
+The "Adding to the dictionary" vignette includes information about how to make changes to the dictionary either for your own use or when contributing to the gendercoder package.
 
 # Acknowledgement of Country
 

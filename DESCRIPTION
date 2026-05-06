@@ -31,7 +31,7 @@ Authors@R: c(
          role = "rev",
   comment = "Elin reviewed the package (v. 0.0.0.9000) for rOpenSci, see <https://github.com/ropensci/software-review/issues/435>")
   )
-Description: Provides functions and dictionaries for recoding of freetext gender responses into more consistent categories.
+Description: Provides functions and dictionaries for recoding free-text gender responses into more consistent categories.
 Depends: R (>= 3.0.0)
 Maintainer: Yaoxiang Li <liyaoxiang@outlook.com>
 License: GPL-2

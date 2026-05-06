@@ -10,3 +10,8 @@ CODE_OF_CONDUCT.md
 paper
 cran-comments.md
 ^codecov\.yml$
+^\.r-lib$
+^\.test-lib$
+^\.tools$
+^gendercoder\.Rcheck$
+^gendercoder_[0-9.]+\.tar\.gz$

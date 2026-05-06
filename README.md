@@ -14,20 +14,21 @@ stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![R-CMD-check](https://github.com/ropensci/gendercoder/workflows/R-CMD-check/badge.svg)](https://github.com/ropensci/gendercoder/actions)
+[![ROpenSci
+status](https://badges.ropensci.org/435_status.svg)](https://github.com/ropensci/software-review/issues/435)
+[![R-CMD-check](https://github.com/ropensci/gendercoder/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ropensci/gendercoder/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
-coverage](https://codecov.io/gh/ropensci/gendercoder/branch/master/graph/badge.svg)](https://codecov.io/gh/ropensci/gendercoder?branch=master)
+coverage](https://codecov.io/gh/ropensci/gendercoder/graph/badge.svg)](https://app.codecov.io/gh/ropensci/gendercoder)
 <!-- badges: end -->
 
 The goal of gendercoder is to allow simple re-coding of free-text gender
-responses. This is intended to permit representation of gender
-diversity, while managing troll-responses and the workload implications
-of manual coding.
+responses. This is intended to permit representation of gender diversity
+while managing misleading responses and the workload implications of
+manual coding.
 
 ## Installation
 
-This package is not on CRAN. To use this package please run the
-following code:
+You can install the development version from GitHub with:
 
 ``` r
 devtools::install_github("ropensci/gendercoder")
@@ -37,11 +38,11 @@ library(gendercoder)
 ## Basic use
 
 The gendercoder package permits the efficient re-coding of free-text
-gender responses. It contains two built-in
-English output dictionaries, a default `manylevels_en` dictionary which
-corrects spelling and standardises terms while maintaining the diversity
-of responses and a `fewlevels_en` dictionary which contains fewer gender
-categories, "man", "woman", "boy", "girl", and "sex and gender diverse".
+gender responses. It contains two built-in English output dictionaries,
+a default `manylevels_en` dictionary which corrects spelling and
+standardises terms while maintaining the diversity of responses and a
+`fewlevels_en` dictionary which contains fewer gender categories: `man`,
+`woman`, `boy`, `girl`, and `sex and gender diverse`.
 
 The core function, `recode_gender()`, takes 3 arguments,
 
@@ -67,13 +68,13 @@ df$manylevels_gender <- recode_gender(
   dictionary = manylevels_en,
   retain_unmatched = TRUE
 )
+#> Results not matched from the dictionary have been filled with the user inputted values
 df$fewlevels_gender <- recode_gender(
   df$gender,
   dictionary = fewlevels_en,
   retain_unmatched = FALSE
 )
 df
-#> Results not matched from the dictionary have been filled with the user inputted values
 #>      gender manylevels_gender       fewlevels_gender
 #> 1      male               man                    man
 #> 2      MALE               man                    man
@@ -96,30 +97,20 @@ column, then lets you download the full recoded data.
 
 ## Contributing to this package
 
-This package is a reflection of cultural context of the package
+This package is a reflection of the cultural context of the package
 contributors. We acknowledge that understandings of gender are bound by
 both culture and time and are continually changing. As such, we welcome
 issues and pull requests to make the package more inclusive, more
-reflective of current understandings of gender inclusive languages
+reflective of current understandings of gender-inclusive languages
 and/or suitable for a broader range of cultural contexts. We
 particularly welcome addition of non-English dictionaries or of other
 gender-diverse responses to the `manylevels_en` and `fewlevels_en`
 dictionaries.
 
-The ["Adding to the
-dictionary"](https://ropensci.github.io/gendercoder/articles/a02_add_dictionary.html)
+The [Adding to the dictionary](vignettes/a02_add_dictionary.Rmd)
 vignette includes information about how to make changes to the
-dictionary either for your own use or when contributiong to the
+dictionary either for your own use or when contributing to the
 gendercoder package.
-
-## Citation Information
-
-Please cite this package as:
-
-Jennifer Beaudry, Emily Kothe, Felix Singleton Thorn, Rhydwyn McGuire,
-Nicholas Tierney and Mathew Ling (2020). gendercoder: Recodes Sex/Gender
-Descriptions into a Standard Set. R package version 0.0.0.9000.
-<https://github.com/ropensci/gendercoder>
 
 ## Acknowledgement of Country
 

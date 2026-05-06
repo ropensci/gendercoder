@@ -6,7 +6,7 @@
 \alias{gendercoder}
 \title{gendercoder: A Package for Recoding Freetext Gender Data}
 \description{
-Provides dictionaries and a function \code{recode_gender} to allow for easy automatic coding of common variations in free text responses to the question \strong{"What is your gender?"}
+Provides dictionaries and \code{recode_gender()} to allow for easy automatic coding of common variations in free-text responses to the question \strong{"What is your gender?"}
 }
 \seealso{
 Useful links:

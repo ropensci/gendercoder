@@ -25,7 +25,7 @@ is inevitable that new typos and variations will occur in wild data. Moreover,
 at present, the dictionaries are limited to data the authors have had access to 
 which has been collected in English. As such, if you are collecting data, you 
 will at some point want to add to or create your own dictionaries (and if so, 
-we strongly encourage contributions either as [a pull request via github](https://github.com/ropensci/gendercoder), or by [raising an issue](https://github.com/ropensci/gendercoder/issues/new) so the team can 
+we strongly encourage contributions either as [a pull request via GitHub](https://github.com/ropensci/gendercoder), or by [raising an issue](https://github.com/ropensci/gendercoder/issues/new) so the team can
 help).
 
 ## Adding to the dictionary
@@ -86,7 +86,7 @@ df %>%
 Let's say you are happy with your `manylevels_plus` dictionary and think it should be 
 part of the `manylevels_en` dictionary in the package. All you need to do is [fork the 
 gendercoder repo](https://docs.github.com/en/get-started/quickstart/fork-a-repo), 
-[clone it to your local device](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository-from-github/cloning-a-repository), and then rename 
+[clone it to your local device](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository), and then rename 
 your vector and use the `usethis::use_data()` function to overwrite the `manylevels_en` 
 dictionary as shown below. 
 
@@ -95,6 +95,6 @@ manylevels_en <-  manylevels_plus
 usethis::use_data(manylevels_en, overwrite = TRUE)
 ```
 
-Once you've pushed the changes to your fork, you can [make a pull request](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork). Please tell us 
+Once you've pushed the changes to your fork, you can [make a pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork). Please tell us 
 what you're adding so we know what to look out for and how to test it.  
 
