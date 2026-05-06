@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 276" role="img" aria-labelledby="title desc">
+  <title id="title">gendercoder hex sticker</title>
+  <desc id="desc">A hex sticker showing free text responses being recoded into consistent gender categories.</desc>
+  <path d="M120 6 230 69v138l-110 63L10 207V69Z" fill="#ffffff" stroke="#263238" stroke-width="8"/>
+  <path d="M120 20 217 76v124l-97 56-97-56V76Z" fill="#f7fbff"/>
+  <path d="M52 86h76a18 18 0 0 1 18 18v7a18 18 0 0 1-18 18H73l-24 18 8-20a18 18 0 0 1-15-18v-5a18 18 0 0 1 10-18Z" fill="#5b8def"/>
+  <path d="M188 145h-76a18 18 0 0 0-18 18v7a18 18 0 0 0 18 18h55l24 18-8-20a18 18 0 0 0 15-18v-5a18 18 0 0 0-10-18Z" fill="#2fbf71"/>
+  <path d="M60 206h120" stroke="#263238" stroke-width="8" stroke-linecap="round"/>
+  <path d="M82 220h76" stroke="#263238" stroke-width="8" stroke-linecap="round"/>
+  <text x="67" y="113" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700">free</text>
+  <text x="112" y="174" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700">coded</text>
+  <text x="120" y="61" fill="#263238" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700">gender</text>
+  <text x="120" y="235" fill="#263238" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700">coder</text>
+</svg>
