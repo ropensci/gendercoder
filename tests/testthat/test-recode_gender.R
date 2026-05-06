@@ -42,3 +42,20 @@ save(app_test_data, file = app_rda, version = 2)
 
 stopifnot(identical(gendercoder:::read_app_data(app_rds), app_test_data))
 stopifnot(identical(gendercoder:::read_app_data(app_rda), app_test_data))
+
+suggested_dictionary <- gender_create_dictionary(
+  c("maile", "I am male", "apache"),
+  dictionary = manylevels_en,
+  max_distance = 1
+)
+stopifnot(
+  identical(suggested_dictionary[["maile"]], "man"),
+  !("I am male" %in% names(suggested_dictionary)),
+  !("apache" %in% names(suggested_dictionary))
+)
+
+combined_dictionary <- c(suggested_dictionary, manylevels_en)
+stopifnot(identical(
+  recode_gender("maile", dictionary = combined_dictionary),
+  "man"
+))

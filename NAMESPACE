@@ -2,3 +2,4 @@
 
 export(recode_gender)
 export(gendercoder_app)
+export(gender_create_dictionary)
