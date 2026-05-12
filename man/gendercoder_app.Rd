@@ -17,7 +17,7 @@ Code data interactively in a Shiny app that runs locally in RStudio or a web
 browser. The app supports CSV, Stata, SPSS, RDS, and R data files.
 }
 \examples{
-\dontrun{
+if (interactive()) {
 gendercoder_app()
 }
 }

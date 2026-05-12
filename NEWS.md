@@ -1,3 +1,8 @@
+# gendercoder 0.1.1
+
+* Expanded the package description for CRAN resubmission.
+* Updated the interactive app example to use `if (interactive())`.
+
 # gendercoder 0.1.0
 
 * Added Unicode dictionary entries and additional requested dictionary terms.

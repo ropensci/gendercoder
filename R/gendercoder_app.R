@@ -9,7 +9,7 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' if (interactive()) {
 #' gendercoder_app()
 #' }
 gendercoder_app <- function(...) {

@@ -1,6 +1,6 @@
 Package: gendercoder
 Title: Recodes Sex/Gender Descriptions into a Standard Set
-Version: 0.1.0
+Version: 0.1.1
 Authors@R: c(
   person("Yaoxiang", "Li", role = c("aut", "cre"),
         email = "liyaoxiang@outlook.com", 
@@ -31,13 +31,20 @@ Authors@R: c(
          role = "rev",
   comment = "Elin reviewed the package (v. 0.0.0.9000) for rOpenSci, see <https://github.com/ropensci/software-review/issues/435>")
   )
-Description: Provides functions and dictionaries for recoding free-text gender responses into more consistent categories.
+Description: Provides dictionary-based tools for recoding free-text gender
+    responses into consistent categories while preserving gender diversity where
+    possible. The package standardises spelling, capitalization, whitespace, and
+    common variants through curated named character-vector dictionaries, supports
+    either detailed or collapsed output categories, and can retain original
+    unmatched responses for manual review. It also includes helpers for creating
+    custom dictionaries from approximate string matches and a local interactive
+    application for recoding uploaded data files.
 Depends: R (>= 3.0.0)
 Maintainer: Yaoxiang Li <liyaoxiang@outlook.com>
 License: GPL-2
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 Suggests: 
     knitr,
     rmarkdown,
