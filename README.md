@@ -89,10 +89,11 @@ The package also includes a local Shiny app for interactive recoding:
 gendercoder_app()
 ```
 
-The app accepts `.csv`, `.dta`, `.sav`, `.rds`, `.rda`, and `.RData`
-files. Stata and SPSS files require the optional `haven` package. The
-app displays the selected gender column and the recoded output column,
-then lets you download the full recoded data.
+The app uses a `bs4Dash` interface and accepts `.csv`, `.dta`, `.sav`,
+`.rds`, `.rda`, and `.RData` files. Stata and SPSS files require the
+optional `haven` package. The app displays the selected gender column
+and the recoded output column, then lets you download the full recoded
+data.
 
 ## Contributing to this package
 

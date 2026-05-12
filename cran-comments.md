@@ -17,6 +17,7 @@ This is a resubmission. In this version I have:
 * Replaced the interactive Shiny app example's \dontrun{} wrapper with if (interactive()).
 * Reduced optional package dependencies by removing dplyr, covr, DT, readr, and
   shinydashboard from Suggests.
+* Added bs4Dash to Suggests for the optional local interactive app skin.
 * Did not add method references because the package implements dictionary lookup
   and approximate string matching helpers rather than a published statistical
   method.

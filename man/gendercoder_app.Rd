@@ -14,8 +14,9 @@ Called for its side effect of launching a Shiny app.
 }
 \description{
 Code data interactively in a Shiny app that runs locally in RStudio or a web
-browser. The app supports CSV, Stata, SPSS, RDS, and R data files. Stata
-and SPSS files require the optional \pkg{haven} package.
+browser using a \pkg{bs4Dash} interface. The app supports CSV, Stata, SPSS,
+RDS, and R data files. Stata and SPSS files require the optional
+\pkg{haven} package.
 }
 \examples{
 if (interactive()) {

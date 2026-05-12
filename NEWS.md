@@ -4,6 +4,7 @@
 * Updated the interactive app example to use `if (interactive())`.
 * Reduced optional package dependencies by using base R in vignettes and the
   local interactive app where possible.
+* Styled the local interactive app with `bs4Dash`.
 
 # gendercoder 0.1.0
 

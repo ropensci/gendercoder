@@ -48,6 +48,7 @@ RoxygenNote: 7.3.3
 Suggests: 
     knitr,
     rmarkdown,
+    bs4Dash,
     haven,
     shiny
 VignetteBuilder: knitr
