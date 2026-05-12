@@ -131,13 +131,18 @@ responses from 7756 participants. Naive coding identifies 103 unique
 responses to this item.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/gendercoder" class="external-link">gendercoder</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">sample</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">Gender</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span>count <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html" class="external-link">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="op">-</span><span class="va">count</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span>caption <span class="op">=</span> <span class="st">"Summary of gender categories before coding"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">count_values</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">name</span> <span class="op">=</span> <span class="st">"value"</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">counts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sort.html" class="external-link">sort</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">x</span>, useNA <span class="op">=</span> <span class="st">"ifany"</span><span class="op">)</span>, decreasing <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span>  <span class="va">out</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">counts</span><span class="op">)</span>, count <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html" class="external-link">as.integer</a></span><span class="op">(</span><span class="va">counts</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">out</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">name</span></span>
+<span>  <span class="va">out</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span></span>
+<span>  <span class="fu">count_values</span><span class="op">(</span><span class="va">sample</span><span class="op">$</span><span class="va">Gender</span>, <span class="st">"Gender"</span><span class="op">)</span>,</span>
+<span>  caption <span class="op">=</span> <span class="st">"Summary of gender categories before coding"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <caption>Summary of gender categories before coding</caption>
 <colgroup>
@@ -238,19 +243,19 @@ responses to this item.</p>
 <td align="right">3</td>
 </tr>
 <tr class="odd">
+<td align="left">femail</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
 <td align="left">Femalw</td>
 <td align="right">2</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Frmale</td>
 <td align="right">2</td>
 </tr>
-<tr class="odd">
-<td align="left">Gender</td>
-<td align="right">2</td>
-</tr>
 <tr class="even">
-<td align="left">MALE</td>
+<td align="left">Gender</td>
 <td align="right">2</td>
 </tr>
 <tr class="odd">
@@ -258,23 +263,23 @@ responses to this item.</p>
 <td align="right">2</td>
 </tr>
 <tr class="even">
+<td align="left">MALE</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
 <td align="left">Masculino</td>
 <td align="right">2</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Nonbinary</td>
 <td align="right">2</td>
 </tr>
-<tr class="even">
-<td align="left">femail</td>
-<td align="right">2</td>
-</tr>
 <tr class="odd">
-<td align="left">Male</td>
+<td align="left">male</td>
 <td align="right">1</td>
 </tr>
 <tr class="even">
-<td align="left">male</td>
+<td align="left">Male</td>
 <td align="right">1</td>
 </tr>
 <tr class="odd">
@@ -294,16 +299,24 @@ responses to this item.</p>
 <td align="right">1</td>
 </tr>
 <tr class="odd">
-<td align="left">Androgynous</td>
+<td align="left">agender (woman)</td>
 <td align="right">1</td>
 </tr>
 <tr class="even">
+<td align="left">Androgynous</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
 <td align="left">Apache Helicopter… Just kidding. There are only two. I
 am a Male.</td>
 <td align="right">1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Asian</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">cis female</td>
 <td align="right">1</td>
 </tr>
 <tr class="even">
@@ -311,15 +324,55 @@ am a Male.</td>
 <td align="right">1</td>
 </tr>
 <tr class="odd">
+<td align="left">demigirl</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">emale</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">famela</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">feamle</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">fem</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">femae</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
 <td align="left">FEMAIIL</td>
 <td align="right">1</td>
 </tr>
 <tr class="even">
-<td align="left">FEMAL</td>
+<td align="left">Femaile</td>
 <td align="right">1</td>
 </tr>
 <tr class="odd">
-<td align="left">FEMALE</td>
+<td align="left">femake</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">Femal</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">FEMAL</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">femal3</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">femald</td>
 <td align="right">1</td>
 </tr>
 <tr class="even">
@@ -327,11 +380,11 @@ am a Male.</td>
 <td align="right">1</td>
 </tr>
 <tr class="odd">
-<td align="left">Femaile</td>
+<td align="left">FEMALE</td>
 <td align="right">1</td>
 </tr>
 <tr class="even">
-<td align="left">Femal</td>
+<td align="left">female (Cisgender)</td>
 <td align="right">1</td>
 </tr>
 <tr class="odd">
@@ -351,135 +404,15 @@ am a Male.</td>
 <td align="right">1</td>
 </tr>
 <tr class="odd">
-<td align="left">Feminine</td>
-<td align="right">1</td>
-</tr>
-<tr class="even">
-<td align="left">G</td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td align="left">Gender is a social construct - I’m sexually female</td>
-<td align="right">1</td>
-</tr>
-<tr class="even">
-<td align="left">Girl</td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td align="left">MALR</td>
-<td align="right">1</td>
-</tr>
-<tr class="even">
-<td align="left">MAle</td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td align="left">Malae</td>
-<td align="right">1</td>
-</tr>
-<tr class="even">
-<td align="left">Male</td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td align="left">Male(Sex, Gender is a silly construct)</td>
-<td align="right">1</td>
-</tr>
-<tr class="even">
-<td align="left">Male.</td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td align="left">Man/Male</td>
-<td align="right">1</td>
-</tr>
-<tr class="even">
-<td align="left">Mslr</td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td align="left">NB</td>
-<td align="right">1</td>
-</tr>
-<tr class="even">
-<td align="left">Non Binary</td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td align="left">Non binary</td>
-<td align="right">1</td>
-</tr>
-<tr class="even">
-<td align="left">Non-binary</td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td align="left">Trans man</td>
-<td align="right">1</td>
-</tr>
-<tr class="even">
-<td align="left">Transgender man</td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td align="left">Transsexual male (FTM)</td>
-<td align="right">1</td>
-</tr>
-<tr class="even">
-<td align="left">agender (woman)</td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td align="left">cis female</td>
-<td align="right">1</td>
-</tr>
-<tr class="even">
-<td align="left">demigirl</td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td align="left">emale</td>
-<td align="right">1</td>
-</tr>
-<tr class="even">
-<td align="left">famela</td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td align="left">feamle</td>
-<td align="right">1</td>
-</tr>
-<tr class="even">
-<td align="left">fem</td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td align="left">femae</td>
-<td align="right">1</td>
-</tr>
-<tr class="even">
-<td align="left">femake</td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td align="left">femal3</td>
-<td align="right">1</td>
-</tr>
-<tr class="even">
-<td align="left">femald</td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td align="left">female (Cisgender)</td>
-<td align="right">1</td>
-</tr>
-<tr class="even">
 <td align="left">femals</td>
 <td align="right">1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">femenina</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">Feminine</td>
 <td align="right">1</td>
 </tr>
 <tr class="even">
@@ -499,11 +432,19 @@ am a Male.</td>
 <td align="right">1</td>
 </tr>
 <tr class="even">
+<td align="left">G</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">Gender is a social construct - I’m sexually female</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
 <td align="left">girl</td>
 <td align="right">1</td>
 </tr>
 <tr class="odd">
-<td align="left">mALE</td>
+<td align="left">Girl</td>
 <td align="right">1</td>
 </tr>
 <tr class="even">
@@ -523,7 +464,39 @@ am a Male.</td>
 <td align="right">1</td>
 </tr>
 <tr class="even">
+<td align="left">Malae</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">mALE</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">MAle</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">Male</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">Male.</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">Male(Sex, Gender is a silly construct)</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
 <td align="left">males</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">MALR</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">Man/Male</td>
 <td align="right">1</td>
 </tr>
 <tr class="odd">
@@ -535,11 +508,35 @@ am a Male.</td>
 <td align="right">1</td>
 </tr>
 <tr class="odd">
+<td align="left">Mslr</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
 <td align="left">nb</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">NB</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">Non binary</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">Non Binary</td>
 <td align="right">1</td>
 </tr>
 <tr class="even">
 <td align="left">non-binary</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">Non-binary</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">Trans man</td>
 <td align="right">1</td>
 </tr>
 <tr class="odd">
@@ -551,11 +548,19 @@ am a Male.</td>
 <td align="right">1</td>
 </tr>
 <tr class="odd">
-<td align="left">transmale</td>
+<td align="left">Transgender man</td>
 <td align="right">1</td>
 </tr>
 <tr class="even">
+<td align="left">transmale</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
 <td align="left">transmasculine</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">Transsexual male (FTM)</td>
 <td align="right">1</td>
 </tr>
 <tr class="odd">
@@ -567,10 +572,16 @@ am a Male.</td>
 <p>Recoding using the <code>gender_coder()</code> function classifies
 all but 28 responses into pre-defined response categories.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">sample</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>recoded_gender <span class="op">=</span> <span class="fu"><a href="../reference/recode_gender.html">recode_gender</a></span><span class="op">(</span>gender <span class="op">=</span> <span class="va">Gender</span>, dictionary <span class="op">=</span> <span class="va">manylevels_en</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span>caption <span class="op">=</span> <span class="st">"The manylevels_en dictionary applied to `head(sample)`"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">manylevels_sample</span> <span class="op">&lt;-</span> <span class="va">sample</span></span>
+<span><span class="va">manylevels_sample</span><span class="op">$</span><span class="va">recoded_gender</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/recode_gender.html">recode_gender</a></span><span class="op">(</span></span>
+<span>  gender <span class="op">=</span> <span class="va">manylevels_sample</span><span class="op">$</span><span class="va">Gender</span>,</span>
+<span>  dictionary <span class="op">=</span> <span class="va">manylevels_en</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">manylevels_sample</span>, <span class="fl">10</span><span class="op">)</span>,</span>
+<span>  caption <span class="op">=</span> <span class="st">"The manylevels_en dictionary applied to `head(sample)`"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <caption>The manylevels_en dictionary applied to
 <code>head(sample)</code>
@@ -623,13 +634,10 @@ all but 28 responses into pre-defined response categories.</p>
 </tbody>
 </table>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">sample</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>recoded_gender <span class="op">=</span> <span class="fu"><a href="../reference/recode_gender.html">recode_gender</a></span><span class="op">(</span>gender <span class="op">=</span> <span class="va">Gender</span>, dictionary <span class="op">=</span> <span class="va">manylevels_en</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">recoded_gender</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">recoded_gender</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span>count <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html" class="external-link">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="op">-</span><span class="va">count</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span>caption <span class="op">=</span> <span class="st">"Summary of gender categories after use of the *manylevels_en* dictionary"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span></span>
+<span>  <span class="fu">count_values</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/na.fail.html" class="external-link">na.omit</a></span><span class="op">(</span><span class="va">manylevels_sample</span><span class="op">$</span><span class="va">recoded_gender</span><span class="op">)</span>, <span class="st">"recoded_gender"</span><span class="op">)</span>,</span>
+<span>  caption <span class="op">=</span> <span class="st">"Summary of gender categories after use of the *manylevels_en* dictionary"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <caption>Summary of gender categories after use of the
 <em>manylevels_en</em> dictionary</caption>
@@ -689,128 +697,157 @@ and apparent response errors (e.g. numbers and symbols). While some of
 these are genuinely missing (i.e. Gender = 40), other could be manually
 recoded, or added to a custom dictionary.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">sample</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>recoded_gender <span class="op">=</span> <span class="fu"><a href="../reference/recode_gender.html">recode_gender</a></span><span class="op">(</span>gender <span class="op">=</span> <span class="va">Gender</span>, dictionary <span class="op">=</span> <span class="va">manylevels_en</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">recoded_gender</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span>caption <span class="op">=</span> <span class="st">"All responses not classified by the built-in dictionary"</span><span class="op">)</span></span></code></pre></div>
-<table class="table">
+<code class="sourceCode R"><span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span></span>
+<span>  <span class="va">manylevels_sample</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">manylevels_sample</span><span class="op">$</span><span class="va">recoded_gender</span><span class="op">)</span>, <span class="op">]</span>,</span>
+<span>  caption <span class="op">=</span> <span class="st">"All responses not classified by the built-in dictionary"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<table style="width:100%;" class="table">
 <caption>All responses not classified by the built-in
 dictionary</caption>
 <colgroup>
-<col width="81%">
-<col width="18%">
+<col width="5%">
+<col width="77%">
+<col width="17%">
 </colgroup>
 <thead><tr class="header">
+<th align="left"></th>
 <th align="left">Gender</th>
 <th align="left">recoded_gender</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
+<td align="left">133</td>
 <td align="left">40</td>
 <td align="left">NA</td>
 </tr>
 <tr class="even">
+<td align="left">391</td>
 <td align="left">Gender</td>
 <td align="left">NA</td>
 </tr>
 <tr class="odd">
+<td align="left">553</td>
 <td align="left">agender (woman)</td>
 <td align="left">NA</td>
 </tr>
 <tr class="even">
+<td align="left">664</td>
 <td align="left">masculino</td>
 <td align="left">NA</td>
 </tr>
 <tr class="odd">
+<td align="left">1750</td>
 <td align="left">Male.</td>
 <td align="left">NA</td>
 </tr>
 <tr class="even">
+<td align="left">1760</td>
 <td align="left">54</td>
 <td align="left">NA</td>
 </tr>
 <tr class="odd">
+<td align="left">1887</td>
 <td align="left">%</td>
 <td align="left">NA</td>
 </tr>
 <tr class="even">
+<td align="left">2221</td>
 <td align="left">Female to non-binary</td>
 <td align="left">NA</td>
 </tr>
 <tr class="odd">
+<td align="left">2301</td>
 <td align="left">Asian</td>
 <td align="left">NA</td>
 </tr>
 <tr class="even">
+<td align="left">2667</td>
 <td align="left">masculino</td>
 <td align="left">NA</td>
 </tr>
 <tr class="odd">
+<td align="left">2723</td>
 <td align="left">masculino</td>
 <td align="left">NA</td>
 </tr>
 <tr class="even">
+<td align="left">3240</td>
 <td align="left">masculino</td>
 <td align="left">NA</td>
 </tr>
 <tr class="odd">
+<td align="left">3355</td>
 <td align="left">masculino</td>
 <td align="left">NA</td>
 </tr>
 <tr class="even">
+<td align="left">3414</td>
 <td align="left">Man/Male</td>
 <td align="left">NA</td>
 </tr>
 <tr class="odd">
+<td align="left">3447</td>
 <td align="left">demigirl</td>
 <td align="left">NA</td>
 </tr>
 <tr class="even">
+<td align="left">3519</td>
 <td align="left">femenina</td>
 <td align="left">NA</td>
 </tr>
 <tr class="odd">
+<td align="left">3544</td>
 <td align="left">masculino</td>
 <td align="left">NA</td>
 </tr>
 <tr class="even">
+<td align="left">3570</td>
 <td align="left">Masculino</td>
 <td align="left">NA</td>
 </tr>
 <tr class="odd">
+<td align="left">4430</td>
 <td align="left">transmasculine</td>
 <td align="left">NA</td>
 </tr>
 <tr class="even">
+<td align="left">4536</td>
 <td align="left">Gender</td>
 <td align="left">NA</td>
 </tr>
 <tr class="odd">
+<td align="left">4861</td>
 <td align="left">Gender is a social construct - I’m sexually female</td>
 <td align="left">NA</td>
 </tr>
 <tr class="even">
+<td align="left">6053</td>
 <td align="left">Apache Helicopter… Just kidding. There are only two. I
 am a Male.</td>
 <td align="left">NA</td>
 </tr>
 <tr class="odd">
+<td align="left">6170</td>
 <td align="left">masculino</td>
 <td align="left">NA</td>
 </tr>
 <tr class="even">
+<td align="left">6478</td>
 <td align="left">masculino</td>
 <td align="left">NA</td>
 </tr>
 <tr class="odd">
+<td align="left">6898</td>
 <td align="left">Male(Sex, Gender is a silly construct)</td>
 <td align="left">NA</td>
 </tr>
 <tr class="even">
+<td align="left">7314</td>
 <td align="left">Transsexual male (FTM)</td>
 <td align="left">NA</td>
 </tr>
 <tr class="odd">
+<td align="left">7656</td>
 <td align="left">Masculino</td>
 <td align="left">NA</td>
 </tr>
@@ -858,10 +895,16 @@ indicate that they are</p>
 <li>gender-queer</li>
 </ul>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">sample</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>recoded_gender <span class="op">=</span> <span class="fu"><a href="../reference/recode_gender.html">recode_gender</a></span><span class="op">(</span>gender <span class="op">=</span> <span class="va">Gender</span>, dictionary <span class="op">=</span> <span class="va">fewlevels_en</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span>caption <span class="op">=</span> <span class="st">"The fewlevels_en dictionary applied to `head(sample)`"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">fewlevels_sample</span> <span class="op">&lt;-</span> <span class="va">sample</span></span>
+<span><span class="va">fewlevels_sample</span><span class="op">$</span><span class="va">recoded_gender</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/recode_gender.html">recode_gender</a></span><span class="op">(</span></span>
+<span>  gender <span class="op">=</span> <span class="va">fewlevels_sample</span><span class="op">$</span><span class="va">Gender</span>,</span>
+<span>  dictionary <span class="op">=</span> <span class="va">fewlevels_en</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">fewlevels_sample</span>, <span class="fl">10</span><span class="op">)</span>,</span>
+<span>  caption <span class="op">=</span> <span class="st">"The fewlevels_en dictionary applied to `head(sample)`"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <caption>The fewlevels_en dictionary applied to
 <code>head(sample)</code>
@@ -914,12 +957,10 @@ indicate that they are</p>
 </tbody>
 </table>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">sample</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>recoded_gender <span class="op">=</span> <span class="fu"><a href="../reference/recode_gender.html">recode_gender</a></span><span class="op">(</span>gender <span class="op">=</span> <span class="va">Gender</span>, dictionary <span class="op">=</span> <span class="va">fewlevels_en</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">recoded_gender</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span>count <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html" class="external-link">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="op">-</span><span class="va">count</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span>caption <span class="op">=</span> <span class="st">"Summary of gender categories after use of the *fewlevels_en* dictionary"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span></span>
+<span>  <span class="fu">count_values</span><span class="op">(</span><span class="va">fewlevels_sample</span><span class="op">$</span><span class="va">recoded_gender</span>, <span class="st">"recoded_gender"</span><span class="op">)</span>,</span>
+<span>  caption <span class="op">=</span> <span class="st">"Summary of gender categories after use of the *fewlevels_en* dictionary"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <caption>Summary of gender categories after use of the
 <em>fewlevels_en</em> dictionary</caption>
@@ -974,14 +1015,16 @@ allows you to use the built-in dictionary but change the coding of one
 or more responses from that dictionary. Here the addition of Spanish
 terms allows for recoding of 11 previously uncoded responses.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">sample</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>recoded_gender <span class="op">=</span> <span class="fu"><a href="../reference/recode_gender.html">recode_gender</a></span><span class="op">(</span>gender <span class="op">=</span> <span class="va">Gender</span>, </span>
-<span>                                        dictionary <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">fewlevels_en</span>, </span>
-<span>                                                       <span class="va">custom_dictionary</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">recoded_gender</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span>count <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html" class="external-link">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="op">-</span><span class="va">count</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span>caption <span class="op">=</span> <span class="st">"Summary of gender categories after use of the combined dictionaries"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">combined_sample</span> <span class="op">&lt;-</span> <span class="va">sample</span></span>
+<span><span class="va">combined_sample</span><span class="op">$</span><span class="va">recoded_gender</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/recode_gender.html">recode_gender</a></span><span class="op">(</span></span>
+<span>  gender <span class="op">=</span> <span class="va">combined_sample</span><span class="op">$</span><span class="va">Gender</span>,</span>
+<span>  dictionary <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">fewlevels_en</span>, <span class="va">custom_dictionary</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span></span>
+<span>  <span class="fu">count_values</span><span class="op">(</span><span class="va">combined_sample</span><span class="op">$</span><span class="va">recoded_gender</span>, <span class="st">"recoded_gender"</span><span class="op">)</span>,</span>
+<span>  caption <span class="op">=</span> <span class="st">"Summary of gender categories after use of the combined dictionaries"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <caption>Summary of gender categories after use of the combined
 dictionaries</caption>
@@ -1013,86 +1056,102 @@ dictionaries</caption>
 </tbody>
 </table>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">sample</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>recoded_gender <span class="op">=</span> <span class="fu"><a href="../reference/recode_gender.html">recode_gender</a></span><span class="op">(</span>gender <span class="op">=</span> <span class="va">Gender</span>, </span>
-<span>                                        dictionary <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">fewlevels_en</span>, </span>
-<span>                                                       <span class="va">custom_dictionary</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">recoded_gender</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span>caption <span class="op">=</span> <span class="st">"All responses not classified by the combined dictionaries"</span><span class="op">)</span></span></code></pre></div>
-<table class="table">
+<code class="sourceCode R"><span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span></span>
+<span>  <span class="va">combined_sample</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">combined_sample</span><span class="op">$</span><span class="va">recoded_gender</span><span class="op">)</span>, <span class="op">]</span>,</span>
+<span>  caption <span class="op">=</span> <span class="st">"All responses not classified by the combined dictionaries"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<table style="width:100%;" class="table">
 <caption>All responses not classified by the combined
 dictionaries</caption>
 <colgroup>
-<col width="81%">
-<col width="18%">
+<col width="5%">
+<col width="77%">
+<col width="17%">
 </colgroup>
 <thead><tr class="header">
+<th align="left"></th>
 <th align="left">Gender</th>
 <th align="left">recoded_gender</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
+<td align="left">133</td>
 <td align="left">40</td>
 <td align="left">NA</td>
 </tr>
 <tr class="even">
+<td align="left">391</td>
 <td align="left">Gender</td>
 <td align="left">NA</td>
 </tr>
 <tr class="odd">
+<td align="left">553</td>
 <td align="left">agender (woman)</td>
 <td align="left">NA</td>
 </tr>
 <tr class="even">
+<td align="left">1750</td>
 <td align="left">Male.</td>
 <td align="left">NA</td>
 </tr>
 <tr class="odd">
+<td align="left">1760</td>
 <td align="left">54</td>
 <td align="left">NA</td>
 </tr>
 <tr class="even">
+<td align="left">1887</td>
 <td align="left">%</td>
 <td align="left">NA</td>
 </tr>
 <tr class="odd">
+<td align="left">2221</td>
 <td align="left">Female to non-binary</td>
 <td align="left">NA</td>
 </tr>
 <tr class="even">
+<td align="left">2301</td>
 <td align="left">Asian</td>
 <td align="left">NA</td>
 </tr>
 <tr class="odd">
+<td align="left">3414</td>
 <td align="left">Man/Male</td>
 <td align="left">NA</td>
 </tr>
 <tr class="even">
+<td align="left">3447</td>
 <td align="left">demigirl</td>
 <td align="left">NA</td>
 </tr>
 <tr class="odd">
+<td align="left">4430</td>
 <td align="left">transmasculine</td>
 <td align="left">NA</td>
 </tr>
 <tr class="even">
+<td align="left">4536</td>
 <td align="left">Gender</td>
 <td align="left">NA</td>
 </tr>
 <tr class="odd">
+<td align="left">4861</td>
 <td align="left">Gender is a social construct - I’m sexually female</td>
 <td align="left">NA</td>
 </tr>
 <tr class="even">
+<td align="left">6053</td>
 <td align="left">Apache Helicopter… Just kidding. There are only two. I
 am a Male.</td>
 <td align="left">NA</td>
 </tr>
 <tr class="odd">
+<td align="left">6898</td>
 <td align="left">Male(Sex, Gender is a silly construct)</td>
 <td align="left">NA</td>
 </tr>
 <tr class="even">
+<td align="left">7314</td>
 <td align="left">Transsexual male (FTM)</td>
 <td align="left">NA</td>
 </tr>
@@ -1108,16 +1167,18 @@ default, unmatched values are coded as NA.
 <code>retain_unmatched = TRUE</code> will fill unmatched responses with
 the participant provided response.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">sample</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>recoded_gender <span class="op">=</span> <span class="fu"><a href="../reference/recode_gender.html">recode_gender</a></span><span class="op">(</span>gender <span class="op">=</span> <span class="va">Gender</span>, </span>
-<span>                                        dictionary <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">fewlevels_en</span>, </span>
-<span>                                                       <span class="va">custom_dictionary</span><span class="op">)</span>,</span>
-<span>                                        retain_unmatched <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">recoded_gender</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span>count <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html" class="external-link">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="op">-</span><span class="va">count</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span>caption <span class="op">=</span> <span class="st">"Summary of gender categories after use of the combined dictionary and `retain_unmatched = TRUE`"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">retained_sample</span> <span class="op">&lt;-</span> <span class="va">sample</span></span>
+<span><span class="va">retained_sample</span><span class="op">$</span><span class="va">recoded_gender</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/recode_gender.html">recode_gender</a></span><span class="op">(</span></span>
+<span>  gender <span class="op">=</span> <span class="va">retained_sample</span><span class="op">$</span><span class="va">Gender</span>,</span>
+<span>  dictionary <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">fewlevels_en</span>, <span class="va">custom_dictionary</span><span class="op">)</span>,</span>
+<span>  retain_unmatched <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Results not matched from the dictionary have been filled with the user inputted values</span></span></code></pre>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span></span>
+<span>  <span class="fu">count_values</span><span class="op">(</span><span class="va">retained_sample</span><span class="op">$</span><span class="va">recoded_gender</span>, <span class="st">"recoded_gender"</span><span class="op">)</span>,</span>
+<span>  caption <span class="op">=</span> <span class="st">"Summary of gender categories after use of the combined dictionary and `retain_unmatched = TRUE`"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <caption>Summary of gender categories after use of the combined
 dictionary and <code>retain_unmatched = TRUE</code>
@@ -1164,12 +1225,20 @@ dictionary and <code>retain_unmatched = TRUE</code>
 <td align="right">1</td>
 </tr>
 <tr class="odd">
+<td align="left">agender (woman)</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
 <td align="left">Apache Helicopter… Just kidding. There are only two. I
 am a Male.</td>
 <td align="right">1</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Asian</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">demigirl</td>
 <td align="right">1</td>
 </tr>
 <tr class="odd">
@@ -1181,11 +1250,11 @@ am a Male.</td>
 <td align="right">1</td>
 </tr>
 <tr class="odd">
-<td align="left">Male(Sex, Gender is a silly construct)</td>
+<td align="left">Male.</td>
 <td align="right">1</td>
 </tr>
 <tr class="even">
-<td align="left">Male.</td>
+<td align="left">Male(Sex, Gender is a silly construct)</td>
 <td align="right">1</td>
 </tr>
 <tr class="odd">
@@ -1193,19 +1262,11 @@ am a Male.</td>
 <td align="right">1</td>
 </tr>
 <tr class="even">
-<td align="left">Transsexual male (FTM)</td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td align="left">agender (woman)</td>
-<td align="right">1</td>
-</tr>
-<tr class="even">
-<td align="left">demigirl</td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
 <td align="left">transmasculine</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">Transsexual male (FTM)</td>
 <td align="right">1</td>
 </tr>
 </tbody>

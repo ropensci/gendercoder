@@ -110,20 +110,17 @@ issue</a> so the team can help).</p>
 English.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/gendercoder" class="external-link">gendercoder</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span><span class="va">df</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 9 × 1</span></span></span>
 <span><span class="co">#&gt;   gender</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> male  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> enby  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> womn  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> mlae  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> mann  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> frau  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> femme </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">8</span> homme </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">9</span> nin</span></span></code></pre></div>
+<span><span class="co">#&gt; 1   male</span></span>
+<span><span class="co">#&gt; 2   enby</span></span>
+<span><span class="co">#&gt; 3   womn</span></span>
+<span><span class="co">#&gt; 4   mlae</span></span>
+<span><span class="co">#&gt; 5   mann</span></span>
+<span><span class="co">#&gt; 6   frau</span></span>
+<span><span class="co">#&gt; 7  femme</span></span>
+<span><span class="co">#&gt; 8  homme</span></span>
+<span><span class="co">#&gt; 9    nin</span></span></code></pre></div>
 <p>I can create a new dictionary by creating a named vector, where the
 names are the raw, uncoded values, and the values are the desired
 outputs. This can then be used as the dictionary in the
@@ -136,67 +133,70 @@ outputs. This can then be used as the dictionary in the
 <span>  homme <span class="op">=</span> <span class="st">"man"</span>, </span>
 <span>  nin <span class="op">=</span> <span class="st">"man"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>recoded_gender <span class="op">=</span> <span class="fu"><a href="../reference/recode_gender.html">recode_gender</a></span><span class="op">(</span><span class="va">gender</span>, </span>
-<span>                                        dictionary <span class="op">=</span> <span class="va">new_dictionary</span>, </span>
-<span>                                        retain_unmatched <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">new_dictionary_df</span> <span class="op">&lt;-</span> <span class="va">df</span></span>
+<span><span class="va">new_dictionary_df</span><span class="op">$</span><span class="va">recoded_gender</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/recode_gender.html">recode_gender</a></span><span class="op">(</span></span>
+<span>  <span class="va">df</span><span class="op">$</span><span class="va">gender</span>,</span>
+<span>  dictionary <span class="op">=</span> <span class="va">new_dictionary</span>,</span>
+<span>  retain_unmatched <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span>
 <span><span class="co">#&gt; Results not matched from the dictionary have been filled with the user inputted values</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 9 × 2</span></span></span>
+<span><span class="va">new_dictionary_df</span></span>
 <span><span class="co">#&gt;   gender recoded_gender</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> male   male          </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> enby   enby          </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> womn   womn          </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> mlae   mlae          </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> mann   man           </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> frau   woman         </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> femme  woman         </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">8</span> homme  man           </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">9</span> nin    man</span></span></code></pre></div>
+<span><span class="co">#&gt; 1   male           male</span></span>
+<span><span class="co">#&gt; 2   enby           enby</span></span>
+<span><span class="co">#&gt; 3   womn           womn</span></span>
+<span><span class="co">#&gt; 4   mlae           mlae</span></span>
+<span><span class="co">#&gt; 5   mann            man</span></span>
+<span><span class="co">#&gt; 6   frau          woman</span></span>
+<span><span class="co">#&gt; 7  femme          woman</span></span>
+<span><span class="co">#&gt; 8  homme            man</span></span>
+<span><span class="co">#&gt; 9    nin            man</span></span></code></pre></div>
 <p>However, as you can see using just this new dictionary leaves a
 number of responses uncoded that the built-in dictionaries could handle.
 As the dictionaries are just vectors, we can simply concatenate these to
 use both at the same time.</p>
 <p>We can do this in-line…</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>recoded_gender <span class="op">=</span> <span class="fu"><a href="../reference/recode_gender.html">recode_gender</a></span><span class="op">(</span><span class="va">gender</span>, </span>
-<span>                                        dictionary <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">manylevels_en</span>, <span class="va">new_dictionary</span><span class="op">)</span>, </span>
-<span>                                        retain_unmatched <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 9 × 2</span></span></span>
+<code class="sourceCode R"><span><span class="va">inline_df</span> <span class="op">&lt;-</span> <span class="va">df</span></span>
+<span><span class="va">inline_df</span><span class="op">$</span><span class="va">recoded_gender</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/recode_gender.html">recode_gender</a></span><span class="op">(</span></span>
+<span>  <span class="va">df</span><span class="op">$</span><span class="va">gender</span>,</span>
+<span>  dictionary <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">manylevels_en</span>, <span class="va">new_dictionary</span><span class="op">)</span>,</span>
+<span>  retain_unmatched <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">inline_df</span></span>
 <span><span class="co">#&gt;   gender recoded_gender</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> male   man           </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> enby   non-binary    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> womn   woman         </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> mlae   man           </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> mann   man           </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> frau   woman         </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> femme  woman         </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">8</span> homme  man           </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">9</span> nin    man</span></span></code></pre></div>
+<span><span class="co">#&gt; 1   male            man</span></span>
+<span><span class="co">#&gt; 2   enby     non-binary</span></span>
+<span><span class="co">#&gt; 3   womn          woman</span></span>
+<span><span class="co">#&gt; 4   mlae            man</span></span>
+<span><span class="co">#&gt; 5   mann            man</span></span>
+<span><span class="co">#&gt; 6   frau          woman</span></span>
+<span><span class="co">#&gt; 7  femme          woman</span></span>
+<span><span class="co">#&gt; 8  homme            man</span></span>
+<span><span class="co">#&gt; 9    nin            man</span></span></code></pre></div>
 <p>Or otherwise we can create a new dictionary and call that later,
 useful if you might want to save an augmented dictionary for later use
 or for contributing to the package.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">manylevels_plus</span> <span class="op">&lt;-</span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">manylevels_en</span>, <span class="va">new_dictionary</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>recoded_gender <span class="op">=</span> <span class="fu"><a href="../reference/recode_gender.html">recode_gender</a></span><span class="op">(</span><span class="va">gender</span>, </span>
-<span>                                        dictionary <span class="op">=</span> <span class="va">manylevels_plus</span>, </span>
-<span>                                        retain_unmatched <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 9 × 2</span></span></span>
+<span><span class="va">stepped_df</span> <span class="op">&lt;-</span> <span class="va">df</span></span>
+<span><span class="va">stepped_df</span><span class="op">$</span><span class="va">recoded_gender</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/recode_gender.html">recode_gender</a></span><span class="op">(</span></span>
+<span>  <span class="va">df</span><span class="op">$</span><span class="va">gender</span>,</span>
+<span>  dictionary <span class="op">=</span> <span class="va">manylevels_plus</span>,</span>
+<span>  retain_unmatched <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">stepped_df</span></span>
 <span><span class="co">#&gt;   gender recoded_gender</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> male   man           </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> enby   non-binary    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> womn   woman         </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> mlae   man           </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> mann   man           </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> frau   woman         </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> femme  woman         </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">8</span> homme  man           </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">9</span> nin    man</span></span></code></pre></div>
+<span><span class="co">#&gt; 1   male            man</span></span>
+<span><span class="co">#&gt; 2   enby     non-binary</span></span>
+<span><span class="co">#&gt; 3   womn          woman</span></span>
+<span><span class="co">#&gt; 4   mlae            man</span></span>
+<span><span class="co">#&gt; 5   mann            man</span></span>
+<span><span class="co">#&gt; 6   frau          woman</span></span>
+<span><span class="co">#&gt; 7  femme          woman</span></span>
+<span><span class="co">#&gt; 8  homme            man</span></span>
+<span><span class="co">#&gt; 9    nin            man</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="making-it-official">Making it official<a class="anchor" aria-label="anchor" href="#making-it-official"></a>
