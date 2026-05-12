@@ -77,6 +77,34 @@ stopifnot(identical(gendercoder:::read_app_data(app_rds), app_test_data))
 stopifnot(identical(gendercoder:::read_app_data(app_rda), app_test_data))
 stopifnot(identical(gendercoder:::read_app_data(app_rdata), app_test_data))
 
+written_csv <- tempfile(fileext = ".csv")
+written_dta <- tempfile(fileext = ".dta")
+written_sav <- tempfile(fileext = ".sav")
+written_rds <- tempfile(fileext = ".rds")
+written_rda <- tempfile(fileext = ".rda")
+
+gendercoder:::write_app_data(app_test_data, written_csv, ".csv")
+gendercoder:::write_app_data(app_test_data, written_dta, ".dta")
+gendercoder:::write_app_data(app_test_data, written_sav, ".sav")
+gendercoder:::write_app_data(app_test_data, written_rds, ".rds")
+gendercoder:::write_app_data(app_test_data, written_rda, ".rda")
+
+stopifnot(identical(utils::read.csv(written_csv, stringsAsFactors = FALSE), app_test_data))
+stopifnot(identical(as.character(as.data.frame(haven::read_dta(written_dta))$gender), app_test_data$gender))
+stopifnot(identical(as.character(as.data.frame(haven::read_sav(written_sav))$gender), app_test_data$gender))
+stopifnot(identical(readRDS(written_rds), app_test_data))
+loaded_objects <- load(written_rda)
+stopifnot(
+  identical(loaded_objects, "recoded_data"),
+  identical(recoded_data, app_test_data)
+)
+
+unsupported_write_error <- tryCatch(
+  gendercoder:::write_app_data(app_test_data, tempfile(fileext = ".txt"), ".txt"),
+  error = conditionMessage
+)
+stopifnot(grepl("Unsupported file type: .txt", unsupported_write_error))
+
 unsupported_error <- tryCatch(
   gendercoder:::read_app_data(tempfile(fileext = ".txt")),
   error = conditionMessage
@@ -115,6 +143,23 @@ missing_app_launch <- withCallingHandlers(
 stopifnot(
   identical(missing_app_launch, FALSE),
   grepl("gendercoderDefinitelyMissingPackage", missing_app_launch_warning)
+)
+
+missing_file_package_error <- NULL
+missing_file_package_warning <- NULL
+withCallingHandlers(
+  missing_file_package_error <- tryCatch(
+    gendercoder:::require_app_packages("gendercoderDefinitelyMissingPackage"),
+    error = conditionMessage
+  ),
+  warning = function(w) {
+    missing_file_package_warning <<- conditionMessage(w)
+    invokeRestart("muffleWarning")
+  }
+)
+stopifnot(
+  grepl("Install the missing package before using this file type", missing_file_package_error),
+  grepl("gendercoderDefinitelyMissingPackage", missing_file_package_warning)
 )
 
 if (requireNamespace("shiny", quietly = TRUE)) {

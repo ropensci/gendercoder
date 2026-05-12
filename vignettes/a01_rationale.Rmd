@@ -48,31 +48,39 @@ participants. Naive coding identifies 103 unique responses to this item.
 
 ```{r message = FALSE, warning= FALSE}
 library(gendercoder)
-library(dplyr)
 
-sample %>% 
-  group_by(Gender) %>% 
-  summarise(count = n()) %>% 
-  arrange(-count) %>% 
-  knitr::kable(caption = "Summary of gender categories before coding")
+count_values <- function(x, name = "value") {
+  counts <- sort(table(x, useNA = "ifany"), decreasing = TRUE)
+  out <- data.frame(value = names(counts), count = as.integer(counts))
+  names(out)[1] <- name
+  out
+}
+
+knitr::kable(
+  count_values(sample$Gender, "Gender"),
+  caption = "Summary of gender categories before coding"
+)
 ```
 
 Recoding using the `gender_coder()` function classifies all but 28 responses 
 into pre-defined response categories. 
 
 ```{r}
-sample %>% 
-  head(10) %>% 
-  mutate(recoded_gender = recode_gender(gender = Gender, dictionary = manylevels_en)) %>% 
-  knitr::kable(caption = "The manylevels_en dictionary applied to `head(sample)`")
+manylevels_sample <- sample
+manylevels_sample$recoded_gender <- recode_gender(
+  gender = manylevels_sample$Gender,
+  dictionary = manylevels_en
+)
 
-sample %>% 
-  mutate(recoded_gender = recode_gender(gender = Gender, dictionary = manylevels_en)) %>% 
-  filter(!is.na(recoded_gender)) %>% 
-  group_by(recoded_gender) %>% 
-  summarise(count = n()) %>% 
-  arrange(-count) %>% 
-  knitr::kable(caption = "Summary of gender categories after use of the *manylevels_en* dictionary")
+knitr::kable(
+  head(manylevels_sample, 10),
+  caption = "The manylevels_en dictionary applied to `head(sample)`"
+)
+
+knitr::kable(
+  count_values(na.omit(manylevels_sample$recoded_gender), "recoded_gender"),
+  caption = "Summary of gender categories after use of the *manylevels_en* dictionary"
+)
 
 ```
 
@@ -83,10 +91,10 @@ to a custom dictionary.
 
 ```{r}
 
-sample %>% 
-  mutate(recoded_gender = recode_gender(gender = Gender, dictionary = manylevels_en)) %>% 
-  filter(is.na(recoded_gender)) %>% 
-  knitr::kable(caption = "All responses not classified by the built-in dictionary")
+knitr::kable(
+  manylevels_sample[is.na(manylevels_sample$recoded_gender), ],
+  caption = "All responses not classified by the built-in dictionary"
+)
 
 ```
 
@@ -127,17 +135,21 @@ that they are
 - gender-queer
 
 ```{r} 
-sample %>% 
-  head(10) %>% 
-  mutate(recoded_gender = recode_gender(gender = Gender, dictionary = fewlevels_en)) %>% 
-  knitr::kable(caption = "The fewlevels_en dictionary applied to `head(sample)`")
+fewlevels_sample <- sample
+fewlevels_sample$recoded_gender <- recode_gender(
+  gender = fewlevels_sample$Gender,
+  dictionary = fewlevels_en
+)
 
-sample %>% 
-  mutate(recoded_gender = recode_gender(gender = Gender, dictionary = fewlevels_en)) %>% 
-  group_by(recoded_gender) %>% 
-  summarise(count = n()) %>% 
-  arrange(-count) %>% 
-  knitr::kable(caption = "Summary of gender categories after use of the *fewlevels_en* dictionary")
+knitr::kable(
+  head(fewlevels_sample, 10),
+  caption = "The fewlevels_en dictionary applied to `head(sample)`"
+)
+
+knitr::kable(
+  count_values(fewlevels_sample$recoded_gender, "recoded_gender"),
+  caption = "Summary of gender categories after use of the *fewlevels_en* dictionary"
+)
 ```
 
 You can also specify a custom dictionary to replace or supplement the built-in 
@@ -167,22 +179,21 @@ previously uncoded responses.
 
 ```{r}
 
-sample %>% 
-  mutate(recoded_gender = recode_gender(gender = Gender, 
-                                        dictionary = c(fewlevels_en, 
-                                                       custom_dictionary))) %>% 
-  group_by(recoded_gender) %>% 
-  summarise(count = n()) %>% 
-  arrange(-count) %>% 
-  knitr::kable(caption = "Summary of gender categories after use of the combined dictionaries")
+combined_sample <- sample
+combined_sample$recoded_gender <- recode_gender(
+  gender = combined_sample$Gender,
+  dictionary = c(fewlevels_en, custom_dictionary)
+)
 
+knitr::kable(
+  count_values(combined_sample$recoded_gender, "recoded_gender"),
+  caption = "Summary of gender categories after use of the combined dictionaries"
+)
 
-sample %>% 
-  mutate(recoded_gender = recode_gender(gender = Gender, 
-                                        dictionary = c(fewlevels_en, 
-                                                       custom_dictionary))) %>% 
-  filter(is.na(recoded_gender)) %>% 
-  knitr::kable(caption = "All responses not classified by the combined dictionaries")
+knitr::kable(
+  combined_sample[is.na(combined_sample$recoded_gender), ],
+  caption = "All responses not classified by the combined dictionaries"
+)
 ```
 
 ### retain_unmatched
@@ -193,15 +204,17 @@ not contained in the dictionary. By default, unmatched values are coded as NA.
 response. 
 
 ```{r}
-sample %>% 
-  mutate(recoded_gender = recode_gender(gender = Gender, 
-                                        dictionary = c(fewlevels_en, 
-                                                       custom_dictionary),
-                                        retain_unmatched = TRUE)) %>% 
-  group_by(recoded_gender) %>% 
-  summarise(count = n()) %>% 
-  arrange(-count) %>% 
-  knitr::kable(caption = "Summary of gender categories after use of the combined dictionary and `retain_unmatched = TRUE`")
+retained_sample <- sample
+retained_sample$recoded_gender <- recode_gender(
+  gender = retained_sample$Gender,
+  dictionary = c(fewlevels_en, custom_dictionary),
+  retain_unmatched = TRUE
+)
+
+knitr::kable(
+  count_values(retained_sample$recoded_gender, "recoded_gender"),
+  caption = "Summary of gender categories after use of the combined dictionary and `retain_unmatched = TRUE`"
+)
 ```
 
 # A disclaimer on handling gender responses

@@ -2,6 +2,8 @@
 
 * Expanded the package description for CRAN resubmission.
 * Updated the interactive app example to use `if (interactive())`.
+* Reduced optional package dependencies by using base R in vignettes and the
+  local interactive app where possible.
 
 # gendercoder 0.1.0
 

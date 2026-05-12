@@ -15,8 +15,10 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup, echo = FALSE, message=FALSE}
-df <-  dplyr::tibble(gender = c("male", "enby", "womn", "mlae", "mann", "frau", "femme", 
-                         "homme", "nin"))
+df <- data.frame(
+  gender = c("male", "enby", "womn", "mlae", "mann", "frau", "femme", "homme", "nin"),
+  stringsAsFactors = FALSE
+)
 ```
 ## Outline
 
@@ -34,7 +36,6 @@ Let's say I have free-text gender data, but some of it is not in English.
 
 ```{r example-data, message=FALSE}
 library(gendercoder)
-library(dplyr)
 df
 ```
 
@@ -50,10 +51,13 @@ new_dictionary <- c(
   homme = "man", 
   nin = "man")
 
-df %>% 
-  mutate(recoded_gender = recode_gender(gender, 
-                                        dictionary = new_dictionary, 
-                                        retain_unmatched = TRUE))
+new_dictionary_df <- df
+new_dictionary_df$recoded_gender <- recode_gender(
+  df$gender,
+  dictionary = new_dictionary,
+  retain_unmatched = TRUE
+)
+new_dictionary_df
 
 ```
 However, as you can see using just this new dictionary leaves a number of 
@@ -64,10 +68,13 @@ the same time.
 We can do this in-line...
 
 ```{r inline-augmentation}
-df %>% 
-  mutate(recoded_gender = recode_gender(gender, 
-                                        dictionary = c(manylevels_en, new_dictionary), 
-                                        retain_unmatched = TRUE))
+inline_df <- df
+inline_df$recoded_gender <- recode_gender(
+  df$gender,
+  dictionary = c(manylevels_en, new_dictionary),
+  retain_unmatched = TRUE
+)
+inline_df
 ```
 Or otherwise we can create a new dictionary and call that later, useful if you 
 might want to save an augmented dictionary for later use or for contributing to 
@@ -75,10 +82,13 @@ the package.
 ```{r stepped-augmentation}
 manylevels_plus <-  c(manylevels_en, new_dictionary)
 
-df %>% 
-  mutate(recoded_gender = recode_gender(gender, 
-                                        dictionary = manylevels_plus, 
-                                        retain_unmatched = TRUE))
+stepped_df <- df
+stepped_df$recoded_gender <- recode_gender(
+  df$gender,
+  dictionary = manylevels_plus,
+  retain_unmatched = TRUE
+)
+stepped_df
 ```
 
 ## Making it official

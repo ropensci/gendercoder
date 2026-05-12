@@ -1,7 +1,8 @@
 #' Launch the gendercoder Shiny app
 #'
 #' Code data interactively in a Shiny app that runs locally in RStudio or a web
-#' browser. The app supports CSV, Stata, SPSS, RDS, and R data files.
+#' browser. The app supports CSV, Stata, SPSS, RDS, and R data files. Stata
+#' and SPSS files require the optional \pkg{haven} package.
 #'
 #' @param ... arguments to pass to \code{shiny::runApp()}
 #'
@@ -13,7 +14,7 @@
 #' gendercoder_app()
 #' }
 gendercoder_app <- function(...) {
-  packages <- c("DT", "haven", "readr", "shiny", "shinydashboard")
+  packages <- "shiny"
   launch_gendercoder_app(packages, ...)
 }
 
@@ -40,13 +41,30 @@ check_app_packages <- function(packages) {
   TRUE
 }
 
+require_app_packages <- function(packages) {
+  if (!check_app_packages(packages)) {
+    stop(
+      "Install the missing package before using this file type.",
+      call. = FALSE
+    )
+  }
+
+  TRUE
+}
+
 read_app_data <- function(path, name = path) {
   extension <- tolower(tools::file_ext(name))
 
   switch(extension,
-    csv = readr::read_csv(path, show_col_types = FALSE),
-    dta = haven::read_dta(path),
-    sav = haven::read_sav(path),
+    csv = utils::read.csv(path, stringsAsFactors = FALSE, check.names = FALSE),
+    dta = {
+      require_app_packages("haven")
+      haven::read_dta(path)
+    },
+    sav = {
+      require_app_packages("haven")
+      haven::read_sav(path)
+    },
     rds = readRDS(path),
     rda = read_first_r_data_object(path),
     rdata = read_first_r_data_object(path),
@@ -63,4 +81,24 @@ read_first_r_data_object <- function(path) {
   }
 
   data_env[[object_names[[1]]]]
+}
+
+write_app_data <- function(data, file, extension) {
+  switch(tolower(extension),
+    ".csv" = utils::write.csv(data, file, row.names = FALSE, na = ""),
+    ".sav" = {
+      require_app_packages("haven")
+      haven::write_sav(data, file)
+    },
+    ".dta" = {
+      require_app_packages("haven")
+      haven::write_dta(data, file)
+    },
+    ".rds" = saveRDS(data, file),
+    ".rda" = {
+      recoded_data <- data
+      save(recoded_data, file = file, version = 2)
+    },
+    stop("Unsupported file type: ", extension, call. = FALSE)
+  )
 }

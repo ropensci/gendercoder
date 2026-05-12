@@ -27,9 +27,9 @@ shiny::shinyServer(function(input, output) {
     data
   })
 
-  output$out1 <- DT::renderDT({
+  output$out1 <- shiny::renderTable({
     data <- coded_data()
-    DT::datatable(data[, c(input$vars, "recoded_gender"), drop = FALSE])
+    data[, c(input$vars, "recoded_gender"), drop = FALSE]
   })
 
   output$downloadData <- shiny::downloadHandler(
@@ -39,16 +39,7 @@ shiny::shinyServer(function(input, output) {
     content = function(file) {
       data <- coded_data()
 
-      switch(input$dlformat,
-        ".csv" = readr::write_csv(data, file),
-        ".sav" = haven::write_sav(data, file),
-        ".dta" = haven::write_dta(data, file),
-        ".rds" = saveRDS(data, file),
-        ".rda" = {
-          recoded_data <- data
-          save(recoded_data, file = file, version = 2)
-        }
-      )
+      gendercoder:::write_app_data(data, file, input$dlformat)
     }
   )
 })

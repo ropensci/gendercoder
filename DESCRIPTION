@@ -48,13 +48,8 @@ RoxygenNote: 7.3.3
 Suggests: 
     knitr,
     rmarkdown,
-    dplyr,
-    covr,
-    DT,
     haven,
-    readr,
-    shiny,
-    shinydashboard
+    shiny
 VignetteBuilder: knitr
 URL: https://github.com/ropensci/gendercoder
 BugReports: https://github.com/ropensci/gendercoder/issues
