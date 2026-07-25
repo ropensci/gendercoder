@@ -54,7 +54,25 @@ distance_error <- tryCatch(
   gender_create_dictionary("maile", max_distance = -1),
   error = conditionMessage
 )
-stopifnot(grepl("max_distance must be a single non-negative number", distance_error))
+stopifnot(grepl("single finite non-negative number", distance_error))
+
+distance_na_error <- tryCatch(
+  gender_create_dictionary("maile", max_distance = NA_real_),
+  error = conditionMessage
+)
+stopifnot(grepl("single finite non-negative number", distance_na_error))
+
+retain_error <- tryCatch(
+  recode_gender("male", retain_unmatched = NA),
+  error = conditionMessage
+)
+stopifnot(grepl("must be TRUE or FALSE", retain_error))
+
+unnamed_dictionary_error <- tryCatch(
+  recode_gender("male", dictionary = c("man", "woman")),
+  error = conditionMessage
+)
+stopifnot(grepl("non-empty name for every value", unnamed_dictionary_error))
 
 app_test_data <- data.frame(gender = c("male", "enby"), stringsAsFactors = FALSE)
 app_csv <- tempfile(fileext = ".csv")
@@ -201,3 +219,14 @@ stopifnot(identical(
   recode_gender("maile", dictionary = combined_dictionary),
   "man"
 ))
+
+multiple_suggestions <- gender_create_dictionary(
+  c("maile", "femlae", "not a match"),
+  dictionary = c(male = "man", female = "woman"),
+  max_distance = 2
+)
+stopifnot(
+  identical(multiple_suggestions[["maile"]], "man"),
+  identical(multiple_suggestions[["femlae"]], "woman"),
+  !("not a match" %in% names(multiple_suggestions))
+)

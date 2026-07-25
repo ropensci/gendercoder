@@ -35,14 +35,13 @@ recode_gender <- function(gender,
   # still produces an output of the same length.
   gender <- as.character(gender)
 
-  if (!is.character(dictionary)) {
-    stop("The supplied dictionary is not a character vector")
+  if (!is.logical(retain_unmatched) ||
+      length(retain_unmatched) != 1L ||
+      is.na(retain_unmatched)) {
+    stop("`retain_unmatched` must be TRUE or FALSE", call. = FALSE)
   }
 
-  # Normalize the dictionary
-  dictionary <- tolower(dictionary)
-  names(dictionary) <- tolower(names(dictionary))
-  dictionary <- dictionary[!duplicated(names(dictionary))]
+  dictionary <- normalize_gender_dictionary(dictionary)
 
   # Clean the gender input
   gender_lower <- tolower(trimws(gender))
@@ -57,4 +56,45 @@ recode_gender <- function(gender,
   }
 
   unname(recoded)
+}
+
+.gendercoder_cache <- new.env(parent = emptyenv())
+
+normalize_gender_dictionary <- function(dictionary) {
+  if (!is.character(dictionary)) {
+    stop("The supplied dictionary is not a character vector", call. = FALSE)
+  }
+
+  dictionary_names <- names(dictionary)
+  if (is.null(dictionary_names) ||
+      length(dictionary_names) != length(dictionary) ||
+      anyNA(dictionary_names) ||
+      any(!nzchar(dictionary_names))) {
+    stop(
+      "The supplied dictionary must have a non-empty name for every value",
+      call. = FALSE
+    )
+  }
+
+  cache_key <- NULL
+  if (identical(dictionary, gendercoder::manylevels_en)) {
+    cache_key <- "manylevels_en"
+  } else if (identical(dictionary, gendercoder::fewlevels_en)) {
+    cache_key <- "fewlevels_en"
+  }
+
+  if (!is.null(cache_key) &&
+      exists(cache_key, envir = .gendercoder_cache, inherits = FALSE)) {
+    return(get(cache_key, envir = .gendercoder_cache, inherits = FALSE))
+  }
+
+  normalized <- tolower(dictionary)
+  names(normalized) <- tolower(dictionary_names)
+  normalized <- normalized[!duplicated(names(normalized))]
+
+  if (!is.null(cache_key)) {
+    assign(cache_key, normalized, envir = .gendercoder_cache)
+  }
+
+  normalized
 }

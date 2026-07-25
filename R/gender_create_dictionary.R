@@ -26,33 +26,35 @@ gender_create_dictionary <- function(gender,
                                      max_distance = 1) {
   gender <- as.character(gender)
 
-  if (!is.character(dictionary)) {
-    stop("The supplied dictionary is not a character vector")
+  if (!is.numeric(max_distance) ||
+      length(max_distance) != 1L ||
+      is.na(max_distance) ||
+      !is.finite(max_distance) ||
+      max_distance < 0) {
+    stop(
+      "max_distance must be a single finite non-negative number",
+      call. = FALSE
+    )
   }
 
-  if (!is.numeric(max_distance) || length(max_distance) != 1 || max_distance < 0) {
-    stop("max_distance must be a single non-negative number")
-  }
-
-  dictionary <- tolower(dictionary)
-  names(dictionary) <- tolower(names(dictionary))
-  dictionary <- dictionary[!duplicated(names(dictionary))]
+  dictionary <- normalize_gender_dictionary(dictionary)
 
   gender_clean <- tolower(trimws(gender))
   unmatched <- unique(gender_clean[is.na(dictionary[gender_clean])])
   unmatched <- unmatched[!is.na(unmatched) & nzchar(unmatched)]
 
-  suggestions <- character()
-  dictionary_names <- names(dictionary)
-
-  for (response in unmatched) {
-    distances <- utils::adist(response, dictionary_names)
-    closest <- which.min(distances)
-
-    if (length(closest) == 1 && distances[[closest]] <= max_distance) {
-      suggestions[response] <- dictionary[[closest]]
-    }
+  if (length(unmatched) == 0L) {
+    return(character())
   }
+
+  dictionary_names <- names(dictionary)
+  distances <- utils::adist(unmatched, dictionary_names)
+  closest <- max.col(-distances, ties.method = "first")
+  minimum_distances <- distances[cbind(seq_along(unmatched), closest)]
+  keep <- minimum_distances <= max_distance
+
+  suggestions <- unname(dictionary[closest[keep]])
+  names(suggestions) <- unmatched[keep]
 
   suggestions
 }
