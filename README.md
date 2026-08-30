@@ -107,7 +107,7 @@ particularly welcome addition of non-English dictionaries or of other
 gender-diverse responses to the `manylevels_en` and `fewlevels_en`
 dictionaries.
 
-The [Adding to the dictionary](vignettes/a02_add_dictionary.Rmd)
+The [Adding to the dictionary](https://docs.ropensci.org/gendercoder/articles/a02_add_dictionary.html)
 vignette includes information about how to make changes to the
 dictionary either for your own use or when contributing to the
 gendercoder package.
